@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Electronics on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/electronics/</link>
+    <description>Recent content in Electronics on My New Hugo Site</description>
+    <image>
+      <title>My New Hugo Site</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Oct 2017 11:54:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/electronics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Raspberry pi – blinking led in morse</title>
+      <link>http://localhost:1313/posts/2017-10-07-raspberry-pi-blinking-led-in-morse/</link>
+      <pubDate>Sat, 07 Oct 2017 11:54:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-raspberry-pi-blinking-led-in-morse/</guid>
+      <description>&lt;p&gt;In my previous post i described how i created high available replicated storage with raspberrypi&lt;br&gt;
+In this post i will guide you how to interface raspberry pi to blink a led in morse code for the user input.The same signal fed into the LED can be send to a radio transmitter and we can transmit it in radio frequency . Recently i starter learning morse code and i am going to apply a license for Amateur radio operator.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Glusterfs -high available redundant storage with Raspberry pi/Centos server</title>
+      <link>http://localhost:1313/posts/2017-10-01-glusterfs-ha-storage-with-raspberrypi/</link>
+      <pubDate>Sun, 01 Oct 2017 10:30:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-01-glusterfs-ha-storage-with-raspberrypi/</guid>
+      <description>&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
+&lt;p&gt;This post is about how to create a high available redundant storage (Glusterfs replicated volume) from Raspberrypi and a centos server. This is just for fun project, which i am experimenting with my new raspberrypi 2 device. This is not a perfect setup, like i am using a 2 nodes replicated volume without quorom,created brick from ext3 filesystem and on root directory etc.Do not use this setup in production 🙂&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

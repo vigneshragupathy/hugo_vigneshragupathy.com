@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kubernetes on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on My New Hugo Site</description>
+    <image>
+      <title>My New Hugo Site</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Jul 2022 10:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes monitoring in Zabbix via Prometheus backend</title>
+      <link>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</link>
+      <pubDate>Fri, 01 Jul 2022 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Monitoring in Kubernetes is a complex task.&lt;/p&gt;
+&lt;p&gt;The traditional monitoring framework is not sufficient to handle such a massive workload.&lt;/p&gt;
+&lt;p&gt;Zabbix since version 6.0 provides a native way of integration for monitoring Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;Zabbix-Kubernetes integration provides various templates to monitor kubernetes components like &lt;code&gt;kube-controller-manager&lt;/code&gt;, &lt;code&gt;kube-apiserver&lt;/code&gt;, &lt;code&gt;kube-scheduler&lt;/code&gt;, &lt;code&gt;kubelet&lt;/code&gt;, etc.&lt;/p&gt;
+&lt;p&gt;It also supports automatic discovery of kubernetes nodes, pods and also collects metrics agentlessly.&lt;/p&gt;
+&lt;h2 id=&#34;why-i-dont-like-the-zabbixs-direct-way-of-monitoring-kubernetes-cluster&#34;&gt;Why I don&amp;rsquo;t like the Zabbix&amp;rsquo;s direct way of monitoring Kubernetes cluster?&lt;/h2&gt;
+&lt;p&gt;Although Zabbix-Kubernetes integration looks promising in the beginning , it is not easy to use.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Backup of etcd database in kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-28-backup-of-etcd-database-in-kubernetes/</link>
+      <pubDate>Thu, 28 Nov 2019 16:37:26 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-28-backup-of-etcd-database-in-kubernetes/</guid>
+      <description>&lt;p&gt;Kubernetes cluster state is saved in etcd datastore. In the post we are going to see how to take a backup for etcd database in kubernetes cluster.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/11/setup-7.jpg&#34; class=&#34;kg-image&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;h5 id=&#34;step-1-create-a-directory-and-backup-all-certificates&#34;&gt;Step 1: Create a directory and backup all certificates&lt;/h5&gt;
+&lt;p&gt;Kubernetes cluster have all the certificates saved in the defautl path /etc/kubernetes/pki. Take the backup of all the files and save it in the backup directory&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RBAC in kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-28-rbac-in-kubernetes/</link>
+      <pubDate>Thu, 28 Nov 2019 16:26:19 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-28-rbac-in-kubernetes/</guid>
+      <description>&lt;p&gt;There are 3 elements involved in RBAC. In this post we are going to see how to provide user level access to resources.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Subjects - Users or Process that wants access to Kubernetes API&lt;/li&gt;
+&lt;li&gt;Resources - Kubernetes API objects like pods, deployments etc&lt;/li&gt;
+&lt;li&gt;Verbs - Set of operations like get, watch create etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Upgrading kubernetes cluster master and worker nodes</title>
+      <link>http://localhost:1313/posts/2019-11-26-upgrading-kubernetes-cluster-master-and-worker-nodes/</link>
+      <pubDate>Tue, 26 Nov 2019 15:07:58 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-26-upgrading-kubernetes-cluster-master-and-worker-nodes/</guid>
+      <description>&lt;p&gt;This post we are going to discuss how to upgrade the kubernetes cluster, both master and worker nodes. We are going to upgrade a older version v1.15 to v.1.16.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/11/setup-5.jpg&#34; class=&#34;kg-image&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;h3 id=&#34;master-node&#34;&gt;Master node&lt;/h3&gt;
+&lt;h5 id=&#34;step-1-verify-the-current-version-of-kubelet-and-kubeadm-running-in-all-nodes&#34;&gt;Step 1: Verify the current version of kubelet and kubeadm running in all nodes&lt;/h5&gt;
+&lt;p&gt;{% highlight console %}&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Running kubernetes custom scheduler</title>
+      <link>http://localhost:1313/posts/2019-11-25-running-kubernetes-custom-scheduler/</link>
+      <pubDate>Mon, 25 Nov 2019 17:28:55 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-25-running-kubernetes-custom-scheduler/</guid>
+      <description>&lt;p&gt;Kubernetes cluster have a default scheduler kube-scheduler. If the default scheduler does not suits our requirement we can also create our own scheduler. In the post we will discus how to create multiple scheduler and schedule pods based on different scheduler.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Creating static pod in kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-24-creating-static-pod-in-kubernetes/</link>
+      <pubDate>Sun, 24 Nov 2019 15:55:52 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-24-creating-static-pod-in-kubernetes/</guid>
+      <description>&lt;p&gt;Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them.&lt;br&gt;
+Static pods automatically restarts if it crashes. Static Pods are always bound to one Kubelet on a specific node. In the post we will try creating a static pod and watch the behaviour on delete.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pod scheduling in kubernetes - detailed step by step</title>
+      <link>http://localhost:1313/posts/2019-11-24-pod-scheduling-in-kubernetes-detailed-step-by-step/</link>
+      <pubDate>Sun, 24 Nov 2019 14:42:51 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-24-pod-scheduling-in-kubernetes-detailed-step-by-step/</guid>
+      <description>&lt;p&gt;We can assign the pod to node based on various methods. Lets discuss all the below methods in the post&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using nodeName&lt;/li&gt;
+&lt;li&gt;Using labels in nodeSelector&lt;/li&gt;
+&lt;li&gt;Node Affinity/Anti Affinity&lt;/li&gt;
+&lt;li&gt;Pod Affinity/Anti Affinity&lt;/li&gt;
+&lt;li&gt;Taints and tolerations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes stateful set with local-storage persistent volume</title>
+      <link>http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/</link>
+      <pubDate>Sun, 24 Nov 2019 08:03:14 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/</guid>
+      <description>&lt;p&gt;StatefulSets are similar to deployment contains identical container spec but ensures an order of the deployment. StatefulSets deploy pods in a sequential orders. Each pod as its own identity and is named with a unique ID. In the below post we are going to create a statefulsets and watch the behaviour during deletion of pod, scaling of pod and during update of container image.&lt;/p&gt;
+&lt;p&gt;The StatefulSets consist of a headless service, pods and a volume. We are going to use a local-storage volume for statefulsets. It is also common to dynamically allocate storage using  volumeClaimTemplates, but due to some limitation in virtualbox i am using a manual allocation using PersistVolumeClaim.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Creating persistent local-storage volume in Kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/</link>
+      <pubDate>Sat, 23 Nov 2019 14:12:38 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/</guid>
+      <description>&lt;p&gt;PersistentVolume and PersistentVolumeClaim in kubernetes provides a way to allocate storage for the pods. Kubernetes PV supports different types of storage. Now here in the below post we are going to use storage-class &lt;strong&gt;local-storage&lt;/strong&gt; and watch the behaviour for different reclaimpolicy.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rolling updates and update strategy in Kubernetes daemonsets</title>
+      <link>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/</link>
+      <pubDate>Sat, 23 Nov 2019 08:54:21 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/</guid>
+      <description>&lt;p&gt;Daemonset ensures that all the nodes run a copy of a pod. It can be used for running storage/monitoring daemons like glusterd,Prometheus etc. Now in this post we are going to see how to create a daemonset and do an image update. We are also going to perform different update strategy and watch the behaviour of damonset updates.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rolling updates and Rollbacks in Kubernetes deployment</title>
+      <link>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/</link>
+      <pubDate>Sat, 23 Nov 2019 06:18:21 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/</guid>
+      <description>&lt;p&gt;Kubernetes provides rollout options to do  update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Resource limiting CPU and Memory in Kubernetes</title>
+      <link>http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/</link>
+      <pubDate>Mon, 08 Oct 2018 12:16:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/</guid>
+      <description>&lt;p&gt;In my previous post, we seen how to &lt;a href=&#34;http://localhost:1313/kubernetes-on-ubuntu-18-04-with-dashbaoard&#34;&gt;configure kubernetes cluster&lt;/a&gt; ,&lt;a href=&#34;http://localhost:1313/kubernetes-growing-the-cluster-with-centos-7-node/&#34;&gt;how to deploy pods and grow the cluster&lt;/a&gt;. Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.&lt;/p&gt;
+&lt;p&gt;I am going to use a special image &lt;a href=&#34;https://hub.docker.com/r/vish/stress/&#34;&gt;vish/stress&lt;/a&gt;. This image has options for allocating cpu and memory, which can be parsed using an argument for doing the stress test.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes - Growing the cluster with Centos 7 node</title>
+      <link>http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/</link>
+      <pubDate>Fri, 15 Jun 2018 12:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;http://localhost:1313/kubernetes-on-ubuntu-18-04-with-dashbaoard/#kubernetes-token-generation&#34;&gt;previous post&lt;/a&gt; we seen how to install and configure kubernetes master node and dashboard on Ubuntu 18.04. Now this post is about growing the Kubernetes master by joining more nodes. For this setup i am going to use a Centos 7 VM running in virtualbox.&lt;/p&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2018/06/vikki_centos7_vbox.jpg&#34; class=&#34;kg-image&#34; alt=&#34;vikki_centos7_vbox&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;Fist update the centos with all latest packages&lt;/p&gt;
+&lt;p&gt;{% highlight console %}&lt;/p&gt;
+&lt;p&gt;[root@drona-child-3 ~]# yum update -y&lt;/p&gt;
+&lt;p&gt;{% endhighlight %}&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes on Ubuntu 18.04 - Master and Dashboard setup</title>
+      <link>http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/</link>
+      <pubDate>Thu, 14 Jun 2018 12:11:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/</guid>
+      <description>&lt;p&gt;This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the  video demo explaining the entire configuration in the end of this post, This is my first video demo!!!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This post has been updated for kubernetes &lt;mark&gt;version 1.18&lt;/mark&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;setup&#34;&gt;Setup&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

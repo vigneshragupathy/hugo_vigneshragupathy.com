@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <image>
+      <title>My New Hugo Site</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Jul 2022 10:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Install / Update PaperMod</title>
+      <link>http://localhost:1313/posts/archive/papermod/papermod-installation/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/papermod/papermod-installation/</guid>
+      <description>Read aboout Install and Update instructions and sampled configuration templates</description>
+    </item>
+    <item>
+      <title>Features / Mods</title>
+      <link>http://localhost:1313/posts/archive/papermod/papermod-features/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/papermod/papermod-features/</guid>
+      <description>Learn About All Features in PaperMod</description>
+    </item>
+    <item>
+      <title>Kubernetes monitoring in Zabbix via Prometheus backend</title>
+      <link>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</link>
+      <pubDate>Fri, 01 Jul 2022 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Monitoring in Kubernetes is a complex task.&lt;/p&gt;
+&lt;p&gt;The traditional monitoring framework is not sufficient to handle such a massive workload.&lt;/p&gt;
+&lt;p&gt;Zabbix since version 6.0 provides a native way of integration for monitoring Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;Zabbix-Kubernetes integration provides various templates to monitor kubernetes components like &lt;code&gt;kube-controller-manager&lt;/code&gt;, &lt;code&gt;kube-apiserver&lt;/code&gt;, &lt;code&gt;kube-scheduler&lt;/code&gt;, &lt;code&gt;kubelet&lt;/code&gt;, etc.&lt;/p&gt;
+&lt;p&gt;It also supports automatic discovery of kubernetes nodes, pods and also collects metrics agentlessly.&lt;/p&gt;
+&lt;h2 id=&#34;why-i-dont-like-the-zabbixs-direct-way-of-monitoring-kubernetes-cluster&#34;&gt;Why I don&amp;rsquo;t like the Zabbix&amp;rsquo;s direct way of monitoring Kubernetes cluster?&lt;/h2&gt;
+&lt;p&gt;Although Zabbix-Kubernetes integration looks promising in the beginning , it is not easy to use.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My life at SBI</title>
+      <link>http://localhost:1313/posts/2021-09-16-lifeatsbi/</link>
+      <pubDate>Thu, 16 Sep 2021 12:15:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-09-16-lifeatsbi/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;I joined State Bank of India on July 2020 and worked for 1 year and 2 months as Manager - IT Infrastructure Architect in Enterprise and Technology Architecture department in GITC, Navi Mumbai.&lt;/p&gt;
+&lt;p&gt;My role in SBI is technical, and it involves consulting, design, Architecture and reviewing of application and infrastructure.&lt;/p&gt;
+&lt;p&gt;Through out my tenure in SBI i worked on various short term projects. Among them setting up DevOps infrastructure for SBI is one.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Plotly4Nagios - A Graph plugin for nagios monitoring</title>
+      <link>http://localhost:1313/posts/2021-03-24-plotly4nagios-graph-plugin-for-nagios-monitoring/</link>
+      <pubDate>Wed, 24 Mar 2021 12:15:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-03-24-plotly4nagios-graph-plugin-for-nagios-monitoring/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/vigneshragupathy/plotly4nagios&#34;&gt;Plotly4Nagios&lt;/a&gt; is a nagios plugin to display the performance data in Graph. It uses the RRD database provided by pnp4nagios and visualize it in interactive graph format using plotly javascript. The first pre-release is published today in &lt;a href=&#34;https://github.com/vigneshragupathy/plotly4nagios&#34;&gt;github&lt;/a&gt; and here is the installation document. You can experiment it and report the issue/feedback for further enhancement.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Plotly4Nagios is accepted and listed under official &lt;a href=&#34;https://exchange.nagios.org/directory/Addons/Graphing-and-Trending/Plotly4Nagios/details&#34;&gt;nagios addons&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;git-badges&#34;&gt;GIT badges&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;GitHub&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/github/license/vigneshragupathy/plotly4nagios&#34;&gt;
+&lt;a href=&#34;https://travis-ci.com/vigneshragupathy/plotly4nagios&#34;&gt;&lt;img alt=&#34;Build Status&#34; loading=&#34;lazy&#34; src=&#34;https://travis-ci.com/vigneshragupathy/plotly4nagios.svg?branch=main&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Easy integration with nagios &lt;code&gt;notes_url&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Single page view for all performance metrics.&lt;/li&gt;
+&lt;li&gt;Easy template change using configuration variable.&lt;/li&gt;
+&lt;li&gt;Docker container based deploy and run.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.nagios.com/kb/article/nagios-core-performance-graphs-using-pnp4nagios-801.html&#34;&gt;pnp4nagios&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download plotly4nagios.tar.gz and extract it under /usr/local/plotly4nagios&lt;/li&gt;
+&lt;li&gt;Modify the config.json variables according to the environment&lt;/li&gt;
+&lt;li&gt;Copy the plotly4nagios/plotly4nagios.conf to /etc/http/conf.d/ folder and restart httpd&lt;/li&gt;
+&lt;li&gt;Add the follwing with  notes_url to templates.cfg.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    notes_url /plotly4nagios/plotly4nagios.html?host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;HOSTNAME&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;srv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;_HOST_
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    notes_url /plotly4nagios/plotly4nagios.html?host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;HOSTNAME$&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;srv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;SERVICEDESC$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Restart httpd and nagios.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation-with-dockerubuntu-image&#34;&gt;Installation with docker(Ubuntu image)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Build the docker image using the below command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/vigneshragupathy/plotly4nagios.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; plotly4nagios
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker build -t plotly4nagios .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Run the docker container using the below command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -it --name plotly4nagios -p 80:80 plotly4nagios
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Alternatively direct pull and run from docker hub.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Publish package in NPM and serve the static content from CDN</title>
+      <link>http://localhost:1313/posts/2020-06-12-publish-package-in-npm-and-serve-the-static-content-from-cdn/</link>
+      <pubDate>Fri, 12 Jun 2020 12:15:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2020-06-12-publish-package-in-npm-and-serve-the-static-content-from-cdn/</guid>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/content/images/cover/npm.jpg&#34;&gt;
+&lt;em&gt;Photo by &lt;a href=&#34;https://photography.vikki.in/vikki-photography-budapest-3&#34;&gt;Vignesh Ragupathy&lt;/a&gt;{:target=&amp;quot;_blank&amp;quot;}.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I have been utilizing AWS to host my personal blog for almost 3 years now. Originally my blog was hosted in WordPress and then I migrated to &lt;a href=&#34;https://ghost.org/&#34;&gt;ghost&lt;/a&gt;{:target=&amp;quot;_blank&amp;quot;}. It&amp;rsquo;s been 2 years now in ghost and I thought of exploring a new hosting option which should be free, supports custom domain name and free &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;SSL&lt;/a&gt;{:target=&amp;quot;_blank&amp;quot;}.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;{:target=&amp;quot;_blank&amp;quot;} is a ruby based static blog generator and it has an advantage of free hosting in GitHub. The letsencrypt SSL certificate is also provided by GitHub for my custom domain so i don’t have to worry about managing it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Backup of etcd database in kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-28-backup-of-etcd-database-in-kubernetes/</link>
+      <pubDate>Thu, 28 Nov 2019 16:37:26 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-28-backup-of-etcd-database-in-kubernetes/</guid>
+      <description>&lt;p&gt;Kubernetes cluster state is saved in etcd datastore. In the post we are going to see how to take a backup for etcd database in kubernetes cluster.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/11/setup-7.jpg&#34; class=&#34;kg-image&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;h5 id=&#34;step-1-create-a-directory-and-backup-all-certificates&#34;&gt;Step 1: Create a directory and backup all certificates&lt;/h5&gt;
+&lt;p&gt;Kubernetes cluster have all the certificates saved in the defautl path /etc/kubernetes/pki. Take the backup of all the files and save it in the backup directory&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RBAC in kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-28-rbac-in-kubernetes/</link>
+      <pubDate>Thu, 28 Nov 2019 16:26:19 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-28-rbac-in-kubernetes/</guid>
+      <description>&lt;p&gt;There are 3 elements involved in RBAC. In this post we are going to see how to provide user level access to resources.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Subjects - Users or Process that wants access to Kubernetes API&lt;/li&gt;
+&lt;li&gt;Resources - Kubernetes API objects like pods, deployments etc&lt;/li&gt;
+&lt;li&gt;Verbs - Set of operations like get, watch create etc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Upgrading kubernetes cluster master and worker nodes</title>
+      <link>http://localhost:1313/posts/2019-11-26-upgrading-kubernetes-cluster-master-and-worker-nodes/</link>
+      <pubDate>Tue, 26 Nov 2019 15:07:58 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-26-upgrading-kubernetes-cluster-master-and-worker-nodes/</guid>
+      <description>&lt;p&gt;This post we are going to discuss how to upgrade the kubernetes cluster, both master and worker nodes. We are going to upgrade a older version v1.15 to v.1.16.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/11/setup-5.jpg&#34; class=&#34;kg-image&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;h3 id=&#34;master-node&#34;&gt;Master node&lt;/h3&gt;
+&lt;h5 id=&#34;step-1-verify-the-current-version-of-kubelet-and-kubeadm-running-in-all-nodes&#34;&gt;Step 1: Verify the current version of kubelet and kubeadm running in all nodes&lt;/h5&gt;
+&lt;p&gt;{% highlight console %}&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Running kubernetes custom scheduler</title>
+      <link>http://localhost:1313/posts/2019-11-25-running-kubernetes-custom-scheduler/</link>
+      <pubDate>Mon, 25 Nov 2019 17:28:55 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-25-running-kubernetes-custom-scheduler/</guid>
+      <description>&lt;p&gt;Kubernetes cluster have a default scheduler kube-scheduler. If the default scheduler does not suits our requirement we can also create our own scheduler. In the post we will discus how to create multiple scheduler and schedule pods based on different scheduler.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Creating static pod in kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-24-creating-static-pod-in-kubernetes/</link>
+      <pubDate>Sun, 24 Nov 2019 15:55:52 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-24-creating-static-pod-in-kubernetes/</guid>
+      <description>&lt;p&gt;Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them.&lt;br&gt;
+Static pods automatically restarts if it crashes. Static Pods are always bound to one Kubelet on a specific node. In the post we will try creating a static pod and watch the behaviour on delete.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pod scheduling in kubernetes - detailed step by step</title>
+      <link>http://localhost:1313/posts/2019-11-24-pod-scheduling-in-kubernetes-detailed-step-by-step/</link>
+      <pubDate>Sun, 24 Nov 2019 14:42:51 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-24-pod-scheduling-in-kubernetes-detailed-step-by-step/</guid>
+      <description>&lt;p&gt;We can assign the pod to node based on various methods. Lets discuss all the below methods in the post&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using nodeName&lt;/li&gt;
+&lt;li&gt;Using labels in nodeSelector&lt;/li&gt;
+&lt;li&gt;Node Affinity/Anti Affinity&lt;/li&gt;
+&lt;li&gt;Pod Affinity/Anti Affinity&lt;/li&gt;
+&lt;li&gt;Taints and tolerations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes stateful set with local-storage persistent volume</title>
+      <link>http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/</link>
+      <pubDate>Sun, 24 Nov 2019 08:03:14 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/</guid>
+      <description>&lt;p&gt;StatefulSets are similar to deployment contains identical container spec but ensures an order of the deployment. StatefulSets deploy pods in a sequential orders. Each pod as its own identity and is named with a unique ID. In the below post we are going to create a statefulsets and watch the behaviour during deletion of pod, scaling of pod and during update of container image.&lt;/p&gt;
+&lt;p&gt;The StatefulSets consist of a headless service, pods and a volume. We are going to use a local-storage volume for statefulsets. It is also common to dynamically allocate storage using  volumeClaimTemplates, but due to some limitation in virtualbox i am using a manual allocation using PersistVolumeClaim.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Creating persistent local-storage volume in Kubernetes</title>
+      <link>http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/</link>
+      <pubDate>Sat, 23 Nov 2019 14:12:38 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/</guid>
+      <description>&lt;p&gt;PersistentVolume and PersistentVolumeClaim in kubernetes provides a way to allocate storage for the pods. Kubernetes PV supports different types of storage. Now here in the below post we are going to use storage-class &lt;strong&gt;local-storage&lt;/strong&gt; and watch the behaviour for different reclaimpolicy.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rolling updates and update strategy in Kubernetes daemonsets</title>
+      <link>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/</link>
+      <pubDate>Sat, 23 Nov 2019 08:54:21 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/</guid>
+      <description>&lt;p&gt;Daemonset ensures that all the nodes run a copy of a pod. It can be used for running storage/monitoring daemons like glusterd,Prometheus etc. Now in this post we are going to see how to create a daemonset and do an image update. We are also going to perform different update strategy and watch the behaviour of damonset updates.&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rolling updates and Rollbacks in Kubernetes deployment</title>
+      <link>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/</link>
+      <pubDate>Sat, 23 Nov 2019 06:18:21 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/</guid>
+      <description>&lt;p&gt;Kubernetes provides rollout options to do  update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services&lt;/p&gt;
+&lt;h3 id=&#34;setup&#34;&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>http://localhost:1313/posts/archive/markdown-syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/markdown-syntax/</guid>
+      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
+    </item>
+    <item>
+      <title>Code Syntax Guide</title>
+      <link>http://localhost:1313/posts/archive/code_syntax/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/code_syntax/</guid>
+      <description>Sample article showcasing basic code syntax and formatting for HTML elements.</description>
+    </item>
+    <item>
+      <title>Rich Content and Shortcodes</title>
+      <link>http://localhost:1313/posts/archive/rich-content/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/rich-content/</guid>
+      <description>A brief description of Hugo Shortcodes</description>
+    </item>
+    <item>
+      <title>Math Typesetting</title>
+      <link>http://localhost:1313/posts/archive/math-typesetting/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/math-typesetting/</guid>
+      <description>A brief guide to setup KaTeX</description>
+    </item>
+    <item>
+      <title>Emoji Support</title>
+      <link>http://localhost:1313/posts/archive/emoji-support/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/archive/emoji-support/</guid>
+      <description>Guide to emoji usage in Hugo</description>
+    </item>
+    <item>
+      <title>Resource limiting CPU and Memory in Kubernetes</title>
+      <link>http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/</link>
+      <pubDate>Mon, 08 Oct 2018 12:16:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/</guid>
+      <description>&lt;p&gt;In my previous post, we seen how to &lt;a href=&#34;http://localhost:1313/kubernetes-on-ubuntu-18-04-with-dashbaoard&#34;&gt;configure kubernetes cluster&lt;/a&gt; ,&lt;a href=&#34;http://localhost:1313/kubernetes-growing-the-cluster-with-centos-7-node/&#34;&gt;how to deploy pods and grow the cluster&lt;/a&gt;. Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.&lt;/p&gt;
+&lt;p&gt;I am going to use a special image &lt;a href=&#34;https://hub.docker.com/r/vish/stress/&#34;&gt;vish/stress&lt;/a&gt;. This image has options for allocating cpu and memory, which can be parsed using an argument for doing the stress test.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes - Growing the cluster with Centos 7 node</title>
+      <link>http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/</link>
+      <pubDate>Fri, 15 Jun 2018 12:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/</guid>
+      <description>&lt;p&gt;In my &lt;a href=&#34;http://localhost:1313/kubernetes-on-ubuntu-18-04-with-dashbaoard/#kubernetes-token-generation&#34;&gt;previous post&lt;/a&gt; we seen how to install and configure kubernetes master node and dashboard on Ubuntu 18.04. Now this post is about growing the Kubernetes master by joining more nodes. For this setup i am going to use a Centos 7 VM running in virtualbox.&lt;/p&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2018/06/vikki_centos7_vbox.jpg&#34; class=&#34;kg-image&#34; alt=&#34;vikki_centos7_vbox&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;Fist update the centos with all latest packages&lt;/p&gt;
+&lt;p&gt;{% highlight console %}&lt;/p&gt;
+&lt;p&gt;[root@drona-child-3 ~]# yum update -y&lt;/p&gt;
+&lt;p&gt;{% endhighlight %}&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes on Ubuntu 18.04 - Master and Dashboard setup</title>
+      <link>http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/</link>
+      <pubDate>Thu, 14 Jun 2018 12:11:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/</guid>
+      <description>&lt;p&gt;This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the  video demo explaining the entire configuration in the end of this post, This is my first video demo!!!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This post has been updated for kubernetes &lt;mark&gt;version 1.18&lt;/mark&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;setup&#34;&gt;Setup&lt;/h3&gt;
+&lt;p&gt;I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>எங்கள் ஊர்த் திருவிழா</title>
+      <link>http://localhost:1313/posts/2018-05-22-thiruvizha-madukkur-2018/</link>
+      <pubDate>Tue, 22 May 2018 12:09:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-05-22-thiruvizha-madukkur-2018/</guid>
+      <description>&lt;p&gt;சித்திரை என்றாலே திருவிழா மாதம்&amp;hellip; பள்ளி, பரிட்சை என்று நொந்துபோன சிறார்களுக்கு அது உயிர் புதுப்பிக்கும் ஆக்சிஜன் என்றால் மிகச் சரியாக இருக்கும்.&lt;/p&gt;
+&lt;p&gt;அக்காலத்தில் மழை பெய்து வேளாண்மை, அறுவடை செய்து மற்ற மாதங்கள் ஓடும். சித்திரை வெயிலில் வேலை செய்ய முடியா காரணத்தால் அது முழுதும் கொண்டாட்டங்கள், பண்டிகைகள் என்று கழி(ளி)த்தனர் நம் முன்னோர்.&lt;/p&gt;
+&lt;p&gt;அது 15 நாள் கொண்டாட்டம்&amp;hellip; பூச்சொரிதல் தொடங்கி முளைப்பாரி திருநாள் வரை பாடு அமர்க்களப்படும். சென்னை போன்ற பெருநகரங்களில் வசிப்பவர்கள் ஆண்டுதோறும் ஊருக்குச் செல்வதே இதுபோன்ற திருவிழாக்களுக்குத்தான்.&lt;/p&gt;
+&lt;p&gt;சித்திரை மாத ஞாயிறுகளில் பூச்சொரிந்து, அடுத்த எட்டாம் நாள் காப்பு கட்டி, நடுவில் உள்ள ஒரு வாரம் ஒவ்வொரு தெரு மண்டகப்படி நடத்தி கூழ் ஊற்றும் செய்முறை செய்து, அடுத்த ஞாயிறு அன்று திருவிழா நடைபெறும்.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lepakshi - The land of history &amp; mystery</title>
+      <link>http://localhost:1313/posts/2018-03-03-lepakshi-the-land-of-history-mystery/</link>
+      <pubDate>Sat, 03 Mar 2018 12:07:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-03-03-lepakshi-the-land-of-history-mystery/</guid>
+      <description>&lt;p&gt;Not I, not any one else can travel that road for you,You must travel it for yourself.It is not far, it is within reach,Perhaps you have been on it since you were born and did not know,Perhaps it is everywhere on water and on land - Walt Whitman.&lt;/p&gt;
+&lt;p&gt;It was a Friday evening on the end of summer, I called my wife from office and puzzled her by saying we have to prepare some eatables for our tomorrow&amp;rsquo;s picnic. Both of us were damn bored in weekends as we usually spend watching some old movies from our collection. Hence, She was also desperate for some out of town trip. We haven&amp;rsquo;t planned anything before. As soon as I returned home, we discussed about the places in and around Bangalore and outskirts for the picnic. Finally we landed in Lepakshi, the abandoned artistic treasure of Vijayanagar period. It is 130 kilometres away from our location in Bangalore and situated in Anantapur district of Andhra Pradesh. We were unsure about the hotels or restaurants near the place. So, as per our tamil tradition, we prepared kattu soru, and curd rice which are taken by travelers from ancient times😜. Along with that we squeezed some lemons to fill the bottles with lemonade.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Coracle ride in river Cauvery - an adventurous car trip to Hogenakkal</title>
+      <link>http://localhost:1313/posts/2018-02-23-car_trip_to_hogenakkal/</link>
+      <pubDate>Fri, 23 Feb 2018 12:03:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2018-02-23-car_trip_to_hogenakkal/</guid>
+      <description>&lt;p&gt;A little rain for few days filled the rivers to overflow. It was a day the water turns golden brown. Plants and debris everywhere, up to the knees rippling the flowing water. The time has come for us to rejoin the infinite stream of waters.&lt;/p&gt;
+&lt;p&gt;It was around 9 am on August 15, 2017, Me and my wife geared up, to begin the expedition to Hogenakkal. My Tiago is ready, petrol tank was jammed up the day before. My car&amp;rsquo;s final free service was pending and I had the idea of doing it after the trip. I wanted to start the journey at 7 am finishing breakfast at home, but as usual, it was delayed and we decided to take breakfast on the way to Hogenakkal.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FreeIPA Installation and configuration</title>
+      <link>http://localhost:1313/posts/2017-10-07-freeipa_installation_configuration/</link>
+      <pubDate>Sat, 07 Oct 2017 11:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-freeipa_installation_configuration/</guid>
+      <description>&lt;p&gt;I worked on a freelance project a year ago which gives me experience in Free IPA server. Here I am sharing some portion of the setup used.It would be useful for beginners trying to setup Free IPA server.&lt;/p&gt;
+&lt;p&gt;I have 2 sections here. One is about FreeIPA on the normal server and the other is FreeIPA in Docker container.&lt;/p&gt;
+&lt;p&gt;If you have any questions &amp;amp; comments, feel free to add in the Disqus comment section below&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Raspberry pi – blinking led in morse</title>
+      <link>http://localhost:1313/posts/2017-10-07-raspberry-pi-blinking-led-in-morse/</link>
+      <pubDate>Sat, 07 Oct 2017 11:54:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-raspberry-pi-blinking-led-in-morse/</guid>
+      <description>&lt;p&gt;In my previous post i described how i created high available replicated storage with raspberrypi&lt;br&gt;
+In this post i will guide you how to interface raspberry pi to blink a led in morse code for the user input.The same signal fed into the LED can be send to a radio transmitter and we can transmit it in radio frequency . Recently i starter learning morse code and i am going to apply a license for Amateur radio operator.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Machine learning – Network traffic classification using weka</title>
+      <link>http://localhost:1313/posts/2017-10-07-machine-learning-network-traffic-classification-using-weka/</link>
+      <pubDate>Sat, 07 Oct 2017 11:52:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-machine-learning-network-traffic-classification-using-weka/</guid>
+      <description>&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
+&lt;p&gt;This post is about how to classify network traffic captured from wireshark using weka machine learning algorithm. I tried few other methods like nltk,sckikit,python scripts with naive bayes implementation and finally decided to use weka mainly because of its simplicity,easy to use and also because it is written in java so it is easier to integrate with other java applications(which is i am planning to do).You can check my github machine learning project page for the other methods i tried.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trip to wild – Bannerghatta National Park</title>
+      <link>http://localhost:1313/posts/2017-10-07-trip-to-wild-bannerghatta-national-park/</link>
+      <pubDate>Sat, 07 Oct 2017 11:49:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-trip-to-wild-bannerghatta-national-park/</guid>
+      <description>&lt;p&gt;I have been trying my hand in photography for a few months now. Recently during a trip to Bannerghatta National Park i managed to shoot some of the wildlife using my DSLR camera. Here are few snaps from my recent trip to Bannerghatta National Park.&lt;/p&gt;
+&lt;h3 id=&#34;tigers-tongue-is-so-coarse-it-can-lick-flesh-down-to-the-bone&#34;&gt;Tiger’s tongue is so coarse, it can lick flesh down to the bone.&lt;/h3&gt;
+&lt;!--kg-card-begin: image--&gt;&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/02/30354172535_fdf9c66184_k_opt.jpg&#34; class=&#34;kg-image&#34; alt=&#34;30354172535_fdf9c66184_k_opt&#34;&gt;&lt;/figure&gt;&lt;!--kg-card-end: image--&gt;
+&lt;p&gt;The tiger’s tongue is covered with numerous small, sharp, rear-facing projections called papillae. These papillae gives the tongue is rough, rasping texture and is designed to help strip the skin, feathers, fur and meat right off its prey&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>bike trip to ooty</title>
+      <link>http://localhost:1313/posts/2017-10-07-bike-trip-to-ooty/</link>
+      <pubDate>Sat, 07 Oct 2017 11:44:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-bike-trip-to-ooty/</guid>
+      <description>&lt;p&gt;So…. I thought of a bike trip after New Year. This time taking my wife on the trip. So I was thinking something short in distance something less than 150 km, then Ooty comes to my mind. Then we both decided to go on a trip from Coimbatore to Ooty. It is a weekend trip, we just decided 3 days before, so no big plans.&lt;/p&gt;
+&lt;p&gt;Since it is the weekend, I know most of the hotels will be booked. So, I searched for decent hotels under 3k. After reading reviews from Tripadvisor and Google I booked Hotel Lakeview. I managed to pay around 2.5k after applying coupons from MakeMyTrip.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bike trip to Goa</title>
+      <link>http://localhost:1313/posts/2017-10-07-bike-trip-to-goa/</link>
+      <pubDate>Sat, 07 Oct 2017 11:38:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-bike-trip-to-goa/</guid>
+      <description>&lt;p&gt;Someone once said “Happiness is a path, not a destination” and I know its very true when i started to travel in bike.I have plans to visit many places in bike for this year and then one of my friend called and we both decided to go Goa for a bike trip. We are 3 person in two bike, a Royal enfield and a Yamaha Fz. We don’t have much plans to do in Goa, only thing we wanted is to go there in a bike.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Network teaming – RHEL7</title>
+      <link>http://localhost:1313/posts/2017-10-07-network-teaming-rhel7/</link>
+      <pubDate>Sat, 07 Oct 2017 11:35:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-network-teaming-rhel7/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;h4 id=&#34;linux-bonding-driver&#34;&gt;Linux Bonding driver&lt;/h4&gt;
+&lt;p&gt;The Linux bonding driver provides a method for aggregating multiple network interface controllers (NICs) into a single logical bonded interface of two or more so-called (NIC) slaves. The majority of modern Linux distributions (distros) come with a Linux kernel which has the Linux bonding driver (bonding)integrated as a loadable kernel module.&lt;/p&gt;
+&lt;p&gt;We can check the bonding module by&lt;/p&gt;
+&lt;p&gt;{% highlight console %}&lt;/p&gt;
+&lt;p&gt;[root@example.com ~]# lsmod |grep bonding
+bonding 142537 0&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Beautiful Budapest</title>
+      <link>http://localhost:1313/posts/2017-10-07-beautiful-budapest/</link>
+      <pubDate>Sat, 07 Oct 2017 11:26:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-07-beautiful-budapest/</guid>
+      <description>&lt;p&gt;Budapest, otherwise called the Little Paris of Central Europe is one of the celebrated vacationer spots in Europe.&lt;br&gt;
+This city is comprised of two particular sides, the Buda and Pest, both isolated by the wonderful Danube River.&lt;/p&gt;
+&lt;p&gt;The Buda side is notable with a few historical centers and Roman vestiges, while the Pest is the urban focus of the city and is for business, loaded with clubs, bistros, and markets.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Systemd – Introduction to system admin</title>
+      <link>http://localhost:1313/posts/2017-10-02-systemd-introduction-to-system-admin/</link>
+      <pubDate>Mon, 02 Oct 2017 11:22:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-02-systemd-introduction-to-system-admin/</guid>
+      <description>&lt;p&gt;This article is my own and based on various other sources from the internet. If you have something to say please provide your feedback in the comment section below.&lt;/p&gt;
+&lt;h3 id=&#34;what-is-systemd&#34;&gt;what is systemd:&lt;/h3&gt;
+&lt;p&gt;systemd is a service manager/init process used to bootstrap the userspace and manage all process.&lt;br&gt;
+Already systemd is the default init system for many operating systems including redhat, ubuntu, fedora and many others. Systemd is useful for a system administrator, as it provides many features to manage the OS efficiently.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Glusterfs -high available redundant storage with Raspberry pi/Centos server</title>
+      <link>http://localhost:1313/posts/2017-10-01-glusterfs-ha-storage-with-raspberrypi/</link>
+      <pubDate>Sun, 01 Oct 2017 10:30:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2017-10-01-glusterfs-ha-storage-with-raspberrypi/</guid>
+      <description>&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
+&lt;p&gt;This post is about how to create a high available redundant storage (Glusterfs replicated volume) from Raspberrypi and a centos server. This is just for fun project, which i am experimenting with my new raspberrypi 2 device. This is not a perfect setup, like i am using a 2 nodes replicated volume without quorom,created brick from ext3 filesystem and on root directory etc.Do not use this setup in production 🙂&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

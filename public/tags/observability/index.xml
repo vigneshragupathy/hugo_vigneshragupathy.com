@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Observability on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/observability/</link>
+    <description>Recent content in Observability on My New Hugo Site</description>
+    <image>
+      <title>My New Hugo Site</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Jul 2022 10:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/observability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes monitoring in Zabbix via Prometheus backend</title>
+      <link>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</link>
+      <pubDate>Fri, 01 Jul 2022 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</guid>
+      <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Monitoring in Kubernetes is a complex task.&lt;/p&gt;
+&lt;p&gt;The traditional monitoring framework is not sufficient to handle such a massive workload.&lt;/p&gt;
+&lt;p&gt;Zabbix since version 6.0 provides a native way of integration for monitoring Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;Zabbix-Kubernetes integration provides various templates to monitor kubernetes components like &lt;code&gt;kube-controller-manager&lt;/code&gt;, &lt;code&gt;kube-apiserver&lt;/code&gt;, &lt;code&gt;kube-scheduler&lt;/code&gt;, &lt;code&gt;kubelet&lt;/code&gt;, etc.&lt;/p&gt;
+&lt;p&gt;It also supports automatic discovery of kubernetes nodes, pods and also collects metrics agentlessly.&lt;/p&gt;
+&lt;h2 id=&#34;why-i-dont-like-the-zabbixs-direct-way-of-monitoring-kubernetes-cluster&#34;&gt;Why I don&amp;rsquo;t like the Zabbix&amp;rsquo;s direct way of monitoring Kubernetes cluster?&lt;/h2&gt;
+&lt;p&gt;Although Zabbix-Kubernetes integration looks promising in the beginning , it is not easy to use.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Plotly4Nagios - A Graph plugin for nagios monitoring</title>
+      <link>http://localhost:1313/posts/2021-03-24-plotly4nagios-graph-plugin-for-nagios-monitoring/</link>
+      <pubDate>Wed, 24 Mar 2021 12:15:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2021-03-24-plotly4nagios-graph-plugin-for-nagios-monitoring/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/vigneshragupathy/plotly4nagios&#34;&gt;Plotly4Nagios&lt;/a&gt; is a nagios plugin to display the performance data in Graph. It uses the RRD database provided by pnp4nagios and visualize it in interactive graph format using plotly javascript. The first pre-release is published today in &lt;a href=&#34;https://github.com/vigneshragupathy/plotly4nagios&#34;&gt;github&lt;/a&gt; and here is the installation document. You can experiment it and report the issue/feedback for further enhancement.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Plotly4Nagios is accepted and listed under official &lt;a href=&#34;https://exchange.nagios.org/directory/Addons/Graphing-and-Trending/Plotly4Nagios/details&#34;&gt;nagios addons&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;git-badges&#34;&gt;GIT badges&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;GitHub&#34; loading=&#34;lazy&#34; src=&#34;https://img.shields.io/github/license/vigneshragupathy/plotly4nagios&#34;&gt;
+&lt;a href=&#34;https://travis-ci.com/vigneshragupathy/plotly4nagios&#34;&gt;&lt;img alt=&#34;Build Status&#34; loading=&#34;lazy&#34; src=&#34;https://travis-ci.com/vigneshragupathy/plotly4nagios.svg?branch=main&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Easy integration with nagios &lt;code&gt;notes_url&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Single page view for all performance metrics.&lt;/li&gt;
+&lt;li&gt;Easy template change using configuration variable.&lt;/li&gt;
+&lt;li&gt;Docker container based deploy and run.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.nagios.com/kb/article/nagios-core-performance-graphs-using-pnp4nagios-801.html&#34;&gt;pnp4nagios&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download plotly4nagios.tar.gz and extract it under /usr/local/plotly4nagios&lt;/li&gt;
+&lt;li&gt;Modify the config.json variables according to the environment&lt;/li&gt;
+&lt;li&gt;Copy the plotly4nagios/plotly4nagios.conf to /etc/http/conf.d/ folder and restart httpd&lt;/li&gt;
+&lt;li&gt;Add the follwing with  notes_url to templates.cfg.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    notes_url /plotly4nagios/plotly4nagios.html?host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;HOSTNAME&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;srv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;_HOST_
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    notes_url /plotly4nagios/plotly4nagios.html?host&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;HOSTNAME$&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;srv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\$&lt;/span&gt;SERVICEDESC$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Restart httpd and nagios.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation-with-dockerubuntu-image&#34;&gt;Installation with docker(Ubuntu image)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Build the docker image using the below command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/vigneshragupathy/plotly4nagios.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; plotly4nagios
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker build -t plotly4nagios .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Run the docker container using the below command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -it --name plotly4nagios -p 80:80 plotly4nagios
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Alternatively direct pull and run from docker hub.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
