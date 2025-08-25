@@ -1,6 +1,6 @@
 baseURL: https://example.org/
 languageCode: en-us
-title: My New Hugo Site
+title: Vignesh Ragupathy
 theme: ["PaperMod"]
 
 
@@ -19,7 +19,7 @@ minify:
 
 pagination:
   disableAliases: false
-  pagerSize: 5
+  pagerSize: 10
 
 languages:
   en:

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Linux | My New Hugo Site</title>
+<title>Linux | Vignesh Ragupathy</title>
 <meta name="keywords" content="">
 <meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
 <meta name="author" content="Theme PaperMod">
@@ -57,7 +57,7 @@
 
     </style>
 </noscript><meta property="og:url" content="http://localhost:1313/tags/linux/">
-  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:site_name" content="Vignesh Ragupathy">
   <meta property="og:title" content="Linux">
   <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
   <meta property="og:locale" content="en">
@@ -85,7 +85,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Vignesh Ragupathy (Alt + H)">Vignesh Ragupathy</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -237,16 +237,88 @@ Subjects - Users or Process that wants access to Kubernetes API Resources - Kube
   <footer class="entry-footer"><span title='2019-11-28 16:26:19 +0000 UTC'>November 28, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
   <a class="entry-link" aria-label="post link to RBAC in kubernetes" href="http://localhost:1313/posts/2019-11-28-rbac-in-kubernetes/"></a>
 </article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Upgrading kubernetes cluster master and worker nodes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post we are going to discuss how to upgrade the kubernetes cluster, both master and worker nodes. We are going to upgrade a older version v1.15 to v.1.16.
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+Master node Step 1: Verify the current version of kubelet and kubeadm running in all nodes {% highlight console %}
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-26 15:07:58 +0000 UTC'>November 26, 2019</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Upgrading kubernetes cluster master and worker nodes" href="http://localhost:1313/posts/2019-11-26-upgrading-kubernetes-cluster-master-and-worker-nodes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Running kubernetes custom scheduler
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Kubernetes cluster have a default scheduler kube-scheduler. If the default scheduler does not suits our requirement we can also create our own scheduler. In the post we will discus how to create multiple scheduler and schedule pods based on different scheduler.
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-25 17:28:55 +0000 UTC'>November 25, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Running kubernetes custom scheduler" href="http://localhost:1313/posts/2019-11-25-running-kubernetes-custom-scheduler/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Creating static pod in kubernetes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them.
+Static pods automatically restarts if it crashes. Static Pods are always bound to one Kubelet on a specific node. In the post we will try creating a static pod and watch the behaviour on delete.
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-24 15:55:52 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Creating static pod in kubernetes" href="http://localhost:1313/posts/2019-11-24-creating-static-pod-in-kubernetes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Pod scheduling in kubernetes - detailed step by step
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>We can assign the pod to node based on various methods. Lets discuss all the below methods in the post
+Using nodeName Using labels in nodeSelector Node Affinity/Anti Affinity Pod Affinity/Anti Affinity Taints and tolerations Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-24 14:42:51 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Pod scheduling in kubernetes - detailed step by step" href="http://localhost:1313/posts/2019-11-24-pod-scheduling-in-kubernetes-detailed-step-by-step/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes stateful set with local-storage persistent volume
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>StatefulSets are similar to deployment contains identical container spec but ensures an order of the deployment. StatefulSets deploy pods in a sequential orders. Each pod as its own identity and is named with a unique ID. In the below post we are going to create a statefulsets and watch the behaviour during deletion of pod, scaling of pod and during update of container image.
+The StatefulSets consist of a headless service, pods and a volume. We are going to use a local-storage volume for statefulsets. It is also common to dynamically allocate storage using volumeClaimTemplates, but due to some limitation in virtualbox i am using a manual allocation using PersistVolumeClaim.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-24 08:03:14 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes stateful set with local-storage persistent volume" href="http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="http://localhost:1313/tags/linux/page/2/">Next&nbsp;2/5&nbsp;»
+    <a class="next" href="http://localhost:1313/tags/linux/page/2/">Next&nbsp;2/3&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">My New Hugo Site</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Vignesh Ragupathy</a></span> · 
 
     <span>
         Powered by
