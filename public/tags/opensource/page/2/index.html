@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Opensource | My New Hugo Site</title>
+<title>Opensource | Vignesh Ragupathy</title>
 <meta name="keywords" content="">
 <meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
 <meta name="author" content="Theme PaperMod">
@@ -57,7 +57,7 @@
 
     </style>
 </noscript><meta property="og:url" content="http://localhost:1313/tags/opensource/">
-  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:site_name" content="Vignesh Ragupathy">
   <meta property="og:title" content="Opensource">
   <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
   <meta property="og:locale" content="en">
@@ -85,7 +85,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Vignesh Ragupathy (Alt + H)">Vignesh Ragupathy</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -166,88 +166,160 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">RBAC in kubernetes
+    <h2 class="entry-hint-parent">Kubernetes stateful set with local-storage persistent volume
     </h2>
   </header>
   <div class="entry-content">
-    <p>There are 3 elements involved in RBAC. In this post we are going to see how to provide user level access to resources.
-Subjects - Users or Process that wants access to Kubernetes API Resources - Kubernetes API objects like pods, deployments etc Verbs - Set of operations like get, watch create etc Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+    <p>StatefulSets are similar to deployment contains identical container spec but ensures an order of the deployment. StatefulSets deploy pods in a sequential orders. Each pod as its own identity and is named with a unique ID. In the below post we are going to create a statefulsets and watch the behaviour during deletion of pod, scaling of pod and during update of container image.
+The StatefulSets consist of a headless service, pods and a volume. We are going to use a local-storage volume for statefulsets. It is also common to dynamically allocate storage using volumeClaimTemplates, but due to some limitation in virtualbox i am using a manual allocation using PersistVolumeClaim.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-28 16:26:19 +0000 UTC'>November 28, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to RBAC in kubernetes" href="http://localhost:1313/posts/2019-11-28-rbac-in-kubernetes/"></a>
+  <footer class="entry-footer"><span title='2019-11-24 08:03:14 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes stateful set with local-storage persistent volume" href="http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Upgrading kubernetes cluster master and worker nodes
+    <h2 class="entry-hint-parent">Creating persistent local-storage volume in Kubernetes
     </h2>
   </header>
   <div class="entry-content">
-    <p>This post we are going to discuss how to upgrade the kubernetes cluster, both master and worker nodes. We are going to upgrade a older version v1.15 to v.1.16.
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
-Master node Step 1: Verify the current version of kubelet and kubeadm running in all nodes {% highlight console %}
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-11-26 15:07:58 +0000 UTC'>November 26, 2019</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Upgrading kubernetes cluster master and worker nodes" href="http://localhost:1313/posts/2019-11-26-upgrading-kubernetes-cluster-master-and-worker-nodes/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Running kubernetes custom scheduler
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Kubernetes cluster have a default scheduler kube-scheduler. If the default scheduler does not suits our requirement we can also create our own scheduler. In the post we will discus how to create multiple scheduler and schedule pods based on different scheduler.
+    <p>PersistentVolume and PersistentVolumeClaim in kubernetes provides a way to allocate storage for the pods. Kubernetes PV supports different types of storage. Now here in the below post we are going to use storage-class local-storage and watch the behaviour for different reclaimpolicy.
 Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-25 17:28:55 +0000 UTC'>November 25, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Running kubernetes custom scheduler" href="http://localhost:1313/posts/2019-11-25-running-kubernetes-custom-scheduler/"></a>
+  <footer class="entry-footer"><span title='2019-11-23 14:12:38 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Creating persistent local-storage volume in Kubernetes" href="http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Creating static pod in kubernetes
+    <h2 class="entry-hint-parent">Rolling updates and update strategy in Kubernetes daemonsets
     </h2>
   </header>
   <div class="entry-content">
-    <p>Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them.
-Static pods automatically restarts if it crashes. Static Pods are always bound to one Kubelet on a specific node. In the post we will try creating a static pod and watch the behaviour on delete.
+    <p>Daemonset ensures that all the nodes run a copy of a pod. It can be used for running storage/monitoring daemons like glusterd,Prometheus etc. Now in this post we are going to see how to create a daemonset and do an image update. We are also going to perform different update strategy and watch the behaviour of damonset updates.
 Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-24 15:55:52 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Creating static pod in kubernetes" href="http://localhost:1313/posts/2019-11-24-creating-static-pod-in-kubernetes/"></a>
+  <footer class="entry-footer"><span title='2019-11-23 08:54:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Rolling updates and update strategy in Kubernetes daemonsets" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Pod scheduling in kubernetes - detailed step by step
+    <h2 class="entry-hint-parent">Rolling updates and Rollbacks in Kubernetes deployment
     </h2>
   </header>
   <div class="entry-content">
-    <p>We can assign the pod to node based on various methods. Lets discuss all the below methods in the post
-Using nodeName Using labels in nodeSelector Node Affinity/Anti Affinity Pod Affinity/Anti Affinity Taints and tolerations Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+    <p>Kubernetes provides rollout options to do update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-24 14:42:51 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Pod scheduling in kubernetes - detailed step by step" href="http://localhost:1313/posts/2019-11-24-pod-scheduling-in-kubernetes-detailed-step-by-step/"></a>
+  <footer class="entry-footer"><span title='2019-11-23 06:18:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Rolling updates and Rollbacks in Kubernetes deployment" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Resource limiting CPU and Memory in Kubernetes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In my previous post, we seen how to configure kubernetes cluster ,how to deploy pods and grow the cluster. Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.
+I am going to use a special image vish/stress. This image has options for allocating cpu and memory, which can be parsed using an argument for doing the stress test.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-08 12:16:00 +0000 UTC'>October 8, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Resource limiting CPU and Memory in Kubernetes" href="http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes - Growing the cluster with Centos 7 node
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In my previous post we seen how to install and configure kubernetes master node and dashboard on Ubuntu 18.04. Now this post is about growing the Kubernetes master by joining more nodes. For this setup i am going to use a Centos 7 VM running in virtualbox.
+Installation Fist update the centos with all latest packages
+{% highlight console %}
+[root@drona-child-3 ~]# yum update -y
+{% endhighlight %}
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-06-15 12:14:00 +0000 UTC'>June 15, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes - Growing the cluster with Centos 7 node" href="http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes on Ubuntu 18.04 - Master and Dashboard setup
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the video demo explaining the entire configuration in the end of this post, This is my first video demo!!!
+This post has been updated for kubernetes version 1.18
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-06-14 12:11:00 +0000 UTC'>June 14, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes on Ubuntu 18.04 - Master and Dashboard setup" href="http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">FreeIPA Installation and configuration
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I worked on a freelance project a year ago which gives me experience in Free IPA server. Here I am sharing some portion of the setup used.It would be useful for beginners trying to setup Free IPA server.
+I have 2 sections here. One is about FreeIPA on the normal server and the other is FreeIPA in Docker container.
+If you have any questions &amp; comments, feel free to add in the Disqus comment section below
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-10-07 11:58:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;26 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to FreeIPA Installation and configuration" href="http://localhost:1313/posts/2017-10-07-freeipa_installation_configuration/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Raspberry pi – blinking led in morse
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In my previous post i described how i created high available replicated storage with raspberrypi
+In this post i will guide you how to interface raspberry pi to blink a led in morse code for the user input.The same signal fed into the LED can be send to a radio transmitter and we can transmit it in radio frequency . Recently i starter learning morse code and i am going to apply a license for Amateur radio operator.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-10-07 11:54:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Raspberry pi – blinking led in morse" href="http://localhost:1313/posts/2017-10-07-raspberry-pi-blinking-led-in-morse/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Machine learning – Network traffic classification using weka
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Overview This post is about how to classify network traffic captured from wireshark using weka machine learning algorithm. I tried few other methods like nltk,sckikit,python scripts with naive bayes implementation and finally decided to use weka mainly because of its simplicity,easy to use and also because it is written in java so it is easier to integrate with other java applications(which is i am planning to do).You can check my github machine learning project page for the other methods i tried.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-10-07 11:52:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Machine learning – Network traffic classification using weka" href="http://localhost:1313/posts/2017-10-07-machine-learning-network-traffic-classification-using-weka/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/tags/opensource/">
-      «&nbsp;Prev&nbsp;1/5
+      «&nbsp;Prev&nbsp;1/3
     </a>
-    <a class="next" href="http://localhost:1313/tags/opensource/page/3/">Next&nbsp;3/5&nbsp;»
+    <a class="next" href="http://localhost:1313/tags/opensource/page/3/">Next&nbsp;3/3&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">My New Hugo Site</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Vignesh Ragupathy</a></span> · 
 
     <span>
         Powered by

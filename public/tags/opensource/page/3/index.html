@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Opensource | My New Hugo Site</title>
+<title>Opensource | Vignesh Ragupathy</title>
 <meta name="keywords" content="">
 <meta name="description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
 <meta name="author" content="Theme PaperMod">
@@ -57,7 +57,7 @@
 
     </style>
 </noscript><meta property="og:url" content="http://localhost:1313/tags/opensource/">
-  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:site_name" content="Vignesh Ragupathy">
   <meta property="og:title" content="Opensource">
   <meta property="og:description" content="Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod">
   <meta property="og:locale" content="en">
@@ -85,7 +85,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="My New Hugo Site (Alt + H)">My New Hugo Site</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Vignesh Ragupathy (Alt + H)">Vignesh Ragupathy</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -166,86 +166,58 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Kubernetes stateful set with local-storage persistent volume
+    <h2 class="entry-hint-parent">Network teaming – RHEL7
     </h2>
   </header>
   <div class="entry-content">
-    <p>StatefulSets are similar to deployment contains identical container spec but ensures an order of the deployment. StatefulSets deploy pods in a sequential orders. Each pod as its own identity and is named with a unique ID. In the below post we are going to create a statefulsets and watch the behaviour during deletion of pod, scaling of pod and during update of container image.
-The StatefulSets consist of a headless service, pods and a volume. We are going to use a local-storage volume for statefulsets. It is also common to dynamically allocate storage using volumeClaimTemplates, but due to some limitation in virtualbox i am using a manual allocation using PersistVolumeClaim.
+    <p>Introduction Linux Bonding driver The Linux bonding driver provides a method for aggregating multiple network interface controllers (NICs) into a single logical bonded interface of two or more so-called (NIC) slaves. The majority of modern Linux distributions (distros) come with a Linux kernel which has the Linux bonding driver (bonding)integrated as a loadable kernel module.
+We can check the bonding module by
+{% highlight console %}
+[root@example.com ~]# lsmod |grep bonding bonding 142537 0
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-24 08:03:14 +0000 UTC'>November 24, 2019</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Kubernetes stateful set with local-storage persistent volume" href="http://localhost:1313/posts/2019-11-24-kubernetes-stateful-set-with-local-storage-persistent-volume/"></a>
+  <footer class="entry-footer"><span title='2017-10-07 11:35:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Network teaming – RHEL7" href="http://localhost:1313/posts/2017-10-07-network-teaming-rhel7/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Creating persistent local-storage volume in Kubernetes
+    <h2 class="entry-hint-parent">Systemd – Introduction to system admin
     </h2>
   </header>
   <div class="entry-content">
-    <p>PersistentVolume and PersistentVolumeClaim in kubernetes provides a way to allocate storage for the pods. Kubernetes PV supports different types of storage. Now here in the below post we are going to use storage-class local-storage and watch the behaviour for different reclaimpolicy.
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+    <p>This article is my own and based on various other sources from the internet. If you have something to say please provide your feedback in the comment section below.
+what is systemd: systemd is a service manager/init process used to bootstrap the userspace and manage all process.
+Already systemd is the default init system for many operating systems including redhat, ubuntu, fedora and many others. Systemd is useful for a system administrator, as it provides many features to manage the OS efficiently.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-23 14:12:38 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Creating persistent local-storage volume in Kubernetes" href="http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/"></a>
+  <footer class="entry-footer"><span title='2017-10-02 11:22:00 +0000 UTC'>October 2, 2017</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Systemd – Introduction to system admin" href="http://localhost:1313/posts/2017-10-02-systemd-introduction-to-system-admin/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Rolling updates and update strategy in Kubernetes daemonsets
+    <h2 class="entry-hint-parent">Glusterfs -high available redundant storage with Raspberry pi/Centos server
     </h2>
   </header>
   <div class="entry-content">
-    <p>Daemonset ensures that all the nodes run a copy of a pod. It can be used for running storage/monitoring daemons like glusterd,Prometheus etc. Now in this post we are going to see how to create a daemonset and do an image update. We are also going to perform different update strategy and watch the behaviour of damonset updates.
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+    <p>Overview This post is about how to create a high available redundant storage (Glusterfs replicated volume) from Raspberrypi and a centos server. This is just for fun project, which i am experimenting with my new raspberrypi 2 device. This is not a perfect setup, like i am using a 2 nodes replicated volume without quorom,created brick from ext3 filesystem and on root directory etc.Do not use this setup in production 🙂
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-23 08:54:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Rolling updates and update strategy in Kubernetes daemonsets" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Rolling updates and Rollbacks in Kubernetes deployment
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Kubernetes provides rollout options to do update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-11-23 06:18:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Rolling updates and Rollbacks in Kubernetes deployment" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Resource limiting CPU and Memory in Kubernetes
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In my previous post, we seen how to configure kubernetes cluster ,how to deploy pods and grow the cluster. Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.
-I am going to use a special image vish/stress. This image has options for allocating cpu and memory, which can be parsed using an argument for doing the stress test.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-08 12:16:00 +0000 UTC'>October 8, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Resource limiting CPU and Memory in Kubernetes" href="http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/"></a>
+  <footer class="entry-footer"><span title='2017-10-01 10:30:00 +0000 UTC'>October 1, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Glusterfs -high available redundant storage with Raspberry pi/Centos server" href="http://localhost:1313/posts/2017-10-01-glusterfs-ha-storage-with-raspberrypi/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/tags/opensource/page/2/">
-      «&nbsp;Prev&nbsp;2/5
-    </a>
-    <a class="next" href="http://localhost:1313/tags/opensource/page/4/">Next&nbsp;4/5&nbsp;»
+      «&nbsp;Prev&nbsp;2/3
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">My New Hugo Site</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Vignesh Ragupathy</a></span> · 
 
     <span>
         Powered by
