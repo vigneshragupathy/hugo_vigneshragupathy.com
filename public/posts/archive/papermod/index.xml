@@ -15,16 +15,16 @@
     <atom:link href="http://localhost:1313/posts/archive/papermod/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Install / Update PaperMod</title>
-      <link>http://localhost:1313/posts/archive/papermod/papermod-installation/</link>
+      <link>http://localhost:1313/papermod-installation/</link>
       <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/archive/papermod/papermod-installation/</guid>
+      <guid>http://localhost:1313/papermod-installation/</guid>
       <description>Read aboout Install and Update instructions and sampled configuration templates</description>
     </item>
     <item>
       <title>Features / Mods</title>
-      <link>http://localhost:1313/posts/archive/papermod/papermod-features/</link>
+      <link>http://localhost:1313/papermod-features/</link>
       <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/archive/papermod/papermod-features/</guid>
+      <guid>http://localhost:1313/papermod-features/</guid>
       <description>Learn About All Features in PaperMod</description>
     </item>
   </channel>
