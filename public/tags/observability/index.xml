@@ -15,9 +15,9 @@
     <atom:link href="http://localhost:1313/tags/observability/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes monitoring in Zabbix via Prometheus backend</title>
-      <link>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</link>
+      <link>http://localhost:1313/kubernetes-monitoring-in-zabbix-via-prometheus-backend/</link>
       <pubDate>Fri, 01 Jul 2022 10:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2022-07-01-kubernetes-monitoring-in-zabbix-via-prometheus-backend/</guid>
+      <guid>http://localhost:1313/kubernetes-monitoring-in-zabbix-via-prometheus-backend/</guid>
       <description>&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 &lt;p&gt;Monitoring in Kubernetes is a complex task.&lt;/p&gt;
 &lt;p&gt;The traditional monitoring framework is not sufficient to handle such a massive workload.&lt;/p&gt;
@@ -29,9 +29,9 @@
     </item>
     <item>
       <title>Plotly4Nagios - A Graph plugin for nagios monitoring</title>
-      <link>http://localhost:1313/posts/2021-03-24-plotly4nagios-graph-plugin-for-nagios-monitoring/</link>
+      <link>http://localhost:1313/plotly4nagios-a-graph-plugin-for-nagios-monitoring/</link>
       <pubDate>Wed, 24 Mar 2021 12:15:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2021-03-24-plotly4nagios-graph-plugin-for-nagios-monitoring/</guid>
+      <guid>http://localhost:1313/plotly4nagios-a-graph-plugin-for-nagios-monitoring/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/vigneshragupathy/plotly4nagios&#34;&gt;Plotly4Nagios&lt;/a&gt; is a nagios plugin to display the performance data in Graph. It uses the RRD database provided by pnp4nagios and visualize it in interactive graph format using plotly javascript. The first pre-release is published today in &lt;a href=&#34;https://github.com/vigneshragupathy/plotly4nagios&#34;&gt;github&lt;/a&gt; and here is the installation document. You can experiment it and report the issue/feedback for further enhancement.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Plotly4Nagios is accepted and listed under official &lt;a href=&#34;https://exchange.nagios.org/directory/Addons/Graphing-and-Trending/Plotly4Nagios/details&#34;&gt;nagios addons&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;

@@ -17,6 +17,9 @@ minify:
   disableXML: true
   # minifyOutput: true
 
+permalinks:
+  posts: /:title/
+
 pagination:
   disableAliases: false
   pagerSize: 40
@@ -31,9 +34,12 @@ languages:
       series: series
     menu:
       main:
-        - name: Archive
-          url: archives
-          weight: 5
+        - name: Blog
+          url: blog
+          weight: 3
+        # - name: Archive
+        #   url: archives
+        #   weight: 5
         - name: Search
           url: search/
           weight: 10
@@ -133,30 +139,32 @@ params:
   images: ["images/papermod-cover.png"]
 
   profileMode:
-    enabled: false
-    title: PaperMod
-    imageUrl: "#"
+    enabled: true
+    title: Vignesh Ragupathy
+    imageUrl: "https://vigneshragupathy.com/images/profile.png"
     imageTitle: my image
     # imageWidth: 120
     # imageHeight: 120
     buttons:
-      - name: Archives
-        url: archives
+      - name: Blog
+        url: blog
+      # - name: Archives
+      #   url: archives
       - name: Tags
         url: tags
 
   homeInfoParams:
-    Title: "PaperMod's Demo"
+    Title: "About Me"
     Content: >
-      👋 Welcome to demo page of Hugo's theme PaperMod!
-
-      - **PaperMod**  is designed to be clean and simple but fast and responsive theme with useful feature-set that enhances UX.
-
-      - Feel free to show your support by giving us a star 🌟 on GitHub and sharing with your friends and social media .
-
-      - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper/tree/4330c8b12aa48bfdecbcad6ad66145f679a430b3).
+      Hi, I’m Vignesh — a cloud engineer passionate about building scalable infrastructure, solving complex DevOps challenges, and orchestrating automation across stacks and scripts. I work extensively across AWS and Azure, often blending observability, security, and deployment best practices into real-world architectures.
+      <br>
+      <br>
+      When I’m away from the terminal and toolchains, you’ll find me running, lifting weights, or exploring gadgets and photography. This blog is where I share technical insights, hands-on guides, and the occasional detour into the things I enjoy outside the terminal.
 
   socialIcons:
+    - name: LinkedIn
+      title: Connect with me on LinkedIn
+      url: "https://www.linkedin.com/in/vigneshragupathy/"
     - name: github
       title: View Source on Github
       url: "https://github.com/vigneshragupathy"
@@ -169,9 +177,7 @@ params:
     # - name: KoFi
     #   title: Buy me a Ko-Fi :)
     #   url: "https://ko-fi.com/adityatelange"
-    - name: LinkedIn
-      title: Connect with me on LinkedIn
-      url: "https://www.linkedin.com/in/vigneshragupathy/"
+
 
 
   editPost:

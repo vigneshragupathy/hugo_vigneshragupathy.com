@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Kubernetes on Ubuntu 18.04 - Master and Dashboard setup | Vignesh Ragupathy</title>
+<meta name="keywords" content="linux, opensource, kubernetes">
+<meta name="description" content="This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the  video demo explaining the entire configuration in the end of this post, This is my first video demo!!!
+
+This post has been updated for kubernetes version 1.18
+Setup
+I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.">
+<meta name="author" content="Vignesh Ragupathy">
+<link rel="canonical" href="http://localhost:1313/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/">
+  <meta property="og:site_name" content="Vignesh Ragupathy">
+  <meta property="og:title" content="Kubernetes on Ubuntu 18.04 - Master and Dashboard setup">
+  <meta property="og:description" content="This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the video demo explaining the entire configuration in the end of this post, This is my first video demo!!!
+This post has been updated for kubernetes version 1.18
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-06-14T12:11:00+00:00">
+    <meta property="article:modified_time" content="2018-06-14T12:11:00+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Opensource">
+    <meta property="article:tag" content="Kubernetes">
+      <meta property="og:image" content="http://localhost:1313/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/images/papermod-cover.png">
+<meta name="twitter:title" content="Kubernetes on Ubuntu 18.04 - Master and Dashboard setup">
+<meta name="twitter:description" content="This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the  video demo explaining the entire configuration in the end of this post, This is my first video demo!!!
+
+This post has been updated for kubernetes version 1.18
+Setup
+I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Kubernetes on Ubuntu 18.04 - Master and Dashboard setup",
+      "item": "http://localhost:1313/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Kubernetes on Ubuntu 18.04 - Master and Dashboard setup",
+  "name": "Kubernetes on Ubuntu 18.04 - Master and Dashboard setup",
+  "description": "This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the video demo explaining the entire configuration in the end of this post, This is my first video demo!!!\nThis post has been updated for kubernetes version 1.18\nSetup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.\n",
+  "keywords": [
+    "linux", "opensource", "kubernetes"
+  ],
+  "articleBody": "This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the video demo explaining the entire configuration in the end of this post, This is my first video demo!!!\nThis post has been updated for kubernetes version 1.18\nSetup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.\nConfiguration First install docker, it is provided by the default ubuntu 18.04 repository.\n{% highlight console %}\nsudo apt-get install docker.io\n{% endhighlight %}\nEnable docker to auto start during reboot\n{% highlight console %}\nsudo systemctl enable docker Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install. Executing: /lib/systemd/systemd-sysv-install enable docker\n{% endhighlight %}{% highlight console %}\nsudo apt-get install curl\n{% endhighlight %}\nDownload the gpg key for kubernetes installation and add to ubuntu\n{% highlight console %}\ncurl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add OK\n{% endhighlight %}\nNow add the Google’s kubernetes repository\n{% highlight console %}\nsudo apt-add-repository “deb http://apt.kubernetes.io/ kubernetes-xenial main”\n{% endhighlight %}\nInstall kubeadm\n{% highlight console %}\nsudo apt-get install kubeadm\n{% endhighlight %}\nIf you want to disable the swap permanantly, edit /etc/fstab and comment the swap filesystem line. Kubernetes will not start if swap is enabled.\n{% highlight console %}\nsudo swapoff -a\n{% endhighlight %}\nMy IP address of the VM is 10.0.0.1 which i am going to advertise as apiserver and 40.168.0.0/16 is the newtwork for pod communication\n{% highlight console %}\nsudo kubeadm init –pod-network-cidr=40.168.0.0/16 –apiserver-advertise-address=10.0.0.1\nW0624 14:54:54.575835 4007 configset.go:202] WARNING: kubeadm cannot validate component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io] [init] Using Kubernetes version: v1.18.4 [preflight] Running pre-flight checks [WARNING IsDockerSystemdCheck]: detected “cgroupfs” as the Docker cgroup driver. The recommended driver is “systemd”. Please follow the guide at https://kubernetes.io/docs/setup/cri/ [preflight] Pulling images required for setting up a Kubernetes cluster [preflight] This might take a minute or two, depending on the speed of your internet connection [preflight] You can also perform this action in beforehand using ‘kubeadm config images pull’ [kubelet-start] Writing kubelet environment file with flags to file “/var/lib/kubelet/kubeadm-flags.env” [kubelet-start] Writing kubelet configuration to file “/var/lib/kubelet/config.yaml” [kubelet-start] Starting the kubelet [certs] Using certificateDir folder “/etc/kubernetes/pki” [certs] Generating “ca” certificate and key [certs] Generating “apiserver” certificate and key [certs] apiserver serving cert is signed for DNS names [kubernetes1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 10.0.0.1] [certs] Generating “apiserver-kubelet-client” certificate and key [certs] Generating “front-proxy-ca” certificate and key [certs] Generating “front-proxy-client” certificate and key [certs] Generating “etcd/ca” certificate and key [certs] Generating “etcd/server” certificate and key [certs] etcd/server serving cert is signed for DNS names [kubernetes1 localhost] and IPs [10.0.0.1 127.0.0.1 ::1] [certs] Generating “etcd/peer” certificate and key [certs] etcd/peer serving cert is signed for DNS names [kubernetes1 localhost] and IPs [10.0.0.1 127.0.0.1 ::1] [certs] Generating “etcd/healthcheck-client” certificate and key [certs] Generating “apiserver-etcd-client” certificate and key [certs] Generating “sa” key and public key [kubeconfig] Using kubeconfig folder “/etc/kubernetes” [kubeconfig] Writing “admin.conf” kubeconfig file [kubeconfig] Writing “kubelet.conf” kubeconfig file [kubeconfig] Writing “controller-manager.conf” kubeconfig file [kubeconfig] Writing “scheduler.conf” kubeconfig file [control-plane] Using manifest folder “/etc/kubernetes/manifests” [control-plane] Creating static Pod manifest for “kube-apiserver” [control-plane] Creating static Pod manifest for “kube-controller-manager” W0624 14:57:38.087288 4007 manifests.go:225] the default kube-apiserver authorization-mode is “Node,RBAC”; using “Node,RBAC” [control-plane] Creating static Pod manifest for “kube-scheduler” W0624 14:57:38.089706 4007 manifests.go:225] the default kube-apiserver authorization-mode is “Node,RBAC”; using “Node,RBAC” [etcd] Creating static Pod manifest for local etcd in “/etc/kubernetes/manifests” [wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory “/etc/kubernetes/manifests”. This can take up to 4m0s [apiclient] All control plane components are healthy after 21.003160 seconds [upload-config] Storing the configuration used in ConfigMap “kubeadm-config” in the “kube-system” Namespace [kubelet] Creating a ConfigMap “kubelet-config-1.18” in namespace kube-system with the configuration for the kubelets in the cluster [upload-certs] Skipping phase. Please see –upload-certs [mark-control-plane] Marking the node kubernetes1 as control-plane by adding the label “node-role.kubernetes.io/master=’’” [mark-control-plane] Marking the node kubernetes1 as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule] [bootstrap-token] Using token: u9ibqd.0x3nkr0lze6o5d7u [bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to get nodes [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [bootstrap-token] Creating the “cluster-info” ConfigMap in the “kube-public” namespace [kubelet-finalize] Updating “/etc/kubernetes/kubelet.conf” to point to a rotatable kubelet client certificate and key [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy\nYour Kubernetes control-plane has initialized successfully!\nTo start using your cluster, you need to run the following as a regular user:\nmkdir -p $HOME/.kube sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) $HOME/.kube/config\nYou should now deploy a pod network to the cluster. Run “kubectl apply -f [podnetwork].yaml” with one of the options listed at: https://kubernetes.io/docs/concepts/cluster-administration/addons/\nThen you can join any number of worker nodes by running the following on each as root:\nkubeadm join 10.0.0.1:6443 –token u9ibqd.0x3nkr0lze6o5d7u –discovery-token-ca-cert-hash sha256:9669e0ef3814e40ab4a3c2c85a450635ad6c75c25be931fdd064fda9fb9e7b89\n{% endhighlight %}\nTake a note of the join command, this will be used to join the other nodes to this kubernetes cluster.\nThe token generated is valid only for 24hours. In case the 24 hours exceed we need to generate the new token using the command “sudo kubeadm token create” .The current token can be view from master using the below command.\n{% highlight console %}\nsudo kubeadm token list\nTOKEN TTL EXPIRES USAGES DESCRIPTION EXTRA GROUPS o9an7t.o4bs1up74xjwnol3 1h 2018-06-15T14:39:02+05:30 authentication,signing The default bootstrap token generated by ‘kubeadm init’. system:bootstrappers:kubeadm:default-node-token\n{% endhighlight %}\nThe CA cert hash is used for the node to join in secure manner. This also can be view from the below command. Combaining this token and hash we can join the nodes.\n{% highlight console %}\nopenssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2\u003e/dev/null | openssl dgst -sha256 -hex | sed ’s/^.* //’\n548c922cf4f845f3dc6d7da407516652879c8a5085c87e0322770e1475105591\n{% endhighlight %}\nCreate the necessary directories\n{% highlight console %}\nmkdir -p $HOME/.kube sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) $HOME/.kube/config\n{% endhighlight %}\nNow deploy the network for pod communications , i am using the calico networking\n{% highlight console %}\nsudo kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml\nconfigmap/calico-config created customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created clusterrole.rbac.authorization.k8s.io/calico-kube-controllers created clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers created clusterrole.rbac.authorization.k8s.io/calico-node created clusterrolebinding.rbac.authorization.k8s.io/calico-node created daemonset.apps/calico-node created serviceaccount/calico-node created deployment.apps/calico-kube-controllers created serviceaccount/calico-kube-controllers created\n{% endhighlight %}\nNow wait for all pods to change to “Running” status. At this point all the pods should be in running status.\n{% highlight console %}\nsudo kubectl get pods –all-namespaces NAMESPACE NAME READY STATUS RESTARTS AGE kube-system calico-kube-controllers-76d4774d89-mfjdf 0/1 Running 0 7m29s kube-system calico-node-lfz6b 1/1 Running 0 7m29s kube-system coredns-66bff467f8-kg47r 1/1 Running 0 8m15s kube-system coredns-66bff467f8-mbl88 1/1 Running 0 8m16s kube-system etcd-kubernetes1 1/1 Running 1 8m24s kube-system kube-apiserver-kubernetes1 1/1 Running 1 8m24s kube-system kube-controller-manager-kubernetes1 1/1 Running 1 8m24s kube-system kube-proxy-t2rmj 1/1 Running 1 8m16s kube-system kube-scheduler-kubernetes1 1/1 Running 1 8m24s\n{% endhighlight %}\nNow deploy the kubernetes dashoard. Kubernetes dashboard is used to manage the kubernetes cluster using the web GUI interface.\n{% highlight console %}\nkubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml namespace/kubernetes-dashboard created serviceaccount/kubernetes-dashboard created service/kubernetes-dashboard created\nsecret/kubernetes-dashboard-certs created secret/kubernetes-dashboard-csrf created secret/kubernetes-dashboard-key-holder created configmap/kubernetes-dashboard-settings created role.rbac.authorization.k8s.io/kubernetes-dashboard created clusterrole.rbac.authorization.k8s.io/kubernetes-dashboard created rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created deployment.apps/kubernetes-dashboard created service/dashboard-metrics-scraper created deployment.apps/dashboard-metrics-scraper created\n{% endhighlight %}\nWait for kubernetes-dashboard-xxxx pods to goes “Running” status\n{% highlight console %}\nsudo kubectl get pods –all-namespaces NAMESPACE NAME READY STATUS RESTARTS AGE kube-system calico-kube-controllers-76d4774d89-mfjdf 1/1 Running 0 10m kube-system calico-node-lfz6b 1/1 Running 0 10m kube-system coredns-66bff467f8-kg47r 1/1 Running 0 11m kube-system coredns-66bff467f8-mbl88 1/1 Running 0 11m kube-system etcd-kubernetes1 1/1 Running 1 11m kube-system kube-apiserver-kubernetes1 1/1 Running 1 11m kube-system kube-controller-manager-kubernetes1 1/1 Running 1 11m kube-system kube-proxy-t2rmj 1/1 Running 1 11m kube-system kube-scheduler-kubernetes1 1/1 Running 1 11m kubernetes-dashboard dashboard-metrics-scraper-6b4884c9d5-j757b 1/1 Running 0 51s kubernetes-dashboard kubernetes-dashboard-7b544877d5-pklbm 1/1 Running 0 52s\n{% endhighlight %}\nOnce the kubernetes-dashboard-xxxxxxx container goes to “Running” state we can start the kubectly proxy with the below command. If you want to start only in localhost then you can change the address option to localhost\n{% highlight console %}\nsudo kubectl proxy –address=0.0.0.0\nStarting to serve on [::]:8001 {% endhighlight %}\nNow open the below kubernetes dashboard URL in browser\nhttp://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/\nTo properly login to the kubernetes dashboard we need to creat a service account and assign the proper role.\n{% highlight console %} kubectl create serviceaccount dashboard -n default\nserviceaccount “dashboard” created {% endhighlight %}\n{% highlight console %} kubectl create clusterrolebinding dashboard-admin -n default –clusterrole=cluster-admin –serviceaccount=default:dashboard\nclusterrolebinding.rbac.authorization.k8s.io “dashboard-admin” created {% endhighlight %}\nNow the password to login kubernetes dashboard can be viewed by running the below command. Copy the decoded password and login to dashboard.\n{% highlight console %}\nkubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath=\"{.secrets[0].name}\") -o jsonpath=\"{.data.token}\" | base64 –decode\neyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRhc2hib2FyZC10b2tlbi1nOGxnZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJkYXNoYm9hcmQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI1MDU1ZmE1ZC02ZmI0LTExZTgtOTgzZi0wODAwMjcxNjVmMDYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDpkYXNoYm9hcmQifQ.LAdmbfTmx8HACuZy3hRJzS4rP7LH2PaSi85oeNnuP4tWbtSVqonnkXNrENsrODA0zE8Dh77rCrKWM3j3HElJF8Wy3TzYVa2aopBxbIrqZgwESfeuUhhjc5twEE_zrxyVpbch1-lU_ye29li2iYn1649yDYosxBhKsic9A3dOtGWJuiTmFTYrt1cwzKRC201yAIdxxP6BiIm_h8nK5pAw_TPpF1tOxo_P4Zy9msn8tDR1NM_GX5Q10FJO8Ef7zNgFr9jgh_b_BnCj61niiIKzGJYzXs0b3Q3nvohoGfeGavTpG1eMc26-rJ1MwCT1beOvdkJv4DyjJFENPcZaalY0yw {% endhighlight %}\nVideo hands-on demo My next post on kubernetes Kubernetes scaling the cluster\n",
+  "wordCount" : "1551",
+  "inLanguage": "en",
+  "image": "http://localhost:1313/images/papermod-cover.png","datePublished": "2018-06-14T12:11:00Z",
+  "dateModified": "2018-06-14T12:11:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Vignesh Ragupathy"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Vignesh Ragupathy",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Vignesh Ragupathy (Alt + H)">Vignesh Ragupathy</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/adityatelange/hugo-PaperMod/wiki/" title="WiKi">
+                    <span>WiKi</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Kubernetes on Ubuntu 18.04 - Master and Dashboard setup
+    </h1>
+    <div class="post-meta"><span title='2018-06-14 12:11:00 +0000 UTC'>June 14, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Vignesh Ragupathy&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard.markdown" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#setup" aria-label="Setup">Setup</a></li>
+                <li>
+                    <a href="#configuration" aria-label="Configuration">Configuration</a></li>
+                <li>
+                    <a href="#video-hands-on-demo" aria-label="Video hands-on demo">Video hands-on demo</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the  video demo explaining the entire configuration in the end of this post, This is my first video demo!!!</p>
+<blockquote>
+<p>This post has been updated for kubernetes <mark>version 1.18</mark></p></blockquote>
+<h3 id="setup">Setup<a hidden class="anchor" aria-hidden="true" href="#setup">#</a></h3>
+<p>I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.</p>
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2018/06/setup.jpg" class="kg-image" alt="setup"></figure><!--kg-card-end: image-->
+<h3 id="configuration">Configuration<a hidden class="anchor" aria-hidden="true" href="#configuration">#</a></h3>
+<p>First install docker, it is provided by the default ubuntu 18.04 repository.</p>
+<p>{% highlight console %}</p>
+<p>sudo apt-get install docker.io</p>
+<p>{% endhighlight %}</p>
+<p>Enable docker to auto start during reboot</p>
+<p>{% highlight console %}</p>
+<p>sudo systemctl enable docker
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker</p>
+<p>{% endhighlight %}{% highlight console %}</p>
+<p>sudo apt-get install curl</p>
+<p>{% endhighlight %}</p>
+<p>Download the gpg key for kubernetes installation and add to ubuntu</p>
+<p>{% highlight console %}</p>
+<p>curl -s <a href="https://packages.cloud.google.com/apt/doc/apt-key.gpg">https://packages.cloud.google.com/apt/doc/apt-key.gpg</a> | sudo apt-key add
+OK</p>
+<p>{% endhighlight %}</p>
+<p>Now add the Google&rsquo;s kubernetes repository</p>
+<p>{% highlight console %}</p>
+<p>sudo apt-add-repository &ldquo;deb <a href="http://apt.kubernetes.io/">http://apt.kubernetes.io/</a> kubernetes-xenial main&rdquo;</p>
+<p>{% endhighlight %}</p>
+<p>Install kubeadm</p>
+<p>{% highlight console %}</p>
+<p>sudo apt-get install kubeadm</p>
+<p>{% endhighlight %}</p>
+<p>If you want to disable the swap permanantly, edit /etc/fstab and comment the swap filesystem line. Kubernetes will not start if swap is enabled.</p>
+<p>{% highlight console %}</p>
+<p>sudo swapoff -a</p>
+<p>{% endhighlight %}</p>
+<p>My IP address of the VM is 10.0.0.1 which i am going to advertise  as apiserver and 40.168.0.0/16 is the newtwork for pod communication</p>
+<p>{% highlight console %}</p>
+<p>sudo kubeadm init &ndash;pod-network-cidr=40.168.0.0/16 &ndash;apiserver-advertise-address=10.0.0.1</p>
+<p>W0624 14:54:54.575835    4007 configset.go:202] WARNING: kubeadm cannot validate component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io]
+[init] Using Kubernetes version: v1.18.4
+[preflight] Running pre-flight checks
+[WARNING IsDockerSystemdCheck]: detected &ldquo;cgroupfs&rdquo; as the Docker cgroup driver. The recommended driver is &ldquo;systemd&rdquo;. Please follow the guide at <a href="https://kubernetes.io/docs/setup/cri/">https://kubernetes.io/docs/setup/cri/</a>
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using &lsquo;kubeadm config images pull&rsquo;
+[kubelet-start] Writing kubelet environment file with flags to file &ldquo;/var/lib/kubelet/kubeadm-flags.env&rdquo;
+[kubelet-start] Writing kubelet configuration to file &ldquo;/var/lib/kubelet/config.yaml&rdquo;
+[kubelet-start] Starting the kubelet
+[certs] Using certificateDir folder &ldquo;/etc/kubernetes/pki&rdquo;
+[certs] Generating &ldquo;ca&rdquo; certificate and key
+[certs] Generating &ldquo;apiserver&rdquo; certificate and key
+[certs] apiserver serving cert is signed for DNS names [kubernetes1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 10.0.0.1]
+[certs] Generating &ldquo;apiserver-kubelet-client&rdquo; certificate and key
+[certs] Generating &ldquo;front-proxy-ca&rdquo; certificate and key
+[certs] Generating &ldquo;front-proxy-client&rdquo; certificate and key
+[certs] Generating &ldquo;etcd/ca&rdquo; certificate and key
+[certs] Generating &ldquo;etcd/server&rdquo; certificate and key
+[certs] etcd/server serving cert is signed for DNS names [kubernetes1 localhost] and IPs [10.0.0.1 127.0.0.1 ::1]
+[certs] Generating &ldquo;etcd/peer&rdquo; certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [kubernetes1 localhost] and IPs [10.0.0.1 127.0.0.1 ::1]
+[certs] Generating &ldquo;etcd/healthcheck-client&rdquo; certificate and key
+[certs] Generating &ldquo;apiserver-etcd-client&rdquo; certificate and key
+[certs] Generating &ldquo;sa&rdquo; key and public key
+[kubeconfig] Using kubeconfig folder &ldquo;/etc/kubernetes&rdquo;
+[kubeconfig] Writing &ldquo;admin.conf&rdquo; kubeconfig file
+[kubeconfig] Writing &ldquo;kubelet.conf&rdquo; kubeconfig file
+[kubeconfig] Writing &ldquo;controller-manager.conf&rdquo; kubeconfig file
+[kubeconfig] Writing &ldquo;scheduler.conf&rdquo; kubeconfig file
+[control-plane] Using manifest folder &ldquo;/etc/kubernetes/manifests&rdquo;
+[control-plane] Creating static Pod manifest for &ldquo;kube-apiserver&rdquo;
+[control-plane] Creating static Pod manifest for &ldquo;kube-controller-manager&rdquo;
+W0624 14:57:38.087288    4007 manifests.go:225] the default kube-apiserver authorization-mode is &ldquo;Node,RBAC&rdquo;; using &ldquo;Node,RBAC&rdquo;
+[control-plane] Creating static Pod manifest for &ldquo;kube-scheduler&rdquo;
+W0624 14:57:38.089706    4007 manifests.go:225] the default kube-apiserver authorization-mode is &ldquo;Node,RBAC&rdquo;; using &ldquo;Node,RBAC&rdquo;
+[etcd] Creating static Pod manifest for local etcd in &ldquo;/etc/kubernetes/manifests&rdquo;
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory &ldquo;/etc/kubernetes/manifests&rdquo;. This can take up to 4m0s
+[apiclient] All control plane components are healthy after 21.003160 seconds
+[upload-config] Storing the configuration used in ConfigMap &ldquo;kubeadm-config&rdquo; in the &ldquo;kube-system&rdquo; Namespace
+[kubelet] Creating a ConfigMap &ldquo;kubelet-config-1.18&rdquo; in namespace kube-system with the configuration for the kubelets in the cluster
+[upload-certs] Skipping phase. Please see &ndash;upload-certs
+[mark-control-plane] Marking the node kubernetes1 as control-plane by adding the label &ldquo;node-role.kubernetes.io/master=&rsquo;&rsquo;&rdquo;
+[mark-control-plane] Marking the node kubernetes1 as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[bootstrap-token] Using token: u9ibqd.0x3nkr0lze6o5d7u
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to get nodes
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstrap-token] Creating the &ldquo;cluster-info&rdquo; ConfigMap in the &ldquo;kube-public&rdquo; namespace
+[kubelet-finalize] Updating &ldquo;/etc/kubernetes/kubelet.conf&rdquo; to point to a rotatable kubelet client certificate and key
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy</p>
+<p>Your Kubernetes control-plane has initialized successfully!</p>
+<p>To start using your cluster, you need to run the following as a regular user:</p>
+<p>mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config</p>
+<p>You should now deploy a pod network to the cluster.
+Run &ldquo;kubectl apply -f [podnetwork].yaml&rdquo; with one of the options listed at:
+<a href="https://kubernetes.io/docs/concepts/cluster-administration/addons/">https://kubernetes.io/docs/concepts/cluster-administration/addons/</a></p>
+<p>Then you can join any number of worker nodes by running the following on each as root:</p>
+<p>kubeadm join 10.0.0.1:6443 &ndash;token u9ibqd.0x3nkr0lze6o5d7u <br>
+&ndash;discovery-token-ca-cert-hash sha256:9669e0ef3814e40ab4a3c2c85a450635ad6c75c25be931fdd064fda9fb9e7b89</p>
+<p>{% endhighlight %}</p>
+<p>Take a note of the join command, this will be used to join the other nodes to this kubernetes cluster.</p>
+<p>The token generated is valid only for 24hours. In case the 24 hours exceed we need to generate the new token using the command &ldquo;sudo kubeadm token create&rdquo; .The current token can be view from master using the below command.</p>
+<p>{% highlight console %}</p>
+<p>sudo kubeadm token list</p>
+<p>TOKEN TTL EXPIRES USAGES DESCRIPTION EXTRA GROUPS
+o9an7t.o4bs1up74xjwnol3 1h 2018-06-15T14:39:02+05:30 authentication,signing The default bootstrap token generated by &lsquo;kubeadm init&rsquo;. system:bootstrappers:kubeadm:default-node-token</p>
+<p>{% endhighlight %}</p>
+<p>The CA cert hash is used for the node to join in secure manner. This also can be view from the below command. Combaining this token and hash we can join the nodes.</p>
+<p>{% highlight console %}</p>
+<p>openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &rsquo;s/^.* //&rsquo;</p>
+<p>548c922cf4f845f3dc6d7da407516652879c8a5085c87e0322770e1475105591</p>
+<p>{% endhighlight %}</p>
+<p>Create the necessary directories</p>
+<p>{% highlight console %}</p>
+<p>mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config</p>
+<p>{% endhighlight %}</p>
+<p>Now deploy the network for pod communications , i am using the calico networking</p>
+<p>{% highlight console %}</p>
+<p>sudo kubectl apply -f <a href="https://docs.projectcalico.org/v3.14/manifests/calico.yaml">https://docs.projectcalico.org/v3.14/manifests/calico.yaml</a></p>
+<p>configmap/calico-config created
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers created
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers created
+clusterrole.rbac.authorization.k8s.io/calico-node created
+clusterrolebinding.rbac.authorization.k8s.io/calico-node created
+daemonset.apps/calico-node created
+serviceaccount/calico-node created
+deployment.apps/calico-kube-controllers created
+serviceaccount/calico-kube-controllers created</p>
+<p>{% endhighlight %}</p>
+<p>Now wait for all pods to change to &ldquo;Running&rdquo; status. At this point all the pods should be in running status.</p>
+<p>{% highlight console %}</p>
+<p>sudo kubectl get pods &ndash;all-namespaces
+NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
+kube-system   calico-kube-controllers-76d4774d89-mfjdf   0/1     Running   0          7m29s
+kube-system   calico-node-lfz6b                          1/1     Running   0          7m29s
+kube-system   coredns-66bff467f8-kg47r                   1/1     Running   0          8m15s
+kube-system   coredns-66bff467f8-mbl88                   1/1     Running   0          8m16s
+kube-system   etcd-kubernetes1                           1/1     Running   1          8m24s
+kube-system   kube-apiserver-kubernetes1                 1/1     Running   1          8m24s
+kube-system   kube-controller-manager-kubernetes1        1/1     Running   1          8m24s
+kube-system   kube-proxy-t2rmj                           1/1     Running   1          8m16s
+kube-system   kube-scheduler-kubernetes1                 1/1     Running   1          8m24s</p>
+<p>{% endhighlight %}</p>
+<p>Now deploy the kubernetes dashoard. Kubernetes dashboard is used to manage the kubernetes cluster using the web GUI interface.</p>
+<p>{% highlight console %}</p>
+<p>kubectl apply -f <a href="https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml">https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml</a>
+namespace/kubernetes-dashboard created
+serviceaccount/kubernetes-dashboard created
+service/kubernetes-dashboard created</p>
+<p>secret/kubernetes-dashboard-certs created
+secret/kubernetes-dashboard-csrf created
+secret/kubernetes-dashboard-key-holder created
+configmap/kubernetes-dashboard-settings created
+role.rbac.authorization.k8s.io/kubernetes-dashboard created
+clusterrole.rbac.authorization.k8s.io/kubernetes-dashboard created
+rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
+deployment.apps/kubernetes-dashboard created
+service/dashboard-metrics-scraper created
+deployment.apps/dashboard-metrics-scraper created</p>
+<p>{% endhighlight %}</p>
+<p>Wait for kubernetes-dashboard-xxxx pods to goes &ldquo;Running&rdquo; status</p>
+<p>{% highlight console %}</p>
+<p>sudo kubectl get pods &ndash;all-namespaces
+NAMESPACE              NAME                                         READY   STATUS    RESTARTS   AGE
+kube-system            calico-kube-controllers-76d4774d89-mfjdf     1/1     Running   0          10m
+kube-system            calico-node-lfz6b                            1/1     Running   0          10m
+kube-system            coredns-66bff467f8-kg47r                     1/1     Running   0          11m
+kube-system            coredns-66bff467f8-mbl88                     1/1     Running   0          11m
+kube-system            etcd-kubernetes1                             1/1     Running   1          11m
+kube-system            kube-apiserver-kubernetes1                   1/1     Running   1          11m
+kube-system            kube-controller-manager-kubernetes1          1/1     Running   1          11m
+kube-system            kube-proxy-t2rmj                             1/1     Running   1          11m
+kube-system            kube-scheduler-kubernetes1                   1/1     Running   1          11m
+kubernetes-dashboard   dashboard-metrics-scraper-6b4884c9d5-j757b   1/1     Running   0          51s
+kubernetes-dashboard   kubernetes-dashboard-7b544877d5-pklbm        1/1     Running   0          52s</p>
+<p>{% endhighlight %}</p>
+<p>Once the kubernetes-dashboard-xxxxxxx container goes to &ldquo;Running&rdquo; state we can start the kubectly proxy with the below command. If you want to start only in localhost then you can change the address option to localhost</p>
+<p>{% highlight console %}</p>
+<p>sudo kubectl proxy &ndash;address=0.0.0.0</p>
+<p>Starting to serve on [::]:8001
+{% endhighlight %}</p>
+<p>Now open the below kubernetes dashboard URL in browser</p>
+<p><a href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/">http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</a></p>
+<p><img loading="lazy" src="/content/images/2018/06/kubernetes_dashboard_home.png"></p>
+<p>To properly login to the kubernetes dashboard we need to creat a service account and assign the proper role.</p>
+<p>{% highlight console %}
+kubectl create serviceaccount dashboard -n default</p>
+<p>serviceaccount &ldquo;dashboard&rdquo; created
+{% endhighlight %}</p>
+<p>{% highlight console %}
+kubectl create clusterrolebinding dashboard-admin -n default &ndash;clusterrole=cluster-admin &ndash;serviceaccount=default:dashboard</p>
+<p>clusterrolebinding.rbac.authorization.k8s.io &ldquo;dashboard-admin&rdquo; created
+{% endhighlight %}</p>
+<p>Now the password to login kubernetes dashboard can be viewed by running the below command. Copy the decoded password and login to dashboard.</p>
+<p>{% highlight console %}</p>
+<p>kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath=&quot;{.secrets[0].name}&quot;) -o jsonpath=&quot;{.data.token}&quot; | base64 &ndash;decode</p>
+<p>eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRhc2hib2FyZC10b2tlbi1nOGxnZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJkYXNoYm9hcmQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI1MDU1ZmE1ZC02ZmI0LTExZTgtOTgzZi0wODAwMjcxNjVmMDYiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVmYXVsdDpkYXNoYm9hcmQifQ.LAdmbfTmx8HACuZy3hRJzS4rP7LH2PaSi85oeNnuP4tWbtSVqonnkXNrENsrODA0zE8Dh77rCrKWM3j3HElJF8Wy3TzYVa2aopBxbIrqZgwESfeuUhhjc5twEE_zrxyVpbch1-lU_ye29li2iYn1649yDYosxBhKsic9A3dOtGWJuiTmFTYrt1cwzKRC201yAIdxxP6BiIm_h8nK5pAw_TPpF1tOxo_P4Zy9msn8tDR1NM_GX5Q10FJO8Ef7zNgFr9jgh_b_BnCj61niiIKzGJYzXs0b3Q3nvohoGfeGavTpG1eMc26-rJ1MwCT1beOvdkJv4DyjJFENPcZaalY0yw
+{% endhighlight %}</p>
+<h3 id="video-hands-on-demo">Video hands-on demo<a hidden class="anchor" aria-hidden="true" href="#video-hands-on-demo">#</a></h3>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/79oLiDhZAm4' frameborder='0' allowfullscreen></iframe></div>
+<blockquote>
+<p>My next post on kubernetes <a href="/kubernetes-growing-the-cluster-with-centos-7-node/">Kubernetes scaling the cluster</a></p></blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/opensource/">Opensource</a></li>
+      <li><a href="http://localhost:1313/tags/kubernetes/">Kubernetes</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Kubernetes - Growing the cluster with Centos 7 node</span>
+  </a>
+  <a class="next" href="http://localhost:1313/2018-05-22-thiruvizha-madukkur-2018/">
+    <span class="title">Next »</span>
+    <br>
+    <span>எங்கள் ஊர்த் திருவிழா</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on x"
+            href="https://x.com/intent/tweet/?text=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup&amp;url=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f&amp;hashtags=linux%2copensource%2ckubernetes">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f&amp;title=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup&amp;summary=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup&amp;source=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f&title=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on whatsapp"
+            href="https://api.whatsapp.com/send?text=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup%20-%20http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on telegram"
+            href="https://telegram.me/share/url?text=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup&amp;url=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Kubernetes on Ubuntu 18.04 - Master and Dashboard setup on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Kubernetes%20on%20Ubuntu%2018.04%20-%20Master%20and%20Dashboard%20setup&u=http%3a%2f%2flocalhost%3a1313%2f2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Vignesh Ragupathy</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
