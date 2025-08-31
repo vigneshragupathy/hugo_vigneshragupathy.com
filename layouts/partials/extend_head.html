@@ -1,0 +1,7 @@
+{{- if site.Params.enableFloatingMenu }}
+{{- $floatingMenuCSS := resources.Get "css/floating-menu.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $floatingMenuCSS.Permalink }}" />
+
+{{- $floatingMenuJS := resources.Get "js/floating-menu.js" | resources.Minify }}
+<script src="{{ $floatingMenuJS.Permalink }}" defer></script>
+{{- end }}
