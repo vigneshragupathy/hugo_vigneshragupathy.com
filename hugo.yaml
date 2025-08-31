@@ -124,6 +124,8 @@ params:
 
   defaultTheme: auto
   # disableThemeToggle: true
+  # Enable floating menu bar (set to false to use default theme menu)
+  enableFloatingMenu: true
   ShowShareButtons: true
   ShowReadingTime: true
   # disableSpecial1stPost: true
