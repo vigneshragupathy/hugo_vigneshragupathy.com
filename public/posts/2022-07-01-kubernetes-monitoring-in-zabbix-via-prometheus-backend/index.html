@@ -185,16 +185,6 @@ Although Zabbix-Kubernetes integration looks promising in the beginning , it is 
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/fr/" title="French"
-                            aria-label=":fr:">🇫🇷</a>
-                    </li>
-                    <li>
-                        <a href="http://localhost:1313/fa/" title="Fa"
-                            aria-label="Fa">Fa</a>
-                    </li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -288,12 +278,12 @@ Although Zabbix-Kubernetes integration looks promising in the beginning , it is 
 <p>The metrics are exposed via API.</p>
 <p>Prometheus metrics can be queried by any HTTP client using it&rsquo;s API Endpoints.</p>
 <p><strong>Query Prometheus using curl</strong></p>
-<pre tabindex="0"><code>curl -X GET  &#39;https://PROMETHEUS_HOSTNAME/api/v1/query?query=up&#39; | jq status.
-</code></pre><p><strong>Query on kubernetes node metrics</strong></p>
-<pre tabindex="0"><code>curl -X GET  &#39;https://PROMETHEUS_HOSTNAME/api/v1/query?query=kube_node_info&#39; | jq status.
-</code></pre><p><strong>Advanced query operations like boolean</strong></p>
-<pre tabindex="0"><code>curl -X GET  &#39;http://PROMETHEUS_HOSTNAME/api/v1/query?query={__name__=~&#34;kube_pod_container_resource_limits_cpu_cores|kube_pod_status_phase&#34;}&gt;0&#39; | jq .
-</code></pre><h2 id="why-prometheus-is-just-not-good-enough">Why Prometheus is just not good enough?<a hidden class="anchor" aria-hidden="true" href="#why-prometheus-is-just-not-good-enough">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET  <span class="s1">&#39;https://PROMETHEUS_HOSTNAME/api/v1/query?query=up&#39;</span> <span class="p">|</span> jq status.
+</span></span></code></pre></div><p><strong>Query on kubernetes node metrics</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET  <span class="s1">&#39;https://PROMETHEUS_HOSTNAME/api/v1/query?query=kube_node_info&#39;</span> <span class="p">|</span> jq status.
+</span></span></code></pre></div><p><strong>Advanced query operations like boolean</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X GET  <span class="s1">&#39;http://PROMETHEUS_HOSTNAME/api/v1/query?query={__name__=~&#34;kube_pod_container_resource_limits_cpu_cores|kube_pod_status_phase&#34;}&gt;0&#39;</span> <span class="p">|</span> jq .
+</span></span></code></pre></div><h2 id="why-prometheus-is-just-not-good-enough">Why Prometheus is just not good enough?<a hidden class="anchor" aria-hidden="true" href="#why-prometheus-is-just-not-good-enough">#</a></h2>
 <p>Prometheus is good for collecting the metrics from Kubernetes cluster.
 But it is not enough to act as a full-stack monitoring system.</p>
 <p>Here are some of the limitations.</p>
@@ -308,7 +298,7 @@ But it is not enough to act as a full-stack monitoring system.</p>
 <p>The proposed approach is to use Prometheus as a backend for Zabbix.</p></blockquote>
 <p>This approach provides the flexibility of using Prometheus pull based metrics collection, scalability and PromQL queries. Also the advantage of Zabbix for alerting, anomaly detection and role based access control etc.</p>
 <p><strong>Architecture of the proposed approach</strong></p>
-<p><img alt="prometheus_federate" loading="lazy" src="content/images/2022/kubernetes-promethues-federate.png"></p>
+<p><img alt="prometheus_federate" loading="lazy" src="../../images/2022/kubernetes-promethues-federate.png"></p>
 
 
   </div>
@@ -320,10 +310,10 @@ But it is not enough to act as a full-stack monitoring system.</p>
       <li><a href="http://localhost:1313/tags/observability/">Observability</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/archive/papermod/papermod-features/">
+  <a class="prev" href="http://localhost:1313/posts/archive/markdown-syntax.fa/">
     <span class="title">« Prev</span>
     <br>
-    <span>Features / Mods</span>
+    <span>Markdown Syntax Guide For RTL</span>
   </a>
   <a class="next" href="http://localhost:1313/posts/2021-09-16-lifeatsbi/">
     <span class="title">Next »</span>

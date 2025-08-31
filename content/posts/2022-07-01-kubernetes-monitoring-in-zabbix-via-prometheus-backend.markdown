@@ -57,19 +57,19 @@ Prometheus metrics can be queried by any HTTP client using it's API Endpoints.
 
 **Query Prometheus using curl**
 
-```
+```bash
 curl -X GET  'https://PROMETHEUS_HOSTNAME/api/v1/query?query=up' | jq status.
 ```
 
 **Query on kubernetes node metrics**
 
-```
+```bash
 curl -X GET  'https://PROMETHEUS_HOSTNAME/api/v1/query?query=kube_node_info' | jq status.
 ```
 
 **Advanced query operations like boolean**
 
-```
+```bash
 curl -X GET  'http://PROMETHEUS_HOSTNAME/api/v1/query?query={__name__=~"kube_pod_container_resource_limits_cpu_cores|kube_pod_status_phase"}>0' | jq .
 ```
 
@@ -93,4 +93,4 @@ This approach provides the flexibility of using Prometheus pull based metrics co
 
 **Architecture of the proposed approach**
 
-![prometheus_federate](content/images/2022/kubernetes-promethues-federate.png)
+![prometheus_federate](../../images/2022/kubernetes-promethues-federate.png)
