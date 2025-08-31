@@ -107,16 +107,6 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="http://localhost:1313/fr/" title="French"
-                            aria-label=":fr:">🇫🇷</a>
-                    </li>
-                    <li>
-                        <a href="http://localhost:1313/fa/" title="Fa"
-                            aria-label="Fa">Fa</a>
-                    </li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
@@ -310,12 +300,66 @@ Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for th
   <footer class="entry-footer"><span title='2019-11-23 08:54:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
   <a class="entry-link" aria-label="post link to Rolling updates and update strategy in Kubernetes daemonsets" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/"></a>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="next" href="http://localhost:1313/tags/kubernetes/page/2/">Next&nbsp;2/2&nbsp;»
-    </a>
-  </nav>
-</footer>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Rolling updates and Rollbacks in Kubernetes deployment
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Kubernetes provides rollout options to do update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-23 06:18:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Rolling updates and Rollbacks in Kubernetes deployment" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Resource limiting CPU and Memory in Kubernetes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In my previous post, we seen how to configure kubernetes cluster ,how to deploy pods and grow the cluster. Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.
+I am going to use a special image vish/stress. This image has options for allocating cpu and memory, which can be parsed using an argument for doing the stress test.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-08 12:16:00 +0000 UTC'>October 8, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Resource limiting CPU and Memory in Kubernetes" href="http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes - Growing the cluster with Centos 7 node
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In my previous post we seen how to install and configure kubernetes master node and dashboard on Ubuntu 18.04. Now this post is about growing the Kubernetes master by joining more nodes. For this setup i am going to use a Centos 7 VM running in virtualbox.
+Installation Fist update the centos with all latest packages
+{% highlight console %}
+[root@drona-child-3 ~]# yum update -y
+{% endhighlight %}
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-06-15 12:14:00 +0000 UTC'>June 15, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes - Growing the cluster with Centos 7 node" href="http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes on Ubuntu 18.04 - Master and Dashboard setup
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the video demo explaining the entire configuration in the end of this post, This is my first video demo!!!
+This post has been updated for kubernetes version 1.18
+Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-06-14 12:11:00 +0000 UTC'>June 14, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes on Ubuntu 18.04 - Master and Dashboard setup" href="http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/"></a>
+</article>
     </main>
     
 <footer class="footer">

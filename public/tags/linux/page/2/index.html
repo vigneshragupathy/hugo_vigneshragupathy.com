@@ -166,155 +166,35 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Creating persistent local-storage volume in Kubernetes
+    <h2 class="entry-hint-parent">Systemd – Introduction to system admin
     </h2>
   </header>
   <div class="entry-content">
-    <p>PersistentVolume and PersistentVolumeClaim in kubernetes provides a way to allocate storage for the pods. Kubernetes PV supports different types of storage. Now here in the below post we are going to use storage-class local-storage and watch the behaviour for different reclaimpolicy.
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+    <p>This article is my own and based on various other sources from the internet. If you have something to say please provide your feedback in the comment section below.
+what is systemd: systemd is a service manager/init process used to bootstrap the userspace and manage all process.
+Already systemd is the default init system for many operating systems including redhat, ubuntu, fedora and many others. Systemd is useful for a system administrator, as it provides many features to manage the OS efficiently.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-23 14:12:38 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Creating persistent local-storage volume in Kubernetes" href="http://localhost:1313/posts/2019-11-23-creating-persistent-local-storage-volume-in-kubernetes/"></a>
+  <footer class="entry-footer"><span title='2017-10-02 11:22:00 +0000 UTC'>October 2, 2017</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Systemd – Introduction to system admin" href="http://localhost:1313/posts/2017-10-02-systemd-introduction-to-system-admin/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Rolling updates and update strategy in Kubernetes daemonsets
+    <h2 class="entry-hint-parent">Glusterfs -high available redundant storage with Raspberry pi/Centos server
     </h2>
   </header>
   <div class="entry-content">
-    <p>Daemonset ensures that all the nodes run a copy of a pod. It can be used for running storage/monitoring daemons like glusterd,Prometheus etc. Now in this post we are going to see how to create a daemonset and do an image update. We are also going to perform different update strategy and watch the behaviour of damonset updates.
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
+    <p>Overview This post is about how to create a high available redundant storage (Glusterfs replicated volume) from Raspberrypi and a centos server. This is just for fun project, which i am experimenting with my new raspberrypi 2 device. This is not a perfect setup, like i am using a 2 nodes replicated volume without quorom,created brick from ext3 filesystem and on root directory etc.Do not use this setup in production 🙂
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-11-23 08:54:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Rolling updates and update strategy in Kubernetes daemonsets" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Rolling updates and Rollbacks in Kubernetes deployment
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Kubernetes provides rollout options to do update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-11-23 06:18:21 +0000 UTC'>November 23, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Rolling updates and Rollbacks in Kubernetes deployment" href="http://localhost:1313/posts/2019-11-23-rolling-updates-and-rollbacks-in-kubernetes-deployment/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Resource limiting CPU and Memory in Kubernetes
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In my previous post, we seen how to configure kubernetes cluster ,how to deploy pods and grow the cluster. Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.
-I am going to use a special image vish/stress. This image has options for allocating cpu and memory, which can be parsed using an argument for doing the stress test.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-08 12:16:00 +0000 UTC'>October 8, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Resource limiting CPU and Memory in Kubernetes" href="http://localhost:1313/posts/2018-10-08-resource-limiting-cpu-and-memory-in-kubernetes/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Kubernetes - Growing the cluster with Centos 7 node
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In my previous post we seen how to install and configure kubernetes master node and dashboard on Ubuntu 18.04. Now this post is about growing the Kubernetes master by joining more nodes. For this setup i am going to use a Centos 7 VM running in virtualbox.
-Installation Fist update the centos with all latest packages
-{% highlight console %}
-[root@drona-child-3 ~]# yum update -y
-{% endhighlight %}
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-06-15 12:14:00 +0000 UTC'>June 15, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Kubernetes - Growing the cluster with Centos 7 node" href="http://localhost:1313/posts/2018-06-15-kubernetes-growing-the-cluster-with-centos-7-node/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Kubernetes on Ubuntu 18.04 - Master and Dashboard setup
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This post i am going to show how to install Kubernetes, configure Master node and enable Kubernetes dashboard in Ubuntu 18.04 LTS. I also tried to show the video demo explaining the entire configuration in the end of this post, This is my first video demo!!!
-This post has been updated for kubernetes version 1.18
-Setup I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-06-14 12:11:00 +0000 UTC'>June 14, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Kubernetes on Ubuntu 18.04 - Master and Dashboard setup" href="http://localhost:1313/posts/2018-06-14-kubernetes-on-ubuntu-18-04-with-dashbaoard/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">FreeIPA Installation and configuration
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I worked on a freelance project a year ago which gives me experience in Free IPA server. Here I am sharing some portion of the setup used.It would be useful for beginners trying to setup Free IPA server.
-I have 2 sections here. One is about FreeIPA on the normal server and the other is FreeIPA in Docker container.
-If you have any questions &amp; comments, feel free to add in the Disqus comment section below
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-10-07 11:58:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;26 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to FreeIPA Installation and configuration" href="http://localhost:1313/posts/2017-10-07-freeipa_installation_configuration/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Raspberry pi – blinking led in morse
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In my previous post i described how i created high available replicated storage with raspberrypi
-In this post i will guide you how to interface raspberry pi to blink a led in morse code for the user input.The same signal fed into the LED can be send to a radio transmitter and we can transmit it in radio frequency . Recently i starter learning morse code and i am going to apply a license for Amateur radio operator.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-10-07 11:54:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Raspberry pi – blinking led in morse" href="http://localhost:1313/posts/2017-10-07-raspberry-pi-blinking-led-in-morse/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Machine learning – Network traffic classification using weka
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Overview This post is about how to classify network traffic captured from wireshark using weka machine learning algorithm. I tried few other methods like nltk,sckikit,python scripts with naive bayes implementation and finally decided to use weka mainly because of its simplicity,easy to use and also because it is written in java so it is easier to integrate with other java applications(which is i am planning to do).You can check my github machine learning project page for the other methods i tried.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-10-07 11:52:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Machine learning – Network traffic classification using weka" href="http://localhost:1313/posts/2017-10-07-machine-learning-network-traffic-classification-using-weka/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Network teaming – RHEL7
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Introduction Linux Bonding driver The Linux bonding driver provides a method for aggregating multiple network interface controllers (NICs) into a single logical bonded interface of two or more so-called (NIC) slaves. The majority of modern Linux distributions (distros) come with a Linux kernel which has the Linux bonding driver (bonding)integrated as a loadable kernel module.
-We can check the bonding module by
-{% highlight console %}
-[root@example.com ~]# lsmod |grep bonding bonding 142537 0
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-10-07 11:35:00 +0000 UTC'>October 7, 2017</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
-  <a class="entry-link" aria-label="post link to Network teaming – RHEL7" href="http://localhost:1313/posts/2017-10-07-network-teaming-rhel7/"></a>
+  <footer class="entry-footer"><span title='2017-10-01 10:30:00 +0000 UTC'>October 1, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Vignesh Ragupathy</footer>
+  <a class="entry-link" aria-label="post link to Glusterfs -high available redundant storage with Raspberry pi/Centos server" href="http://localhost:1313/posts/2017-10-01-glusterfs-ha-storage-with-raspberrypi/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/tags/linux/">
-      «&nbsp;Prev&nbsp;1/3
-    </a>
-    <a class="next" href="http://localhost:1313/tags/linux/page/3/">Next&nbsp;3/3&nbsp;»
+      «&nbsp;Prev&nbsp;1/2
     </a>
   </nav>
 </footer>
