@@ -1,9 +1,9 @@
 {{- /* Comments area start */ -}}
 {{- if not (.Param "disableComments") -}}
   {{- if (.Param "comments") -}}
-    <div id="comments-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+    <div id="comments-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); position: relative; z-index: 1;">
       <h3 style="margin-bottom: 20px; color: var(--primary);">Comments</h3>
-      <div id="disqus_thread"></div>
+      <div id="disqus_thread" style="position: relative; z-index: 1;"></div>
       <script>
         /**
          * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -23,7 +23,34 @@
           
           s.setAttribute('data-timestamp', +new Date());
           (d.head || d.body).appendChild(s);
+          
+          // Mark comments section as loaded when Disqus is ready
+          s.onload = function() {
+            document.getElementById('comments-section').classList.add('loaded');
+          };
         })();
+        
+        // Ensure Disqus doesn't interfere with floating menu
+        document.addEventListener('DOMContentLoaded', function() {
+          // Monitor for Disqus iframe creation and ensure proper z-index
+          var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+              if (mutation.addedNodes) {
+                Array.from(mutation.addedNodes).forEach(function(node) {
+                  if (node.nodeType === 1 && node.tagName === 'IFRAME' && node.src && node.src.includes('disqus')) {
+                    node.style.zIndex = '1';
+                    node.style.position = 'relative';
+                  }
+                });
+              }
+            });
+          });
+          
+          observer.observe(document.getElementById('disqus_thread'), {
+            childList: true,
+            subtree: true
+          });
+        });
       </script>
       <noscript>
         Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
