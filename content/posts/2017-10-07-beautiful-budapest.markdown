@@ -20,7 +20,7 @@ For the following two day, I took the tours from city sightseeing, which offers 
 
 The full route maps offered by the tour is below. If you are new to the city and needs to visit many places in short time, then I suggest taking this tour.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35296371633_51de7d2eac_o.jpg" class="kg-image" alt="35296371633_51de7d2eac_o"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35296371633_51de7d2eac_o.jpg" class="kg-image" alt="35296371633_51de7d2eac_o"></figure><!--kg-card-end: image-->
 
 Now let’s show you some of my favorite pictures taken during the trip.
 
@@ -30,38 +30,38 @@ The Hungarian Parliament Building in Budapest is one of the popular tourist dest
 
 I took the picture from the boat in Danube river. It’s truly delightful to see from the Danube, particularly around night time.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35648237700_950a76a772_k_opt.jpg" class="kg-image" alt="35648237700_950a76a772_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35648237700_950a76a772_k_opt.jpg" class="kg-image" alt="35648237700_950a76a772_k_opt"></figure><!--kg-card-end: image-->
 # Buda Castle
 
 The castle is part of what is known as the Castle District, which has several medieval and Baroque houses, churches and other buildings.  
 The castle is the great spot to get a panoramic view over the Danube. Climbing up might be tiring, so I recommend to take tram for arrival and walk for the return, which take 10-15 minutes.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35854820852_fa071393ab_o_opt.jpg" class="kg-image" alt="35854820852_fa071393ab_o_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35854820852_fa071393ab_o_opt.jpg" class="kg-image" alt="35854820852_fa071393ab_o_opt"></figure><!--kg-card-end: image-->
 # Gellért Hill
 
 Named after Saint Gerard who was thrown to death from here, Gellért Hill rises 235 meters over the Danube.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35593062330_273c321c02_k_opt.jpg" class="kg-image" alt="35593062330_273c321c02_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35593062330_273c321c02_k_opt.jpg" class="kg-image" alt="35593062330_273c321c02_k_opt"></figure><!--kg-card-end: image-->
 
 The Gellert hill is also a great place to get the panoramic view of the Pest side of the city. Here is the view from hill
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35226857663_988afd873d_k_opt.jpg" class="kg-image" alt="35226857663_988afd873d_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35226857663_988afd873d_k_opt.jpg" class="kg-image" alt="35226857663_988afd873d_k_opt"></figure><!--kg-card-end: image-->
 # Heroes’ Square
 
 The square itself is a UNESCO World Heritage Site.The square was built in 1896 to commemorate the 1000th anniversary of the Magyar conquest of Hungary.  
 The square is also the site of two important museums – the Museum of Fine Arts and Palace of Art.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35811499842_ac3f212256_k_opt.jpg" class="kg-image" alt="35811499842_ac3f212256_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35811499842_ac3f212256_k_opt.jpg" class="kg-image" alt="35811499842_ac3f212256_k_opt"></figure><!--kg-card-end: image-->
 # Chain Bridge
 
 The Chain Bridge was the first permanent stone bridge in the Danube river which connects Buda and Pest. Here is the view taken from Buda castle.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35995904765_3ec2548493_k_opt.jpg" class="kg-image" alt="35995904765_3ec2548493_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35995904765_3ec2548493_k_opt.jpg" class="kg-image" alt="35995904765_3ec2548493_k_opt"></figure><!--kg-card-end: image-->
 # St. Stephen’s Basilica
 
 It is named in honor of Stephen, the first King of Hungary. The dome is absolutely beautiful and you will get a beautiful view of the city from the top.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35142293874_b2ca79f9d3_k_opt.jpg" class="kg-image" alt="35142293874_b2ca79f9d3_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35142293874_b2ca79f9d3_k_opt.jpg" class="kg-image" alt="35142293874_b2ca79f9d3_k_opt"></figure><!--kg-card-end: image-->
 # Redbull Airshow
 
 I also had an opportunity to see the red bull flying show. It was really stunning.
@@ -85,7 +85,7 @@ I also had an opportunity to see the red bull flying show. It was really stunnin
 
 Here is one of the flight model placed during the airshow.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/35184426633_56f1077c82_k_opt.jpg" class="kg-image" alt="35184426633_56f1077c82_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/35184426633_56f1077c82_k_opt.jpg" class="kg-image" alt="35184426633_56f1077c82_k_opt"></figure><!--kg-card-end: image-->
 
 Contrasted with Indian cities, Budapest is much smaller, much less congested, less polluted and has friendly people, however the exception is food.  
 Here is me at a Hungarian restaurant, fighting with food 🙂 More pictures can be found on my Flickr

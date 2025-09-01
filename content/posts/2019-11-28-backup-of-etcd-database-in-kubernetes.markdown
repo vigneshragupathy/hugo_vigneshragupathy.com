@@ -16,7 +16,7 @@ Kubernetes cluster state is saved in etcd datastore. In the post we are going to
 
 I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/11/setup-7.jpg" class="kg-image"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/11/setup-7.jpg" class="kg-image"></figure><!--kg-card-end: image-->
 ##### Step 1: Create a directory and backup all certificates
 
 Kubernetes cluster have all the certificates saved in the defautl path /etc/kubernetes/pki. Take the backup of all the files and save it in the backup directory

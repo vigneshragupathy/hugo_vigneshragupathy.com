@@ -21,7 +21,7 @@ It’s an ongoing project and we’re constantly finding ways to improve and mak
 
 Breakup of overall time that had spent in SBI.
 
-![sbi_breadkdown](/content/images/2021/sbi_work_breakup.png)
+![sbi_breadkdown](../../images/2021/sbi_work_breakup.png)
 
 
 ## What have I learned ?

@@ -27,7 +27,7 @@ Better dependencies management of process during startup
 Reduce computational overhead of shell script used during boot
 
 ### Systemd components:
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2017/10/15674101381_c0ac9497e9_z.jpg" class="kg-image" alt="15674101381_c0ac9497e9_z"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2017/10/15674101381_c0ac9497e9_z.jpg" class="kg-image" alt="15674101381_c0ac9497e9_z"></figure><!--kg-card-end: image-->
 
 How systemd increases concurrency of process start
 

@@ -370,7 +370,7 @@ We have to enable the home directory creation and default login shell for the ne
 _Step 11: Login to freeipa web_  
 Login to the freeIPA server from the browser and create some users.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2018/01/Screenshot-from-2018-01-19-18-40-38.png" class="kg-image" alt="Screenshot-from-2018-01-19-18-40-38"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2018/01/Screenshot-from-2018-01-19-18-40-38.png" class="kg-image" alt="Screenshot-from-2018-01-19-18-40-38"></figure><!--kg-card-end: image-->
 
 _Step 12: Add dns entry for the IPA client_  
 Now the user has been created , we can configure the dns record for the new clients to be added under domain vikki.in
@@ -1155,7 +1155,7 @@ The ipa-client-install command was successful
 
 Once client is installed and authenticated to the FreeIPA server, we can verify the hosts by login to GUI as shown below
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2018/01/Screenshot-from-2018-01-20-13-22-56.png" class="kg-image" alt="Screenshot-from-2018-01-20-13-22-56"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2018/01/Screenshot-from-2018-01-20-13-22-56.png" class="kg-image" alt="Screenshot-from-2018-01-20-13-22-56"></figure><!--kg-card-end: image-->
 
 Verify the users are synced to the client.
 

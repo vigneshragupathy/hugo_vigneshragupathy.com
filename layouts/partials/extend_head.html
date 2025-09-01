@@ -5,3 +5,6 @@
 {{- $floatingMenuJS := resources.Get "js/floating-menu.js" | resources.Minify }}
 <script src="{{ $floatingMenuJS.Permalink }}" defer></script>
 {{- end }}
+
+{{- /* Disqus Comment Count Script */ -}}
+<script id="dsq-count-scr" src="//vikkiblog.disqus.com/count.js" async></script>

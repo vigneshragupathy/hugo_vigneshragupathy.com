@@ -16,7 +16,7 @@ This post we are going to discuss how to upgrade the kubernetes cluster, both ma
 
 I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/11/setup-5.jpg" class="kg-image"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/11/setup-5.jpg" class="kg-image"></figure><!--kg-card-end: image-->
 ### Master node
 
 ##### Step 1: Verify the current version of kubelet and kubeadm running in all nodes

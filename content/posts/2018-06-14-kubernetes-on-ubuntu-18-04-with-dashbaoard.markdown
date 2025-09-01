@@ -19,7 +19,7 @@ This post i am going to show how to install Kubernetes, configure Master node an
 
 I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2018/06/setup.jpg" class="kg-image" alt="setup"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2018/06/setup.jpg" class="kg-image" alt="setup"></figure><!--kg-card-end: image-->
 ### Configuration
 
 First install docker, it is provided by the default ubuntu 18.04 repository.
@@ -301,7 +301,7 @@ Now open the below kubernetes dashboard URL in browser
 
 [http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
 
-![](/content/images/2018/06/kubernetes_dashboard_home.png)
+![](../../images/2018/06/kubernetes_dashboard_home.png)
 
 To properly login to the kubernetes dashboard we need to creat a service account and assign the proper role.
 

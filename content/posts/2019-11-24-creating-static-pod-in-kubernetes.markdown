@@ -17,7 +17,7 @@ Static pods automatically restarts if it crashes. Static Pods are always bound t
 
 I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this entire setup . The physical machine is Dell inspiron laptop with 12GB RAM , Intel® Core™ i7-6500U CPU @ 2.50GHz × 4 and 512GB SSD hardisk.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/11/setup-3.jpg" class="kg-image"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/11/setup-3.jpg" class="kg-image"></figure><!--kg-card-end: image-->
 ##### Step 1: Find the static pod manifest location
 
 Go to any node where you want to run the static pod. I want to run in kubernetes3 node. Look for the kubelet process and config.yaml file associated with it

@@ -30,41 +30,41 @@ Finally, I managed to book a Royal Enfield Thunderbird 500cc. It’s 1800 rupees
 On Saturday morning after breakfast, we started at 10.00 AM from Coimbatore. Till Mettupalayam there is traffic but after that when we take Kotagiri road it is traffic free and very scenic. Here are some of the pictures on the way to Ooty.
 
 ### Scenic view of Nilgiri hill
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32722543736_579b765ee8_k_opt.jpg" class="kg-image" alt="32722543736_579b765ee8_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32722543736_579b765ee8_k_opt.jpg" class="kg-image" alt="32722543736_579b765ee8_k_opt"></figure><!--kg-card-end: image-->
 ### Kotagiri village
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32717359436_407d6d6e3a_k_opt.jpg" class="kg-image" alt="32717359436_407d6d6e3a_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32717359436_407d6d6e3a_k_opt.jpg" class="kg-image" alt="32717359436_407d6d6e3a_k_opt"></figure><!--kg-card-end: image-->
 
 We reached Ooty at around 1 PM and checked into the Hotel. Hotel Lake view is one of the best hotels to stay in Ooty on budget. It is very close to the Ooty Lake, you can almost walk, though you will not get a lake view from hotel. Here are some of the pic from the hotel.
 
 ### Cottages with parking space
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32383602110_5c85898576_k_opt.jpg" class="kg-image" alt="32383602110_5c85898576_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32383602110_5c85898576_k_opt.jpg" class="kg-image" alt="32383602110_5c85898576_k_opt"></figure><!--kg-card-end: image-->
 
 After lunch, we decided to visit Ooty Lake and went on a pedal boat ride. It’s 140 rupees for 30 minutes. Since it is off-season, there is no much crowd and we truly enjoyed the ride.
 
 ### Some other pictures
 
 #### Row boat in Ooty lake
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32604698042_64c55adaf6_k_opt.jpg" class="kg-image" alt="32604698042_64c55adaf6_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32604698042_64c55adaf6_k_opt.jpg" class="kg-image" alt="32604698042_64c55adaf6_k_opt"></figure><!--kg-card-end: image-->
 ### Ooty lake staring point
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32717404996_4b05b3c194_k_opt.jpg" class="kg-image" alt="32717404996_4b05b3c194_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32717404996_4b05b3c194_k_opt.jpg" class="kg-image" alt="32717404996_4b05b3c194_k_opt"></figure><!--kg-card-end: image-->
 
 We visited Ooty botanical garden in evening. Here are some picture from the garden.
 
 ### Artificial lake
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/31915339384_4e929f85e1_k_opt.jpg" class="kg-image" alt="31915339384_4e929f85e1_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/31915339384_4e929f85e1_k_opt.jpg" class="kg-image" alt="31915339384_4e929f85e1_k_opt"></figure><!--kg-card-end: image-->
 ### Flowers in the garden
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/31915340244_d59be4171d_k_opt.jpg" class="kg-image" alt="31915340244_d59be4171d_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/31915340244_d59be4171d_k_opt.jpg" class="kg-image" alt="31915340244_d59be4171d_k_opt"></figure><!--kg-card-end: image-->
 ### Child playing in the garden
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32717401316_ceebda07dd_k_opt.jpg" class="kg-image" alt="32717401316_ceebda07dd_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32717401316_ceebda07dd_k_opt.jpg" class="kg-image" alt="32717401316_ceebda07dd_k_opt"></figure><!--kg-card-end: image-->
 
 We also visited the tribal village of Toda people. Toda people are a small pastoral tribal community who live on the isolated Nilgiri plateau religion features the sacred buffalo, rituals are performed for all dairy activities by dairymen-priests
 
 Note the very small door in front of the temple. The priest used to sleep inside this temple. The priest uses only the buffalo milk for food. Buffalo milk is used in a variety of forms: butter, buttermilk, yogurt, cheese and drunk plain.
 
 ### Toda temple
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32717357986_330423fd4d_k_opt.jpg" class="kg-image" alt="32717357986_330423fd4d_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32717357986_330423fd4d_k_opt.jpg" class="kg-image" alt="32717357986_330423fd4d_k_opt"></figure><!--kg-card-end: image-->
 ### A small hut used for shifting god sculpture
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2019/02/32378195310_6bfeb40530_k_opt.jpg" class="kg-image" alt="32378195310_6bfeb40530_k_opt"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/02/32378195310_6bfeb40530_k_opt.jpg" class="kg-image" alt="32378195310_6bfeb40530_k_opt"></figure><!--kg-card-end: image-->
 
 Next day we dropped the plan to visit Doddaabetta. This place had some restriction since the Governor is visiting. It was also very cold in the morning and temperature reached 7 degrees. So after breakfast, we went for shopping. Ooty is famous for homemade chocolates, tea, spices and essential oils. We went to Tibetan market where you can get sweaters, riding jackets in cheap price.
 

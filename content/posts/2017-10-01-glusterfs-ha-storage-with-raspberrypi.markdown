@@ -226,4 +226,4 @@ Now we can see the files are replicated in both the nodes .
 Now bring down one of the server and check if the gluster volume is still accessible in client.
 
 ### My setup:
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2017/11/pi_extra_small.jpg" class="kg-image" alt="pi_extra_small"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2017/11/pi_extra_small.jpg" class="kg-image" alt="pi_extra_small"></figure><!--kg-card-end: image-->
