@@ -41,7 +41,7 @@ Below is my final assembled circuit.
 
 Connect to raspberry pi using ssh or vnc, open vim and copy paste the below code and save it. But default vim don’t support syntax highlight in raspbian os,So modify the “vimrc” to enable syntax highlighting.
 
-{% highlight console %}
+```bash
 
 pi@raspberrypi ~/vikki/python $ sudo cat /etc/vim/vimrc
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
@@ -49,12 +49,12 @@ pi@raspberrypi ~/vikki/python $ sudo cat /etc/vim/vimrc
 "syntax on
 syntax on
 
-{% endhighlight %}
+```
 
 Below is the python code to blink the led . You can download the updated code from my github.  
 The code is explained inside in comment section.
 
-{% highlight python linenos %}
+```python
 
 # Import the GPIO and time libraries
 import RPi.GPIO as GPIO
@@ -89,7 +89,7 @@ try:
 except KeyboardInterrupt:
     GPIO.cleanup()
 
-{% endhighlight %}
+```
 
 Now run the python code and verify the LED start blinking.
 
@@ -100,7 +100,7 @@ Now run the python code and verify the LED start blinking.
 
 Once we are able to blink the led from python ,we need to blink it in morse for the user input. Below is the python code to blink the led for morse. You can download the updated code from my github.I just added few lines to the previous code to blink for morse.
 
-{% highlight python linenos %}
+```python
 
 # Import the GPIO and time libraries
 import RPi.GPIO as GPIO
@@ -198,6 +198,6 @@ try:
 except KeyboardInterrupt:
     GPIO.cleanup()
 
-{% endhighlight %}
+```
 ### Demo of LED blinking in Morse for the user input:
 <!--kg-card-begin: embed--><figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/n6KE4-SODCg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><!--kg-card-end: embed-->
