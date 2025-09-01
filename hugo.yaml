@@ -205,7 +205,7 @@ params:
 
   # analytics:
   #     google:
-  #         SiteVerificationTag: "XYZabc"
+  #         SiteVerificationTag: "G-9F817WV8S6"
 
   assets:
     disableHLJS: true
@@ -268,3 +268,5 @@ services:
     disableInlineCSS: true
   x:
     disableInlineCSS: true
+  googleAnalytics:
+    ID: G-9F817WV8S6
