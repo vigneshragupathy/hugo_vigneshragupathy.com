@@ -20,17 +20,17 @@ I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this ent
 
 <!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2019/11/setup.jpg" class="kg-image"></figure><!--kg-card-end: image-->
 ##### Step 1: Create a persistentVolume and persistemVolumeClaim
-{% highlight console %}
+```bash
 
 vim pv.yaml
 
-{% endhighlight %}
+```
 
-<!--kg-card-begin: html--><script src="https://gist.github.com/vigneshragupathy/b0fdde697229f150740a079b77458d64.js"></script><!--kg-card-end: html-->{% highlight console %}
+<!--kg-card-begin: html--><script src="https://gist.github.com/vigneshragupathy/b0fdde697229f150740a079b77458d64.js"></script><!--kg-card-end: html-->```bash
 
 vim pv_claim.yaml
 
-{% endhighlight %}<!--kg-card-begin: html--><script src="https://gist.github.com/vigneshragupathy/5f9f6acb132e499ccb80523b170dc815.js"></script><!--kg-card-end: html-->{% highlight console %}
+```<!--kg-card-begin: html--><script src="https://gist.github.com/vigneshragupathy/5f9f6acb132e499ccb80523b170dc815.js"></script><!--kg-card-end: html-->```bash
 
 vikki@kubernetes1:~$ kubectl create -f pv.yaml 
 persistentvolume/vikki-pv-volume created
@@ -38,7 +38,7 @@ persistentvolume/vikki-pv-volume created
 vikki@kubernetes1:~$ kubectl create -f pv_claim.yaml 
 persistentvolumeclaim/vikki-pv-volume-claim created
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~$ kubectl get pvc
 NAME STATUS VOLUME CAPACITY ACCESS MODES STORAGECLASS AGE
@@ -48,7 +48,7 @@ vikki@kubernetes1:~$ kubectl get pv
 NAME CAPACITY ACCESS MODES RECLAIM POLICY STATUS CLAIM STORAGECLASS REASON AGE
 vikki-pv-volume 1Gi RWO Retain Bound default/vikki-pv-volume-claim local-storage 9s
 
-{% endhighlight %}
+```
 ##### Step 2: Create a statefulSets
 
 Create a statefulSets and map the PVC created in previous steps. The statefull set consist of the following. -
@@ -56,22 +56,22 @@ Create a statefulSets and map the PVC created in previous steps. The statefull s
 - Headless service
 - StatefulSets with container details
 - Persistent Volumes 
-{% highlight console %}
+```bash
 
 vim ss.yaml
 
-{% endhighlight %}<!--kg-card-begin: html--><script src="https://gist.github.com/vigneshragupathy/d04c1473a6dacc90fcc8af2946b54b92.js"></script><!--kg-card-end: html-->{% highlight console %}
+```<!--kg-card-begin: html--><script src="https://gist.github.com/vigneshragupathy/d04c1473a6dacc90fcc8af2946b54b92.js"></script><!--kg-card-end: html-->```bash
 
 vikki@kubernetes1:~$ kubectl create -f ss.yaml 
 service/nginx created
 statefulset.apps/web created
 
-{% endhighlight %}
+```
 ##### Step 3: Verify statefulSets
 
 Now we can see the statefulsets are created and the respecive pod is created with a sequential unique id.
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ kubectl get statefulsets.apps 
 NAME READY AGE
@@ -82,17 +82,17 @@ NAME READY STATUS RESTARTS AGE
 web-0 1/1 Running 0 15m
 web-1 1/1 Running 0 15m
 
-{% endhighlight %}
+```
 ##### Step 4: Verify the DNS for statefulSets
 
 Create a temporary busybox pod and test the dns resolution for each statefulSet pods based on the pod and stateful set name.
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ kubectl apply -f https://k8s.io/examples/admin/dns/busybox.yaml
 pod/busybox created
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 root@kubernetes2:~# docker ps -a |grep busybox
 8e3ba8c16f3e busybox "sleep 3600" 21 seconds ago Up 20 seconds k8s_busybox_busybox_default_454e3e1c-1b41-4f6e-a244-6d89cd8c8379_0
@@ -121,7 +121,7 @@ PING web-1.nginx (192.168.249.184): 56 data bytes
 round-trip min/avg/max = 0.227/0.241/0.256 ms
 / # 
 
-{% endhighlight %}
+```
 
 > Now we can see both the statefulSets pods resolves for &nbsp;dns.
 
@@ -129,14 +129,14 @@ round-trip min/avg/max = 0.227/0.241/0.256 ms
 
 We can try deleting some pods and see how the new pods are creating
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ kubectl delete pod -l app=nginx
 pod "web-0" deleted
 pod "web-1" deleted
 vikki@kubernetes1:~$ 
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~$ kubectl get pod -w -l app=nginx
 NAME READY STATUS RESTARTS AGE
@@ -162,7 +162,7 @@ web-1 0/1 ContainerCreating 0 1s
 web-1 1/1 Running 0 1s
 ^Cvikki@kubernetes1:~$ 
 
-{% endhighlight %}
+```
 
 > We can see the pod are creating in ascending order preserving the sequence status
 
@@ -170,12 +170,12 @@ web-1 1/1 Running 0 1s
 
 Now lets scale up and scale down the statefulset and watch the order of pod creation and deletion
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ kubectl scale statefulset --replicas=5 web 
 statefulset.apps/web scaled
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~$ kubectl get pod -w -l app=nginx
 NAME READY STATUS RESTARTS AGE
@@ -197,12 +197,12 @@ web-4 0/1 ContainerCreating 0 1s
 web-4 0/1 ContainerCreating 0 2s
 web-4 1/1 Running 0 3s
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~$ kubectl scale statefulset --replicas=3 web 
 statefulset.apps/web scaled
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~$ kubectl get pod -w -l app=nginx
 NAME READY STATUS RESTARTS AGE
@@ -220,7 +220,7 @@ web-3 0/1 Terminating 0 49s
 web-3 0/1 Terminating 0 58s
 web-3 0/1 Terminating 0 58s
 
-{% endhighlight %}
+```
 
 > We can see from the above output the sequential order is preserved
 
@@ -228,7 +228,7 @@ web-3 0/1 Terminating 0 58s
 
 Now lets update the image in the statefulset and watch for the pod creation and deletion
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ kubectl get statefulsets.apps web -o yaml |grep updateStrategy -A 3
     updateStrategy:
@@ -237,18 +237,18 @@ vikki@kubernetes1:~$ kubectl get statefulsets.apps web -o yaml |grep updateStrat
     type: RollingUpdate
 vikki@kubernetes1:~$ 
 
-{% endhighlight %}
+```
 
 > Current statefulsets has the updatestrategy of type "_RollingUpdate_"
 
 Lets modify the container image to a different version
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ kubectl set image statefulset web nginx=k8s.gcr.io/nginx-slim:0.9
 statefulset.apps/web image updated
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~$ kubectl get pod -w -l app=nginx
 NAME READY STATUS RESTARTS AGE
@@ -283,7 +283,7 @@ web-0 0/1 ContainerCreating 0 0s
 web-0 0/1 ContainerCreating 0 1s
 web-0 1/1 Running 0 2s
 
-{% endhighlight %}
+```
 
 > We can see from the above output the sequential order is preserved
 

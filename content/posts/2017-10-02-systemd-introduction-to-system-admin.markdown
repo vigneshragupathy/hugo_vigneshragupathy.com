@@ -64,15 +64,15 @@ Double forking is meant to make a process orphan and making it as a child for in
 By double forking a process, it’s difficult to identify how the process is originally spawned in SysV. But systemd uses the Cgroups to keep track of the process.  
 For full application servers like apache which usually spawn many child processes, it is difficult to kill the entire service. Killing the apache process sometimes will not kill all its child process.Here systemd comes to rescue which uses systemctl to easily kill all process of a service.
 
-{% highlight console %}
+```bash
 
 vikki@trinity:~$ systemctl kill httpd.service
 
-{% endhighlight %}
+```
 
 Cgroups also keeps track of cpu/mem utilzation of each process. To see Cgroups cpu/memory details
 
-{% highlight console %}
+```bash
 
 vikki@trinity:~$ systemd-cgtop
 Control Group Tasks %CPU Memory Input/s Output/s
@@ -82,11 +82,11 @@ Control Group Tasks %CPU Memory Input/s Output/s
 /user.slice 546 – – – –
 /user.slice/user-1000.slice 546 – – – –
 
-{% endhighlight %}
+```
 
 To recursively see Cgroups contents
 
-{% highlight console %}
+```bash
 
 vikki@trinity:~$ systemd-cgls
 Control group /:
@@ -116,20 +116,20 @@ Control group /:
 │ ├─accounts-daemon.service
 │ │ └─1014 /usr/lib/accountsservice/accounts-daemon
 
-{% endhighlight %}
+```
 
 To see the time spent in system startup
 
-{% highlight console %}
+```bash
 
 vikki@trinity:~$/usr/lib/systemd/network$ systemd-analyze time
 Startup finished in 6.503s (kernel) + 11.296s (userspace) = 17.799s
 
-{% endhighlight %}
+```
 
 To see the time spent by each process during startup
 
-{% highlight console %}
+```bash
 
 vikki@trinity:~$/usr/lib/systemd/network$ systemd-analyze blame
 7.985s postgresql@9.5-main.service
@@ -138,11 +138,11 @@ vikki@trinity:~$/usr/lib/systemd/network$ systemd-analyze blame
 1.858s vmware-tools-thinprint.service
 1.630s vmware-tools.service
 
-{% endhighlight %}
+```
 
 Comparison of different init system:
 
-{% highlight console %}
+```bash
 
 sysvinit	Upstart	systemd
 Interfacing via D-Bus	no	yes	yes
@@ -215,4 +215,4 @@ Reliable termination of user sessions before shutdown	no	no	yes
 utmp/wtmp support	yes	yes	yes
 Easily writable, extensible and parseable service files, suitable for manipulation with enterprise management tools	no	no	yes
 
-{% endhighlight %}
+```

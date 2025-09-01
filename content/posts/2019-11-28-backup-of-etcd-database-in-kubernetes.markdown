@@ -21,14 +21,14 @@ I am using the Virtualbox(running in Ubuntu 18.04 physical machine) for this ent
 
 Kubernetes cluster have all the certificates saved in the defautl path /etc/kubernetes/pki. Take the backup of all the files and save it in the backup directory
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~$ mkdir backup 
 vikki@kubernetes1:~$ cd backup/
-{% endhighlight %}
+```
 
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~/backup$ sudo cp -rvf /etc/kubernetes/pki .
 '/etc/kubernetes/pki' -> './pki'
@@ -57,12 +57,12 @@ vikki@kubernetes1:~/backup$ sudo cp -rvf /etc/kubernetes/pki .
 '/etc/kubernetes/pki/sa.pub' -> './pki/sa.pub'
     
 
-{% endhighlight %}
+```
 ##### Step 2: Download the etcdctl binary
 
 Download the etcdctl binary. I have created a shortlinks for the etcd-v3.2.28 which works in ubuntu16.04 and kubernetes v16.
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~/backup$ wget shortlinks.vikki.in/etcd
 --2019-11-26 22:05:52-- http://shortlinks.vikki.in/etcd
@@ -86,16 +86,16 @@ etcd 100%[======================================================================
 
 2019-11-26 22:05:57 (4.47 MB/s) - ‘etcd’ saved [10529149/10529149]
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~/backup$ ls
 etcd pki
 
-{% endhighlight %}
+```
 
 Extract the etcd package
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~/backup$ tar -xvf etcd
 etcd-v3.2.28-linux-amd64/
@@ -194,38 +194,38 @@ etcd-v3.2.28-linux-amd64/Documentation/rfc/v3api.md
 etcd-v3.2.28-linux-amd64/Documentation/metrics.md
 etcd-v3.2.28-linux-amd64/READMEv2-etcdctl.md
 
-{% endhighlight %}
+```
 
 Navigate to the extraced directory
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~/backup$ ls
 etcd etcd-v3.2.28-linux-amd64 pki
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~/backup$ cd etcd-v3.2.28-linux-amd64/
 
-{% endhighlight %}
+```
 ##### Step 3: Backup the etcd database
 
 Now you will see a etcdctl binary inside the directy.
 
 Use the key, certificate and CA certificate to take backup of the existing etcd database as shown below
 
-{% highlight console %}
+```bash
 
 vikki@kubernetes1:~/backup/etcd-v3.2.28-linux-amd64$ sudo ETCDCTL_API=3 ./etcdctl --endpoints https://127.0.0.1:2379 --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --cacert=/etc/kubernetes/pki/etcd/ca.crt snapshot save ../etc_database_backup.db
 Snapshot saved at ../etc_database_backup.db
 
-{% endhighlight %}{% highlight console %}
+``````bash
 
 vikki@kubernetes1:~/backup/etcd-v3.2.28-linux-amd64$ cd ..
 vikki@kubernetes1:~/backup$ ls
 etcd etc_database_backup.db etcd-v3.2.28-linux-amd64 pki
 
-{% endhighlight %}
+```
 
 > Now we can see the backup has been taken and saved as etc\_database\_backup.db
 

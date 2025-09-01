@@ -129,7 +129,7 @@ params:
   # disableThemeToggle: true
   # Enable floating menu bar (set to false to use default theme menu)
   enableFloatingMenu: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowReadingTime: true
   # disableSpecial1stPost: true
   displayFullLangName: true
@@ -233,6 +233,10 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    parser:
+      attribute:
+        block: true
+        title: true
   highlight:
     noClasses: false
     # anchorLineNos: true

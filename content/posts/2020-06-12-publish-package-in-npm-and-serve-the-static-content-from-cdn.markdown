@@ -7,17 +7,17 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
-image: /content/images/cover/npm.jpg
+image: ../../images/cover/npm.jpg
 ---
 
-![](/content/images/cover/npm.jpg)
-*Photo by [Vignesh Ragupathy](https://photography.vikki.in/vikki-photography-budapest-3){:target="_blank"}.*
+![](../../images/cover/npm.jpg)
 
-I have been utilizing AWS to host my personal blog for almost 3 years now. Originally my blog was hosted in WordPress and then I migrated to [ghost](https://ghost.org/){:target="_blank"}. It's been 2 years now in ghost and I thought of exploring a new hosting option which should be free, supports custom domain name and free [SSL](https://letsencrypt.org/){:target="_blank"}.
+I have been utilizing AWS to host my personal blog for almost 3 years now. Originally my blog was hosted in WordPress and then I migrated to {{< newtabref  href="https://ghost.org/" title="ghost" >}}
+. It's been 2 years now in ghost and I thought of exploring a new hosting option which should be free, supports custom domain name and free {{< newtabref  href="https://letsencrypt.org/" title="SSL" >}}.
 
-[Jekyll](https://jekyllrb.com/){:target="_blank"} is a ruby based static blog generator and it has an advantage of free hosting in GitHub. The letsencrypt SSL certificate is also provided by GitHub for my custom domain so i don’t have to worry about managing it.
+{{< newtabref  href="https://jekyllrb.com/" title="Jekyll" >}} is a ruby based static blog generator and it has an advantage of free hosting in GitHub. The letsencrypt SSL certificate is also provided by GitHub for my custom domain so i don’t have to worry about managing it.
 
-I also created a separate [website](https://tools.vikki.in){:target="_blank"} to showcase my open-source tools and I can use the same AWS instance for hosting it. It is a Django application which uses more memory/CPU, so i can run it in a dedicated instance instead of running the ghost and Django together.
+I also created a separate {{< newtabref  href="https://tools.vikki.in" title="website" >}} to showcase my open-source tools and I can use the same AWS instance for hosting it. It is a Django application which uses more memory/CPU, so i can run it in a dedicated instance instead of running the ghost and Django together.
 
 One of the challenges in a Django application is hosting your static content. Django recommends using a proxy server like Nginx to serve its static content.
 
@@ -25,36 +25,36 @@ I use my nginx proxy to serve the static content. But due to performance reason 
 
 Below is the nginx configuration snippet for mapping static content.
 
-{% highlight console %}
+```bash
 location /static/ {
         root /tools.vikki.in/static;
     }
-{% endhighlight %}
+```
 
 After doing some research I chose to utilize unpkg or jsdelivr for my site.
 
 > unpkg and jsdelivr are global CDN and they can be used to deliver any packages hosted in NPM
 
-[unpkg](https://unpkg.com/){:target="_blank"} and [jsdelivr](https://www.jsdelivr.com/){:target="_blank"} both provides CDN for the content hosted in NPM.
-So first we should have the static content published in [NPM](https://www.npmjs.com/){:target="_blank"}.
+{{< newtabref  href="https://unpkg.com/" title="unpkg" >}} and {{< newtabref  href="https://www.jsdelivr.com/" title="jsdelivr" >}} both provides CDN for the content hosted in NPM.
+So first we should have the static content published in {{< newtabref  href="https://www.npmjs.com/" title="NPM" >}}.
 
 ## NPM Package creation
 
 ### 1. Create the directory for adding packages for NPM
 
-{% highlight console %}
+```bash
 mkdir npm
 mkdir npm/dist
 cd npm
-{% endhighlight %}
+```
 
 ### 2. Create a package.json file for your package
 
-{% highlight console %}
+```bash
 npm init
-{% endhighlight %}
+```
 
-{% highlight console %}
+```bash
 This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 
@@ -76,8 +76,8 @@ author: Vignesh Ragupathy
 license: (ISC)
 About to write to /home/vikki/npm/package.json:
 
-{% endhighlight %}
-{% highlight json linenos %}
+```
+```json
 {
   "name": "vikki-tools",
   "version": "1.0.7",
@@ -101,21 +101,21 @@ About to write to /home/vikki/npm/package.json:
   },
   "homepage": "https://github.com/vignesh88/tools#readme"
 }
-{% endhighlight %}
-{% highlight console %}
+```
+```bash
 Is this OK? (yes) yes
-{% endhighlight %}
+```
 
 
 ### 3. Create a index.js
 
 I added a javascript function that will be used to copy text to clipboard.
 
-{% highlight console %}
+```bash
 vim dist/index.js
-{% endhighlight %}
+```
 
-{% highlight javascript linenos %}
+```javascript
 function copyToClipboard(x,y) {
     if( document.getElementById(x).value) {
         data_2_copy = document.getElementById(x).value;
@@ -130,7 +130,7 @@ function copyToClipboard(x,y) {
         $(y).hide()
     }), 1e3)
 }
-{% endhighlight %}
+```
 
 ### 4. Copy all your static content to dist directory
 
@@ -139,7 +139,7 @@ I have various css,images,javascript that will be used in various app inside my 
 
 Below are the files which i copied.
 
-{% highlight console %}
+```bash
 tree .
 .
 ├── dist
@@ -165,7 +165,7 @@ tree .
 │           └── password_generator.js
 ├── package.json
 └── README.md
-{% endhighlight %}
+```
 
 ### 5. Publish you static content as package in NPM
 
@@ -173,16 +173,16 @@ Now we are all set, let's connect to NPM and publish our package.
 
 > You should already have an account in NPM to publish.
 
-{% highlight console %}
+```bash
 npm login
 Username: r_vignesh
 Password: 
 Email: (this IS public) me@vikki.in
 Logged in as r_vignesh on https://registry.npmjs.org/.
-{% endhighlight %}
+```
 
 
-{% highlight console %}
+```bash
 npm publish
 
 npm notice
@@ -204,7 +204,7 @@ npm notice integrity:     sha512-zynWl1/pL0Wvk[...]k3yhkCzBz7+0A==
 npm notice total files:   188
 npm notice
 + vikki-tools@1.0.7
-{% endhighlight %}
+```
 
 That's it. Now we have the package published in NPM.
 
@@ -218,7 +218,7 @@ Lets try to access it using unpkg. Open your browser and enter the url in the be
 
 For using specific version <mark>https://unpkg.com/package@version/:file</mark>
 
-My package name is *vikki-tools* so the format will be [https://unpkg.com/vikki-tools<mark>/</mark>](https://unpkg.com/vikki-tools/){:target="_blank"}.
+My package name is *vikki-tools* so the format will be {{< newtabref  href="https://unpkg.com/vikki-tools/" title="https://unpkg.com/vikki-tools<mark>/</mark>" >}}.
 
 > The leading <mark> / </mark> at the end of the URL is important.
 
@@ -230,35 +230,35 @@ My package name is *vikki-tools* so the format will be [https://unpkg.com/vikki-
 
 We can now load the static content from NPM on our website.
 
-{% highlight html linenos %}
+```html
 <script src="https://unpkg.com/vikki-tools@1.0.3/dist/index.js"></script>
 <link href="https://unpkg.com/vikki-tools@1.0.3/dist/base64/css/base64_dark.css" rel="stylesheet">
-{% endhighlight %}
+```
 
 ## Using Jsdelivr to serve static content in website
 
 We can also use Jsdelivr instead of unpkg.
 
-{% highlight html linenos %}
+```html
 <script src="https://cdn.jsdelivr.net/npm/vikki-tools@1.0.3/dist/index.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/vikki-tools@1.0.3/dist/base64/css/base64_dark.css" rel="stylesheet">
-{% endhighlight %}
+```
 
 ## Auto minified version from jsdelivr
 
 Jsdelivr also provides the auto minified version of the CSS and Javascript from NPM.
 If you want to use minified version css and js, just add <mark>.min</mark> extension to the filename
 
-{% highlight html linenos %}
+```html
 <script src="https://cdn.jsdelivr.net/npm/vikki-tools@1.0.3/dist/index.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/vikki-tools@1.0.3/dist/base64/css/base64_dark.min.css" rel="stylesheet">
-{% endhighlight %}
+```
 
 ## Script to automatically update the static and CDN URL in Django
 
 For ease, I created a script to automatically update all static content in your template directory in the Django application.
 
-The code is available in the [Github URL](https://github.com/vignesh88/tools/blob/master/vikki_scripts/django_template_static_to_cdn.py){:target="_blank"}
+The code is available in the {{< newtabref  href="https://github.com/vignesh88/tools/blob/master/vikki_scripts/django_template_static_to_cdn.py" title="Github URL" >}}
 
 ## Demo video
 

@@ -42,11 +42,11 @@ Laptop
 
 Login to Raspberry pi and run the below command to install glusterfs
 
-{% highlight console %}
+```bash
 
 root@raspberrypi:~# sudo apt-get install glusterfs-server
 
-{% endhighlight %}
+```
 
 **Step 2 :**
 
@@ -56,23 +56,23 @@ Download the glusterfs version 3.2.7. Since raspbian OS comes wit 3.2.7 , i am d
 
 Note : I tried a combination of version 3.2.7 and the latest version that comes with redhat EPL , but this doesn’t work out (peer probe connection failed)
 
-{% highlight console %}
+```bash
 
 root@server2]# wget -c http://bits.gluster.com/pub/gluster/glusterfs/src/glusterfs-3.2.7.tar.gz
 
-{% endhighlight %}
+```
 
 Now download and install all the build dependencies
 
-{% highlight console %}
+```bash
 
 root@server2]# yum install flex automake autoconf libtool flex bison openssl-devel libxml2-devel python-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel lvm2-devel glib2-devel userspace-rcu-devel libcmocka-devel libacl-devel
 
-{% endhighlight %}
+```
 
 Extract the source file, navigate and do configure
 
-{% highlight console %}
+```bash
 
 [root@server2 glusterfs-3.2.7]# ./configureGlusterFS configure summary
 ===========================
@@ -84,32 +84,32 @@ fusermount : no
 readline : yes
 georeplication : yes
 
-{% endhighlight %}
+```
 
 And the finally make and install the gluster
 
-{% highlight console %}
+```bash
 
 [root@server2 glusterfs-3.2.7]# make
 [root@server2 glusterfs-3.2.7]# make install
 
-{% endhighlight %}
+```
 ### Configuration
 
 Login to raspberrypi and probe the centos server (server2.vikki.in)  
 server1 :
 
-{% highlight console %}
+```bash
 
 root@raspberrypi:~# gluster peer probe server2.vikki.in
 Probe successful
 
-{% endhighlight %}
+```
 
 Check the peer status  
 server1 :
 
-{% highlight console %}
+```bash
 
 root@raspberrypi:~# gluster peer status
 Number of Peers: 1
@@ -117,21 +117,21 @@ Hostname: server2.vikki.in
 Uuid: 0531327f-1b4a-4694-b525-58b7277472fd
 State: Peer in Cluster (Connected)
 
-{% endhighlight %}
+```
 
 Similarly login to the centos server and probe the raspberry pi server(server1.vikki.in)  
 server2 :
 
-{% highlight console %}
+```bash
 
 root@server2 glusterfs]# gluster peer probe server2.vikki.in
 Probe successful
 
-{% endhighlight %}
+```
 
 server2 :
 
-{% highlight console %}
+```bash
 
 root@server2 glusterfs]# gluster peer status
 Number of Peers: 1
@@ -139,32 +139,32 @@ Hostname: server1.vikki.in
 Uuid: 0531327f-1b4a-4694-b525-58b7277472fe
 State: Peer in Cluster (Connected)
 
-{% endhighlight %}
+```
 
 I have a brick /share1 of 1GB size mounted in both raspberrypi and centos server  
 Now create a replicated volume from any of the server . Here i am creating it from the raspberry pi server(server1.vikki.in)  
 server1 :
 
-{% highlight console %}
+```bash
 
 root@raspberrypi:/var/log/glusterfs# gluster volume create replicated_volume replica 2 server1.vikki.in:/share1 server2.vikki.in:/share1
 
-{% endhighlight %}
+```
 
 Creation of volume replicated\_volume has been successful. Please start the volume to access data.  
 Now start the replicated volume  
 server1 :
 
-{% highlight console %}
+```bash
 
 root@raspberrypi:/var/log/glusterfs# gluster volume start replicated_volume
 Starting volume replicated_volume has been successful
 
-{% endhighlight %}
+```
 
 Check the replicated volume info
 
-{% highlight console %}
+```bash
 
 [root@server2 glusterfs]# gluster volume info replicated_volumeVolume Name: replicated_volume
 Type: Replicate
@@ -175,20 +175,20 @@ Bricks:
 Brick1: server1.vikki.in:/share1
 Brick2: server2.vikki.in:/share1
 
-{% endhighlight %}
+```
 
 Now the replicated volume is created . Login to the client (client.vikki.in) and mount the glusterfs volume  
 Client :
 
-{% highlight console %}
+```bash
 
 [root@client ~]# mount.glusterfs server1.vikki.in:/replicated_volume /mnt/gluster/
 
-{% endhighlight %}
+```
 
 The replicated volume is successfully mounted in the client
 
-{% highlight console %}
+```bash
 
 [root@client gluster]# df -h
 Filesystem Size Used Avail Use% Mounted on
@@ -198,29 +198,29 @@ tmpfs 495M 88K 495M 1% /dev/shm
 server1.vikki.in:/replica_volume
 985M 18M 917M 2% /mnt/gluster
 
-{% endhighlight %}
+```
 ### Testing
 
 create some files in gluster volume
 
-{% highlight console %}
+```bash
 
 [root@client gluster]# echo “when both nodes are running” > file1.txt
 [root@client gluster]#ls
 file1.txt
 
-{% endhighlight %}
+```
 
 Now go to both the server (raspberrypi,centos) and check the individual brick.
 
-{% highlight console %}
+```bash
 
 [root@server1 glusterfs]# ls /share1
 file1.txt
 [root@server2 glusterfs]# ls /share1
 file1.txt
 
-{% endhighlight %}
+```
 
 Now we can see the files are replicated in both the nodes .  
 Now bring down one of the server and check if the gluster volume is still accessible in client.

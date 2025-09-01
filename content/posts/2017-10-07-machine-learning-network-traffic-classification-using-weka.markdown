@@ -57,12 +57,12 @@ Now i am going to run the weka J48ext machine learning algorithm to predict the 
 
 Make sure the class path is properly exported before executing the code. In my setup the weka.jar is located inside “/usr/share/java”
 
-{% highlight console %}
+```bash
 
 export CLASSPATH=$CLASSPATH:/usr/share/java/weka.jar
 ~jython UsingJ48Ext.py main.arff
 
-{% endhighlight %}
+```
 
 The code can be downloaded from [github](https://github.com/vignesh88/machine_learning/blob/master/weka/UsingJ48Ext.py)  
 The output contains 3 type of informations
@@ -71,7 +71,7 @@ The output contains 3 type of informations
 
 J48 pruned tree
 
-{% highlight console %}
+```bash
 
 Protocol = SNMP: monitoring_tools (10.0/1.0)
 Protocol = SRVLOC: telnet (0.0)
@@ -88,9 +88,9 @@ Number of Leaves : 10
 
 Size of the tree : 11
 
-{% endhighlight %}
+```
 ### 2. Evaluation
-{% highlight console %}
+```bash
 
 Correctly Classified Instances 52 98.1132 %
 Incorrectly Classified Instances 1 1.8868 %
@@ -102,9 +102,9 @@ Root relative squared error 21.0904 %
 Total Number of Instances 53     
 Ignored Class Unknown Instances 4     
 
-{% endhighlight %}
+```
 ### 3. Prediction
-{% highlight console %}
+```bash
 
     1 5:monitori 5:monitori 0.9 
     2 5:monitori 5:monitori 0.9 
@@ -131,12 +131,12 @@ Ignored Class Unknown Instances 4
 53 1:? 1:browsers 1 
 54 1:browsers 1:browsers 1 
 
-{% endhighlight %}
+```
 
 Now the information provided in prediction is our focus.  
 It contains 4 column
 
-{% highlight console %}
+```bash
 
 Column number	Details
 First column	Instance number
@@ -144,7 +144,7 @@ Second column	Class defined in dataset
 Third column	Class predicted by machine learning
 Fourth column	Probability that the instance is belong to the class predicted my machine
 
-{% endhighlight %}
+```
 
 Now if you notice the instance number 5,31,35 and 53 the class defined in dataset is empty(“?”) and the machine has predicted the class as monitoring\_tool,peer-peer client and browser respectively. The “+” symbol in the instance number 45 denotes there is difference in the class defined in dataset and the class predicted by machine learning.
 
