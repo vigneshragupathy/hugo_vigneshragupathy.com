@@ -4,6 +4,24 @@
 
 {{- $floatingMenuJS := resources.Get "js/floating-menu.js" | resources.Minify }}
 <script src="{{ $floatingMenuJS.Permalink }}" defer></script>
+
+<!-- Prevent layout shift and ensure floating menu priority -->
+<style>
+  .floating-header { 
+    z-index: 9999 !important; 
+    isolation: isolate;
+  }
+  .floating-menu-toggle { 
+    z-index: 10000 !important; 
+    isolation: isolate;
+  }
+  #disqus_thread, 
+  #disqus_thread iframe,
+  div[id*="disqus"] { 
+    z-index: 1 !important; 
+    position: relative !important;
+  }
+</style>
 {{- end }}
 
 {{- /* Disqus Comment Count Script */ -}}

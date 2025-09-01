@@ -6,7 +6,7 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 9999 !important; /* Increased z-index to ensure it stays above Disqus */
     width: 90%;
     max-width: 1200px;
     background: rgba(255, 255, 255, 0.95);
@@ -15,12 +15,14 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
+    pointer-events: auto; /* Ensure menu is clickable */
 }
 
 .dark .floating-header {
     background: rgba(30, 30, 30, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 9999 !important; /* Ensure dark theme also has proper z-index */
 }
 
 .floating-nav {
@@ -37,7 +39,7 @@
     position: fixed;
     top: 30px;
     right: 30px;
-    z-index: 1001;
+    z-index: 10000 !important; /* Higher z-index than floating header */
     display: none;
     background: var(--theme);
     border: none;
@@ -48,6 +50,7 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     color: var(--primary);
+    pointer-events: auto; /* Ensure button is clickable */
 }
 
 .floating-menu-toggle:hover {
@@ -62,7 +65,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 9998 !important; /* Just below floating header */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -180,4 +183,59 @@ html {
         transform: translateX(-50%);
         width: 95%;
     }
+}
+
+/* Disqus Comments Integration Fixes */
+#disqus_thread {
+    position: relative;
+    z-index: 1 !important; /* Keep Disqus below floating menu */
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+/* Ensure Disqus iframe doesn't interfere with floating menu */
+#disqus_thread iframe {
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Fix for Disqus modal overlays - keep them below floating menu */
+div[id*="disqus"] {
+    z-index: 9990 !important;
+}
+
+/* Handle Disqus loading states to prevent layout shift */
+#comments-section {
+    min-height: 200px;
+    transition: min-height 0.3s ease;
+}
+
+#comments-section.loaded {
+    min-height: auto;
+}
+
+/* Ensure floating menu works on touch devices */
+.floating-header,
+.floating-menu-toggle,
+.floating-menu-backdrop {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Fix for Safari/iOS specific issues */
+@supports (-webkit-touch-callout: none) {
+    .floating-header {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Force stacking context for floating elements */
+.floating-header,
+.floating-menu-toggle {
+    isolation: isolate;
 }
