@@ -27,7 +27,7 @@ To make the LED programmable we need to use one of the GPIO pin from raspberry p
 
 Below is the pin diagram of the raspberry pi B+ model
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2017/11/Raspberry-Pi-GPIO-Layout-Model-B-Plus.png" class="kg-image" alt="Raspberry-Pi-GPIO-Layout-Model-B-Plus"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2017/11/Raspberry-Pi-GPIO-Layout-Model-B-Plus.png" class="kg-image" alt="Raspberry-Pi-GPIO-Layout-Model-B-Plus"></figure><!--kg-card-end: image-->
 
 We are going to use the GPIO pin 4 and a ground to programably control the led. Connect resistor and led as per the below diagram.
 
@@ -35,7 +35,7 @@ Once the circuit is ready we can power on the raspberry pi and connect to pi usi
 
 Below is my final assembled circuit.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2017/11/blog.vikki_.in_led_pi.jpg" class="kg-image" alt="blog.vikki_.in_led_pi"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2017/11/blog.vikki_.in_led_pi.jpg" class="kg-image" alt="blog.vikki_.in_led_pi"></figure><!--kg-card-end: image-->
 
 ### Blinking LED from raspberry pi
 

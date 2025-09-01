@@ -32,7 +32,7 @@ Open wireshark and start capturing the packets in your network interface card . 
 
 We need to export this as csv because the weka application don’t support pcap file. The exported csv can be converted to arff format later using the weka arff viewer.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2017/10/AAEAAQAAAAAAAAP4AAAAJGRiY2Y0MjViLWUyMDAtNDIwNC1iZTZkLWVmMmMyNWEzZTEzOA.png" class="kg-image" alt="AAEAAQAAAAAAAAP4AAAAJGRiY2Y0MjViLWUyMDAtNDIwNC1iZTZkLWVmMmMyNWEzZTEzOA"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2017/10/AAEAAQAAAAAAAAP4AAAAJGRiY2Y0MjViLWUyMDAtNDIwNC1iZTZkLWVmMmMyNWEzZTEzOA.png" class="kg-image" alt="AAEAAQAAAAAAAAP4AAAAJGRiY2Y0MjViLWUyMDAtNDIwNC1iZTZkLWVmMmMyNWEzZTEzOA"></figure><!--kg-card-end: image-->
 #### Step 4:Defining the class
 
 Now we have converted the wireshark output to arff so that it can be readable be the weka application. The next step is to define the class . Class is something like a category in which the specific instance is belongs to.
@@ -50,7 +50,7 @@ For this, I opened the arff file and manually defined the class based on the app
 My final arff file is below, with the class name “Traffic\_category” added.  
 Now if you see closely, for some of the instances(5,31,35,53) the “Traffic\_category” class is left undefined.In the next step i am going to use weka to predict the class in which the instance belongs to using machine learning algorithm.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2017/10/AAEAAQAAAAAAAAUBAAAAJGVhYzgxZGU4LTNkYmQtNDU0Zi04ZDQxLWMyMWRmN2MzZDAyNg.png" class="kg-image" alt="AAEAAQAAAAAAAAUBAAAAJGVhYzgxZGU4LTNkYmQtNDU0Zi04ZDQxLWMyMWRmN2MzZDAyNg"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2017/10/AAEAAQAAAAAAAAUBAAAAJGVhYzgxZGU4LTNkYmQtNDU0Zi04ZDQxLWMyMWRmN2MzZDAyNg.png" class="kg-image" alt="AAEAAQAAAAAAAAUBAAAAJGVhYzgxZGU4LTNkYmQtNDU0Zi04ZDQxLWMyMWRmN2MzZDAyNg"></figure><!--kg-card-end: image-->
 #### Step 5: Predicting the “Traffic category” using J48ext machine learning algorithm
 
 Now i am going to run the weka J48ext machine learning algorithm to predict the traffic category.There are many algorithm supported by weka like zeroR,naive bayes,we can use any of this which is best suited for our datasets.

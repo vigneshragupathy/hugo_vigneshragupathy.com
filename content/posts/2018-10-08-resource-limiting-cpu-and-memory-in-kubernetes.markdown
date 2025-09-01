@@ -107,12 +107,12 @@ I0819 13:36:36.618674 1 main.go:39] Spawning a thread to consume CPU
 
 Open a new terminal and monitor the Memory usage.
 
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2018/08/Screenshot-from-2018-08-19-19-12-37.png" class="kg-image" alt="Screenshot-from-2018-08-19-19-12-37"></figure><!--kg-card-end: image-->
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2018/08/Screenshot-from-2018-08-19-19-12-37.png" class="kg-image" alt="Screenshot-from-2018-08-19-19-12-37"></figure><!--kg-card-end: image-->
 
 The memory will slowly raises to full usage and finally drops .After some attempts the pod will go "Crashloopbackoff" status.
 
 #### Memory value plotted in graph
-<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="/content/images/2018/08/Screenshot-from-2018-08-19-20-40-03.png" class="kg-image" alt="Screenshot-from-2018-08-19-20-40-03"></figure><!--kg-card-end: image-->{% highlight console %}
+<!--kg-card-begin: image--><figure class="kg-card kg-image-card"><img src="../../images/2018/08/Screenshot-from-2018-08-19-20-40-03.png" class="kg-image" alt="Screenshot-from-2018-08-19-20-40-03"></figure><!--kg-card-end: image-->{% highlight console %}
 
 vikki@drona-child-1:~$ kubectl get pods
 NAME READY STATUS RESTARTS AGE
