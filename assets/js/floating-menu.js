@@ -74,10 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add scroll behavior for floating menu
+    // Add scroll behavior for floating menu - DISABLED for sticky menu
     let lastScrollTop = 0;
     let scrollTimeout;
     
+    // Commented out scroll hide/show behavior to make menu sticky
+    /*
     window.addEventListener('scroll', function() {
         clearTimeout(scrollTimeout);
         
@@ -100,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lastScrollTop = scrollTop;
         }, 10);
     });
+    */
     
     // Smooth scroll behavior for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
