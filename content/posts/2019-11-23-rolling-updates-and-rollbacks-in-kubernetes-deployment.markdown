@@ -8,6 +8,7 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
+draft: true
 ---
 
 Kubernetes provides rollout options to do &nbsp;update on deployment and easily fallback to any revision. We are going to see how to update the deployment to a newer version of container image and rollback to previous version without affecting the services

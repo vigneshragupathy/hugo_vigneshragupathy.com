@@ -24,5 +24,9 @@
 </style>
 {{- end }}
 
+{{- /* Blog CSS for column alignment */ -}}
+{{- $blogCSS := resources.Get "css/blog.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $blogCSS.Permalink }}" />
+
 {{- /* Disqus Comment Count Script */ -}}
 <script id="dsq-count-scr" src="//vikkiblog.disqus.com/count.js" async></script>

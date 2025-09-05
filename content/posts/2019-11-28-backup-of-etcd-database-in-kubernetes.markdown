@@ -8,6 +8,7 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
+draft: true
 ---
 
 Kubernetes cluster state is saved in etcd datastore. In the post we are going to see how to take a backup for etcd database in kubernetes cluster.

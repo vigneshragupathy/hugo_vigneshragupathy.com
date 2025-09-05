@@ -8,6 +8,7 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
+draft: true
 ---
 
 PersistentVolume and PersistentVolumeClaim in kubernetes provides a way to allocate storage for the pods. Kubernetes PV supports different types of storage. Now here in the below post we are going to use storage-class **local-storage** and watch the behaviour for different reclaimpolicy.
