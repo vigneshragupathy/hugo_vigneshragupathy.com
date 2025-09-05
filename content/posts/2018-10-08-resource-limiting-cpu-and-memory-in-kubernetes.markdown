@@ -8,6 +8,7 @@ tags:
 - kubernetes
 author: Vignesh Ragupathy
 comments: true
+draft: true
 ---
 
 In my previous post, we seen how to [configure kubernetes cluster](/kubernetes-on-ubuntu-18-04-with-dashbaoard) ,[how to deploy pods and grow the cluster](/kubernetes-growing-the-cluster-with-centos-7-node/). Now in this post i am going to show how to resource limiting cpu and memory in a kubernetes deployment. We can also limit resource at namespace level, which will be covered in the later post.

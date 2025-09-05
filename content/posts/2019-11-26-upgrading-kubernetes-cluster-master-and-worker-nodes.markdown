@@ -8,6 +8,7 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
+draft: true
 ---
 
 This post we are going to discuss how to upgrade the kubernetes cluster, both master and worker nodes. We are going to upgrade a older version v1.15 to v.1.16.

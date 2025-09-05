@@ -180,6 +180,9 @@ params:
     - name: github
       title: View Source on Github
       url: "https://github.com/vigneshragupathy"
+    - name: rss
+      title: Subscribe to RSS feed
+      url: "/index.xml"
     # - name: Discord
     #   title: Join discord community
     #   url: "https://discord.gg/ahpmTvhVmp"

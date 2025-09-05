@@ -1,0 +1,118 @@
+/* Blog page specific styles */
+.blog-posts {
+    width: 100%;
+    font-size: 16px;
+}
+
+.blog-entry {
+    display: flex;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.blog-entry:last-child {
+    border-bottom: none;
+}
+
+.blog-date {
+    min-width: 150px;
+    width: 150px;
+    color: var(--secondary);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.blog-title {
+    flex: 1;
+    font-weight: 400;
+}
+
+.blog-title a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.blog-title a:hover {
+    color: var(--tertiary);
+}
+
+.entry-hint {
+    margin-left: 8px;
+    color: var(--secondary);
+}
+
+/* RSS Subscribe Link Styling */
+.rss-subscribe-link {
+    font-size: 14px;
+    color: var(--secondary);
+    text-decoration: none;
+    margin-left: 15px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.rss-subscribe-link:hover {
+    color: var(--tertiary);
+}
+
+/* Homepage RSS Subscribe Section */
+.rss-subscribe-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.rss-subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background-color: var(--theme);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.rss-subscribe-button:hover {
+    background-color: var(--tertiary);
+    color: var(--theme);
+    border-color: var(--tertiary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rss-subscribe-button svg {
+    flex-shrink: 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .blog-entry {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .blog-date {
+        min-width: auto;
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+    
+    .rss-subscribe-link {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    
+    .rss-subscribe-button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+}

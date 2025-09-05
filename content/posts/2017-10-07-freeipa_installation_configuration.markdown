@@ -7,6 +7,7 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
+draft: true
 ---
 
 I worked on a freelance project a year ago which gives me experience in Free IPA server. Here I am sharing some portion of the setup used.It would be useful for beginners trying to setup Free IPA server.
