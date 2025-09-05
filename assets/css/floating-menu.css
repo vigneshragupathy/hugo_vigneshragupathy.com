@@ -1,6 +1,6 @@
 /* Custom Floating Menu Styles */
 
-/* Floating Header */
+/* Floating Header - Made Sticky */
 .floating-header {
     position: fixed;
     top: 20px;
@@ -16,6 +16,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     pointer-events: auto; /* Ensure menu is clickable */
+    opacity: 1 !important; /* Force always visible */
 }
 
 .dark .floating-header {
@@ -23,6 +24,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     z-index: 9999 !important; /* Ensure dark theme also has proper z-index */
+    opacity: 1 !important; /* Force always visible in dark mode too */
 }
 
 .floating-nav {
@@ -80,18 +82,20 @@
 @media screen and (max-width: 768px) {
     .floating-header {
         position: fixed;
-        top: -100%;
+        top: -100% !important;
         left: 0;
         right: 0;
         width: 100%;
         max-width: none;
-        transform: none;
+        transform: none !important;
         border-radius: 0 0 20px 20px;
-        transition: top 0.3s ease;
+        transition: top 0.3s ease, opacity 0.3s ease !important;
+        opacity: 0 !important;
     }
     
     .floating-header.mobile-visible {
-        top: 0;
+        top: 0 !important;
+        opacity: 1 !important;
     }
     
     .floating-nav {
@@ -149,6 +153,12 @@ html {
 /* Animation for showing/hiding floating menu */
 .floating-header {
     animation: slideDown 0.5s ease-out;
+}
+
+/* Force menu to stay visible and positioned correctly (sticky behavior) */
+.floating-header {
+    transform: translateX(-50%) translateY(0) !important;
+    opacity: 1 !important;
 }
 
 @keyframes slideDown {
