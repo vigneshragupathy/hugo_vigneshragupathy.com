@@ -1,6 +1,6 @@
 ---
 #layout: post
-title: Glusterfs -high available redundant storage with Raspberry pi
+title: Glusterfs ha storage with Raspberrypi
 date: '2017-10-01 10:30:00'
 tags:
 - linux
