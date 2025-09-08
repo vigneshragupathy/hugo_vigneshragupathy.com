@@ -78,3 +78,5 @@ The next wave in observability isn’t about adding more charts. It’s about **
 Connectors can unify data across silos, while AI can not only pinpoint the issue but also drive automated recovery.
 
 If OpenTelemetry gave us a standard way to instrument systems, what we need now is an **open insight and action layer** that closes the loop — from detection, to root cause, to recovery.  
+
+> Note: In my next post, {{< newtabref  href="https://vigneshragupathy.com/building-ai-for-observability-with-aws-bedrock/" title="Building AI for Observability with AWS Bedrock" >}}, I explore how AWS Bedrock’s modular architecture and AI-powered insight engine directly address the design challenges discussed here.
