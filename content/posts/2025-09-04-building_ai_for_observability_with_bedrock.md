@@ -11,6 +11,7 @@ comments: true
 cover:
     image: ../../images/2025/bedrock.drawio.svg
     alt: Building AI for Observability with AWS Bedrock
+    hiddenInSingle: true
 ---
 
 # Building AI for Observability with AWS Bedrock
