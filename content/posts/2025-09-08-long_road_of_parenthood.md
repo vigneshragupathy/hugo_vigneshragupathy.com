@@ -7,6 +7,9 @@ tags:
 - life
 author: Vignesh Ragupathy
 comments: true
+cover:
+    image: ../../images/2025/family_in_car.png
+    alt: Family in Car
 ---
 # The Long Road of Parenthood
 

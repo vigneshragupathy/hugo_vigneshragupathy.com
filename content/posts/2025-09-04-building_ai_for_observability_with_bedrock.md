@@ -8,6 +8,9 @@ tags:
 - observability
 author: Vignesh Ragupathy
 comments: true
+cover:
+    image: ../../images/2025/bedrock.drawio.svg
+    alt: Building AI for Observability with AWS Bedrock
 ---
 
 # Building AI for Observability with AWS Bedrock
