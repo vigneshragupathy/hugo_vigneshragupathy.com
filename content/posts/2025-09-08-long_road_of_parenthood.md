@@ -8,7 +8,7 @@ tags:
 author: Vignesh Ragupathy
 comments: true
 cover:
-    image: ../../images/2025/family_in_car.png
+    image: ../../images/2025/family_in_car.webp
     alt: Family in Car
     hiddenInSingle: true
 ---
@@ -36,4 +36,4 @@ The patience you learn, the resilience you build, the unconditional love you giv
 
 **Together on the Long Road of Parenthood**
 
-![Family in Car](../../images/2025/family_in_car.png)
+![Family in Car](../../images/2025/family_in_car.webp)
