@@ -13,7 +13,6 @@ cover:
     alt: My home office setup
     hiddenInSingle: true
 ---
-# Moving Back to Bangalore – A New Chapter After 4 Years of WFH
 
 After more than **four years of working from home** , it’s finally time for a big change. This November, we’ll be **relocating to Bangalore** as part of the return-to-office transition.
 
