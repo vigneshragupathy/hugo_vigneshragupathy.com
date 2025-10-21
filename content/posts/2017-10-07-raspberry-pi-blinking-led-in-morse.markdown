@@ -8,6 +8,10 @@ tags:
 - opensource
 author: Vignesh Ragupathy
 comments: true
+cover:
+    image: ../../images/2017/11/blog.vikki_.in_led_pi.jpg
+    alt: Raspberry pi blinking led
+    hiddenInSingle: true
 ---
 
 In my previous post i described how i created high available replicated storage with raspberrypi  
@@ -95,7 +99,8 @@ Now run the python code and verify the LED start blinking.
 
 ### Demo of LED blinking from raspberry pi:
 
-<!--kg-card-begin: embed--><figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/DnotTLN2qI8?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><!--kg-card-end: embed-->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E78xxfEPwJc?si=hmr_y-5YQvxpEtda" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### Blinking LED in morse for user input:
 
 Once we are able to blink the led from python ,we need to blink it in morse for the user input. Below is the python code to blink the led for morse. You can download the updated code from my github.I just added few lines to the previous code to blink for morse.
@@ -200,4 +205,6 @@ except KeyboardInterrupt:
 
 ```
 ### Demo of LED blinking in Morse for the user input:
-<!--kg-card-begin: embed--><figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/n6KE4-SODCg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><!--kg-card-end: embed-->
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IOO3adVXPYk?si=9G-TOx5Bl5aTU_YU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
