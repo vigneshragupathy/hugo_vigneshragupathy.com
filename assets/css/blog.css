@@ -91,6 +91,307 @@
     flex-shrink: 0;
 }
 
+/* Newsletter subscription form styles */
+.newsletter-subscription {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Override Mailchimp's default light theme styles */
+.newsletter-subscription #mc_embed_signup {
+    background: var(--code-bg) !important;
+    color: var(--primary) !important;
+    font-family: var(--font) !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+.newsletter-subscription h2 {
+    margin: 0 0 15px 0;
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.newsletter-subscription .indicates-required {
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+.newsletter-subscription .asterisk {
+    color: var(--tertiary);
+}
+
+.newsletter-subscription .mc-field-group {
+    margin-bottom: 20px;
+}
+
+.newsletter-subscription label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.newsletter-subscription input[type="email"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px 12px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    background-color: var(--theme);
+    color: var(--primary);
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-subscription input[type="email"]:focus {
+    outline: none;
+    border-color: var(--tertiary);
+    box-shadow: 0 0 0 3px rgba(var(--tertiary-rgb), 0.1);
+}
+
+.newsletter-subscription .button {
+    background-color: var(--tertiary);
+    color: var(--theme);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-subscription .button:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-subscription .response {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.newsletter-subscription #mce-error-response {
+    background-color: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.newsletter-subscription #mce-success-response {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.newsletter-subscription .refferal_badge {
+    margin-top: 15px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.newsletter-subscription .refferal_badge:hover {
+    opacity: 1;
+}
+
+/* Theme-aware form element styling */
+.newsletter-subscription .indicates-required {
+    color: var(--secondary) !important;
+}
+
+.newsletter-subscription .asterisk {
+    color: var(--tertiary) !important;
+}
+
+.newsletter-subscription .mc-field-group label {
+    color: var(--primary) !important;
+    font-weight: 500 !important;
+}
+
+.newsletter-subscription .mc-field-group input[type="email"] {
+    background-color: var(--theme) !important;
+    color: var(--primary) !important;
+    border: 2px solid var(--border) !important;
+}
+
+.newsletter-subscription .mc-field-group input[type="email"]:focus {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 3px rgba(var(--tertiary-rgb), 0.1) !important;
+}
+
+.newsletter-subscription .button {
+    background-color: var(--tertiary) !important;
+    color: var(--theme) !important;
+    border: 2px solid var(--tertiary) !important;
+    padding: 8px 20px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    min-width: 100px !important;
+    min-height: 36px !important;
+    box-sizing: border-box !important;
+}
+
+.newsletter-subscription .button:hover {
+    background-color: var(--primary) !important;
+    color: var(--theme) !important;
+    border-color: var(--primary) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Dark theme specific adjustments */
+.dark .newsletter-subscription #mc_embed_signup {
+    background: var(--code-bg) !important;
+}
+
+.dark .newsletter-subscription .mc-field-group input[type="email"] {
+    background-color: var(--theme) !important;
+    color: var(--primary) !important;
+    border-color: var(--border) !important;
+}
+
+.dark .newsletter-subscription .button {
+    background-color: var(--tertiary) !important;
+    color: var(--theme) !important;
+    border: 2px solid var(--tertiary) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .newsletter-subscription .button:hover {
+    background-color: var(--primary) !important;
+    color: var(--theme) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Light theme specific adjustments */
+:not(.dark) .newsletter-subscription #mc_embed_signup {
+    background: var(--code-bg) !important;
+}
+
+:not(.dark) .newsletter-subscription .mc-field-group input[type="email"] {
+    background-color: var(--theme) !important;
+    color: var(--primary) !important;
+    border-color: var(--border) !important;
+}
+
+:not(.dark) .newsletter-subscription .button {
+    background-color: var(--tertiary) !important;
+    color: var(--theme) !important;
+    border: 2px solid var(--tertiary) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+:not(.dark) .newsletter-subscription .button:hover {
+    background-color: var(--primary) !important;
+    color: var(--theme) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Additional overrides for Mailchimp's default styling */
+.newsletter-subscription #mc_embed_signup_scroll {
+    background: transparent !important;
+}
+
+.newsletter-subscription #mc_embed_signup_scroll h2 {
+    color: var(--primary) !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.newsletter-subscription .clear {
+    clear: both !important;
+}
+
+.newsletter-subscription .foot {
+    margin-top: 15px !important;
+}
+
+.newsletter-subscription .optionalParent {
+    margin-top: 15px !important;
+}
+
+/* Ensure all text elements use theme colors */
+.newsletter-subscription * {
+    color: inherit !important;
+}
+
+.newsletter-subscription h2,
+.newsletter-subscription label,
+.newsletter-subscription .indicates-required {
+    color: var(--primary) !important;
+}
+
+.newsletter-subscription .indicates-required {
+    color: var(--secondary) !important;
+}
+
+.newsletter-subscription .asterisk {
+    color: var(--tertiary) !important;
+}
+
+/* Ensure button is always visible and prominent */
+.newsletter-subscription input[type="submit"].button,
+.newsletter-subscription .button {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Make sure button text is always readable */
+.newsletter-subscription .button,
+.newsletter-subscription input[type="submit"].button {
+    text-shadow: none !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    min-height: 36px !important;
+}
+
+/* High contrast for better visibility */
+.newsletter-subscription .button:focus {
+    outline: 3px solid var(--tertiary) !important;
+    outline-offset: 2px !important;
+}
+
+/* Specific styling for submit button */
+.newsletter-subscription input[type="submit"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    min-height: 36px !important;
+    text-align: center !important;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .blog-entry {
@@ -114,5 +415,26 @@
     .rss-subscribe-button {
         font-size: 14px;
         padding: 10px 16px;
+    }
+    
+    .newsletter-subscription {
+        margin: 15px 0;
+        padding: 15px;
+    }
+    
+    .newsletter-subscription h2 {
+        font-size: 18px;
+    }
+    
+    .newsletter-subscription input[type="email"] {
+        font-size: 13px;
+        padding: 6px 10px;
+        max-width: 250px;
+    }
+    
+    .newsletter-subscription .button {
+        font-size: 13px;
+        padding: 6px 16px;
+        min-height: 32px;
     }
 }
