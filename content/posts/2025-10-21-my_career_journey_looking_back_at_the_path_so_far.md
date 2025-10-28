@@ -29,7 +29,7 @@ This blog is for **me** — a digital scrapbook of sorts — to look back someda
 
 | # | Period | Organization | Location | Link |
 |---|--------|---------------|-----------|------|
-| 1 | Nov 2010 – Nov 2012 | Accel Frontline Ltd | Chennai | _Coming soon_ |
+| 1 | Nov 2010 – Nov 2012 | Accel Frontline Ltd | Chennai | [here](../chapter-1-the-beginning-at-accel-frontline-ltd) |
 | 2 | Dec 2012 – May 2015 | Infosys Ltd | Chennai | _Coming soon_ |
 | 3 | June 2015 – June 2020 | Ericsson | Bangalore | _Coming soon_ |
 | 4 | July 2020 – Sep 2021 | SBI | Navi Mumbai | _Coming soon_ |

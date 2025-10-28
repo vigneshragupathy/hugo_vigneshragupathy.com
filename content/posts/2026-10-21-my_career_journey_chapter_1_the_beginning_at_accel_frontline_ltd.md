@@ -1,17 +1,19 @@
 ---
 #layout: post
 title: Chapter 1 – The Beginning at Accel Frontline Ltd
-date: '2026-10-21 00:50:00'
+date: '2025-10-28 00:50:00'
 tags:
 - life
 author: Vignesh Ragupathy
 comments: true
 ShowToc: false
+cover:
+    image: ../../images/2025/accel_dc.webp
+    alt: Accel DC
+    hiddenInSingle: true
 ---
 
-
-
-[⬅ Back to Intro](../career-journey-intro.md) | [Next → Chapter 2 – Infosys Ltd](chapter-2-infosys.md)
+[⬅ Back to Intro](../my-career-journey-looking-back-at-the-path-so-far) | [Next → Chapter 2 – Infosys Ltd](comming_soon)
 
 **📍 Nov 2010 – Nov 2012 | Chennai**
 
@@ -28,7 +30,7 @@ What I loved most was the **culture of curiosity** . Everyone was willing to tea
 
 > 💬 *Below is a photo of me in the local data center after assembling one of our servers — Mission: Plug it in without breaking production 💪*
 
-![Home office](../../images/2025/accel_dc.webp)
+![Accel DC](../../images/2025/accel_dc.webp)
 
 
 ### ✨ What I Learned at Accel Frontline
@@ -39,5 +41,5 @@ What I loved most was the **culture of curiosity** . Everyone was willing to tea
 
 ---
 
-[⬅ Back to Intro](../career-journey-intro.md) | [Next → Chapter 2 – The Corporate World at Infosys Ltd](chapter-2-infosys.md)
+[⬅ Back to Intro](../my-career-journey-looking-back-at-the-path-so-far) | [Next → Chapter 2 – Infosys Ltd](comming_soon)
 
