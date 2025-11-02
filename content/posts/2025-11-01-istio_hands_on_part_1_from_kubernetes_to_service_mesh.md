@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 1 - From Kubernetes to Service Mesh
-date: '2026-11-01 00:50:00'
+date: '2026-11-02 00:50:00'
 tags:
 - kubernetes
 - observability

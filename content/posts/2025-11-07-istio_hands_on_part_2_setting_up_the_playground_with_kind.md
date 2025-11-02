@@ -296,18 +296,6 @@ Hello from Backend v1
 
 ---
 
-## 🧩 Step 5: Verify Sidecar Injection
-
-Run:
-
-```bash
-kubectl get pods -o jsonpath='{.items[*].spec.containers[*].name}' | tr ' ' '\n' | sort | uniq -c
-```
-
-✅ Output should show both **frontend** and **backend** have an additional `istio-proxy` container — confirming sidecar injection is working.
-
----
-
 ## ✅ Summary
 
 In this post, you:
