@@ -50,17 +50,16 @@ JWT (**JSON Web Token**) is a signed token that contains user identity informati
 
 Typical flow:
 
-
 Client → (JWT) → Istio Ingress Gateway → Backend Service
 
 Istio validates the JWT **before** the request reaches your app.
-
 
 ## ⚙️ Step 3: Prepare a Sample JWT Token
 
 We’ll use a public demo JWT from Istio’s examples, signed by Google’s public key set.
 
 Test token (shortened for readability):
+
 ```bash
  TOKEN=$(curl -s https://raw.githubusercontent.com/istio/istio/release-1.27/security/tools/jwt/samples/demo.jwt)
 echo $TOKEN
@@ -159,80 +158,157 @@ kubectl exec deploy/frontend -- curl -s -o /dev/null -w "%{http_code}\n" http://
 403
 ```
 
-The request is rejected because no valid JWT was provided.
-
----
-
-## ✅ Step 7: Test With JWT
-
-Now include the JWT in your header:
-
-```bash
-kubectl exec deploy/frontend -- curl -s -o /dev/null -w "%{http_code}\n" \
-  -H "Authorization: Bearer $TOKEN" http://backend
-```
-
-✅ Expected:
+But actual
 
 ```bash
 200
 ```
 
-🎉 Success! The request passed Istio’s JWT validation layer.
+---
+
+
+## 🧠 Why the Internal (Sidecar-to-Sidecar) Approach Doesn’t Work Anymore
+
+In earlier Istio versions, you could apply `RequestAuthentication` and `AuthorizationPolicy` directly to workloads (like `app=backend`), and the **sidecar** would validate JWTs even for internal traffic.
+
+However, since **Istio 1.27+** , the architecture changed:
+
+* **JWT validation filters are only attached** to Envoy listeners that face **external or non-mTLS traffic** .
+* Internal mesh traffic (mTLS) bypasses JWT filters for performance optimization.
+* This means JWT validation **doesn’t trigger** for in-mesh requests (e.g., frontend → backend), hence always returns `200`.
+
+✅ The right way now is to:
+
+* Enforce JWT at **IngressGateway** (external entry point)
+* Optionally propagate verified identity downstream using `RequestPrincipal` or SPIFFE IDs.
+
+This is by design — JWTs are meant to protect **entry into the mesh** , not **in-mesh mTLS-authenticated** calls.
+
+
+
+## 🧱 Step 2: Create an Ingress Gateway and Route to Backend
+
+We’ll expose our **backend service** through Istio’s **Ingress Gateway** so that we can apply authentication policies at the entry point.
+
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: backend-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: backend-vs
+  namespace: default
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - backend-gateway
+  http:
+  - route:
+    - destination:
+        host: backend
+        port:
+          number: 80
+EOF
+```
 
 ---
 
-## 🧠 Step 8: Add Claim-Based Rules (Optional)
+## ⚙️ Step 3: Deploy JWT Policies on the Ingress Gateway
 
-Let’s say you only want users with a specific email to access the backend.
+We’ll apply both the **RequestAuthentication** (defines valid JWT issuers)
 
-Add this advanced rule:
+and the **AuthorizationPolicy** (enforces access rules).
 
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: security.istio.io/v1
-kind: AuthorizationPolicy
+kind: RequestAuthentication
 metadata:
-  name: backend-jwt-claims
-  namespace: default
+  name: ingress-jwt
+  namespace: istio-system
 spec:
   selector:
     matchLabels:
-      app: backend
+      istio: ingressgateway
+  jwtRules:
+  - issuer: "testing@secure.istio.io"
+    jwksUri: "https://raw.githubusercontent.com/istio/istio/release-1.27/security/tools/jwt/samples/jwks.json"
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: ingress-jwt-policy
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
   action: ALLOW
   rules:
-  - when:
-    - key: request.auth.claims[email]
-      values: ["test@secure.istio.io"]
+  - from:
+    - source:
+        requestPrincipals: ["testing@secure.istio.io/*"]
 EOF
 ```
 
-Now even valid JWTs will be blocked unless they include the correct claim.
-
 ---
 
-## 🧾 Step 9: Validate Behavior Summary
+## 🌐 Step 4: Access via Kind Cluster (Ingress Setup)
 
+If you’re running this lab on a **kind** cluster, the `LoadBalancer` service won’t have a public IP.
 
-| Scenario                  | JWT  | Expected | Status   |
-| --------------------------- | ------ | ---------- | ---------- |
-| No JWT                    | ❌   | 403      | Rejected |
-| Invalid JWT               | ❌   | 403      | Rejected |
-| Valid JWT (wrong claim)   | ⚠️ | 403      | Rejected |
-| Valid JWT (correct claim) | ✅   | 200      | Allowed  |
+We can use the **NodePort + Docker IP** method to test it.
 
----
-
-## 🧩 Step 10: Clean Up (Optional)
-
-Remove the policies if needed:
+Find the HTTP port used by the IngressGateway:
 
 ```bash
-kubectl delete requestauthentication backend-jwt
-kubectl delete authorizationpolicy backend-jwt-policy backend-jwt-claims
+export INGRESS_PORT=$(kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[?(@.port==80)].nodePort}')
 ```
 
+Then find the kind node IP (inside Docker):
+
+```bash
+export INGRESS_HOST=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' istio-lab-control-plane)
+```
+
+Combine them:
+
+<pre class="overflow-visible!" data-start="3936" data-end="4034"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span><span class="hljs-built_in">export</span></span><span> GATEWAY_URL=</span><span><span class="hljs-variable">$INGRESS_HOST</span></span><span>:</span><span><span class="hljs-variable">$INGRESS_PORT</span></span><span>
+</span><span><span class="hljs-built_in">echo</span></span><span> </span><span><span class="hljs-string">"Gateway URL: http://<span class="hljs-variable">$GATEWAY_URL</span></span></span><span>"
+</span></span></code></div></div></pre>
+
+✅ Test your backend service through the gateway:
+
+```bash
+curl -v http://$INGRESS_HOST:$INGRESS_PORT/
+```
+
+❌ Without token → Expect: **403 Forbidden**
+
+✅ With token → Expect: **200 OK**
+
+<pre class="overflow-visible!" data-start="4208" data-end="4282"><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"></div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre! language-bash"><span><span>curl -v -H </span><span><span class="hljs-string">"Authorization: Bearer <span class="hljs-variable">$TOKEN</span></span></span><span>" http://</span><span><span class="hljs-variable">$GATEWAY_URL</span></span><span>/
+</span></span></code></div></div></pre>
+
 ---
+
+##
 
 ## 🧠 Summary
 

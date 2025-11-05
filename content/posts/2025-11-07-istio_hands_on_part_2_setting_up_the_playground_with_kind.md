@@ -13,6 +13,7 @@ cover:
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Sidecar Injection and Traffic Flow](comming_soon)
 ### 🎯 Objective
 
 In this post, we’ll set up our **local playground** for the Istio Hands-on series.You’ll learn how to:
@@ -309,9 +310,10 @@ This is your **playground setup** for all upcoming hands-on experiments — rout
 
 ### 🧵 Next Up
 
-👉 Istio Hands-on Part 3 - Sidecar Injection Deep Dive
+[👉 Istio Hands-on Part 3 - Sidecar Injection Deep Dive](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
+
 We’ll explore how Envoy proxies intercept traffic, inspect configurations, and understand the flow inside the mesh.
 
 ---
 
-[Istio Hands-on Part 3 - Sidecar Injection Deep Dive](comming_soon)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Sidecar Injection Deep Dive](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
