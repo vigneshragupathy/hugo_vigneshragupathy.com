@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 1 - From Kubernetes to Service Mesh
-date: '2026-11-02 00:50:00'
+date: '2025-11-05 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -80,7 +80,7 @@ Here’s the roadmap of what’s coming:
 | Part | Topic | Focus |
 |------|--------|--------|
 | 1 | **From Kubernetes to Service Mesh** | Introduction & Series overview |
-| 2 | **Setting Up the Playground** | Installing Istio on Kind or Minikube |
+| 2 | **Setting Up the Playground** | [Installing Istio on Kind](../istio-hands-on-part-2-setting-up-the-playground-with-kind) |
 | 3 | **Sidecar Injection Deep Dive** | Understanding traffic flow |
 | 4 | **Traffic Management** | Routing, retries, canary deployments |
 | 5 | **Observability** | Metrics, tracing, dashboards |
@@ -99,7 +99,7 @@ Each post will be written from a *learner’s point of view* — simple, practic
 Before we dive in, make sure you have:
 
 * A basic understanding of Kubernetes (pods, services, deployments)
-* A local cluster setup (`kind`, `minikube`, or `Docker Desktop`)
+* A local cluster setup (`kind`)
 * `kubectl` and `istioctl` installed
 
   (We’ll walk through setup in the next post)
@@ -126,4 +126,4 @@ If you’ve ever looked at an Istio diagram and thought “Wait, how does this a
 We’ll spin up a local cluster, install Istio, and get our first mesh up and running.
 
 ---
- [Part 2: Setting Up the Playground – Running Istio on Kind](comming_soon)
+[Part 2: Setting Up the Playground – Running Istio on Kind](../istio-hands-on-part-2-setting-up-the-playground-with-kind)
