@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 2 - Setting Up the Playground with Kind
-date: '2026-11-01 00:50:00'
+date: '2025-11-06 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -9,18 +9,17 @@ author: Vignesh Ragupathy
 comments: true
 ShowToc: false
 cover:
-    image: ../../images/2025/istio_part1_cover.webp
+    image: ../../images/2025/istio_part2_cover.webp
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
-[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Sidecar Injection and Traffic Flow](comming_soon)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
 ### 🎯 Objective
 
 In this post, we’ll set up our **local playground** for the Istio Hands-on series.You’ll learn how to:
 
 1. Create a **Kind (Kubernetes-in-Docker)** cluster
 2. Install **Istio** using the demo profile
-3. Deploy a **sample application** to verify traffic through the mesh
 
 This will be our foundation for the rest of the series — simple, reproducible, and lightweight.
 
@@ -36,9 +35,6 @@ Before starting, make sure you have these installed on your machine:
 | Docker   | 20.x                | [Docker Install Guide](https://docs.docker.com/get-docker/)                   |
 | kubectl  | 1.25+               | [kubectl install](https://kubernetes.io/docs/tasks/tools/)                    |
 | kind     | 0.20+               | [Kind install](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)  |
-| istioctl | 1.22+               | [Istio install](https://istio.io/latest/docs/setup/getting-started/#download) |
-
----
 
 ## 🧩 Step 1: Create a Kind Cluster
 
@@ -60,15 +56,11 @@ nodes:
 EOF
 ```
 
----
-
-
 Now create the cluster:
 
 ```bash
 kind create cluster --config kind-istio-config.yaml
 ```
-
 
 Verify it’s running:
 
@@ -83,8 +75,6 @@ kubectl get nodes
 NAME                      STATUS   ROLES           AGE   VERSION
 istio-lab-control-plane   Ready    control-plane   48s   v1.33.1
 ```
-
----
 
 ## 🚀 Step 2: Install Istio
 
@@ -114,8 +104,6 @@ istioctl version
 Istio is not present in the cluster: no running Istio pods in namespace "istio-system"
 client version: 1.27.3
 ```
-
----
 
 ### 2.2 Install Istio using the demo profile
 
@@ -163,157 +151,12 @@ istio-ingressgateway-7d7f977654-lbt5f   1/1     Running   0          85s
 istiod-86db895df-lmpt8                  1/1     Running   0          112s
 ```
 
----
-
-## 🧠 Step 3: Enable Automatic Sidecar Injection
-
-Label the default namespace so Istio automatically injects Envoy sidecars:
-
-```bash
-kubectl label namespace default istio-injection=enabled
-```
-
----
-
-## 🧪 Step 4: Deploy a Sample Application
-
-We’ll deploy a **simple microservice app** called `hello-mesh` with two components:
-
-* **frontend** : a small web server that calls the backend
-* **backend** : returns a simple message
-
-This will help us test Istio features like routing, mTLS, and observability later.
-
----
-
-### 4.1 Create the backend
-
-```bash
-cat <<EOF | kubectl apply -f -
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: backend
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: backend
-  template:
-    metadata:
-      labels:
-        app: backend
-    spec:
-      containers:
-      - name: backend
-        image: hashicorp/http-echo
-        args:
-          - "-text=Hello from Backend v1"
-        ports:
-          - containerPort: 5678
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend
-spec:
-  selector:
-    app: backend
-  ports:
-    - port: 80
-      targetPort: 5678
-EOF
-```
-
----
-
-### 4.2 Create the frontend
-
-```bash
-cat <<EOF | kubectl apply -f -
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: frontend
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: frontend
-  template:
-    metadata:
-      labels:
-        app: frontend
-    spec:
-      containers:
-      - name: frontend
-        image: curlimages/curl
-        command: ["sh", "-c"]
-        args: ["while true; do curl -s http://backend; sleep 5; done"]
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-spec:
-  selector:
-    app: frontend
-  ports:
-    - port: 80
-      targetPort: 80
-EOF
-```
-
----
-
-### 4.3 Verify the app
-
-Check the pods:
-
-```bash
-kubectl get pods
-```
-
-✅ Expected output:
-
-```bash
-NAME                       READY   STATUS    RESTARTS   AGE
-backend-684d96759f-p8psg   2/2     Running   0          35s
-frontend-b7674d6f8-jjc42   2/2     Running   0          26s
-```
-
-View logs to confirm frontend is calling backend:
-
-```bash
-kubectl logs -l app=frontend --tail=10
-```
-
-✅ You should see:
-
-```bash
-Hello from Backend v1
-Hello from Backend v1
-```
-
----
-
-## ✅ Summary
-
-In this post, you:
-
-* Created a local **Kind** cluster
-* Installed **Istio** with the demo profile
-* Deployed a **frontend-backend app** with sidecar injection
-* Verified communication through the mesh
-
-This is your **playground setup** for all upcoming hands-on experiments — routing, observability, mTLS, and beyond.
-
 ### 🧵 Next Up
 
-[👉 Istio Hands-on Part 3 - Sidecar Injection Deep Dive](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
+[👉 Istio Hands-on Part 3 - Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
 
 We’ll explore how Envoy proxies intercept traffic, inspect configurations, and understand the flow inside the mesh.
 
 ---
 
-[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Sidecar Injection Deep Dive](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)

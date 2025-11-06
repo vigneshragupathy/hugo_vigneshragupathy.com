@@ -13,49 +13,179 @@ cover:
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 4 - Traffic Management with VirtualService and DestinationRule](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule)
+
 ### 🎯 Objective
 
-In this post, we’ll explore the **core of Istio’s data plane** — the **Envoy sidecar**.
+In this part, we dive into the **heart of Istio’s data plane** — the **sidecar proxy** — and understand how traffic actually flows inside the mesh.
 
-By the end, you’ll learn:
+By the end of this post, you’ll learn:
 
+- Different **Istio deployment modes** (Sidecar vs Ambient)
 - What **sidecar injection** means
-- How to verify sidecars are correctly attached
-- How traffic flows through Envoy proxies
-- How to inspect and troubleshoot sidecar configuration
+- How to **verify and inspect** sidecars
+- How **traffic flows** between services via Envoy
+- How to troubleshoot and explore Envoy configuration
 
 ---
 
-## 🧱 Step 1: What Is a Sidecar?
+## 🚦 Step 1: Istio Deployment Modes — Sidecar vs Ambient
 
-A **sidecar proxy** is a lightweight Envoy container automatically added to every application pod in a mesh-enabled namespace.
+Istio can operate in **two major modes**:
 
-It:
 
-- Intercepts all inbound and outbound traffic
-- Applies Istio’s routing, retry, and fault-injection policies
-- Enforces **mTLS** for secure communication
-- Collects metrics, logs, and traces
+| Feature           | 🧩 Sidecar Mode                                           | 🌫️ Ambient Mode                                 |
+| ------------------- | ----------------------------------------------------------- | --------------------------------------------------- |
+| **Architecture**  | Envoy proxy is injected as a **container inside each pod** | A lightweight **ztunnel proxy runs at node level** |
+| **Overhead**      | Higher — one proxy per pod                               | Lower — one proxy per node                       |
+| **Layer Support** | Full L7 (HTTP, gRPC, routing, retries, fault injection)   | Primarily L4 (TCP/TLS) by default                 |
+| **mTLS**          | Managed by sidecar per pod                                | Managed by ztunnel across nodes                   |
+| **Upgrades**      | Requires pod restarts                                     | No pod restarts needed                            |
+| **Maturity**      | Stable and production-proven                              | New, evolving (Istio 1.27+)                       |
 
-Together, all sidecars form Istio’s **data plane**, while `istiod` (the control plane) distributes configuration to them.
+### 🧠 Key Takeaway
+
+- **Sidecar mode** = Feature-rich, deep observability, per-pod isolation.
+- **Ambient mode** = Lightweight, simpler mTLS, less control but easier ops.
+
+In this post, we’ll focus on **Sidecar Mode**, there will be a seperate post on **Ambient Mode** later.
 
 ---
 
-## ⚙️ Step 2: Verify Sidecar Injection
+## 🧱 Step 2: What Is a Sidecar?
 
-List your pods:
+A **sidecar proxy** is a lightweight **Envoy container** that runs alongside your application container in the same pod.
+It intercepts all inbound and outbound traffic, applying Istio’s policies, telemetry, and security.
+
+### Responsibilities of a Sidecar:
+
+- Intercept and manage all **inbound/outbound traffic**
+- Apply **routing, retries, fault injection**
+- Enforce **mTLS** for secure service-to-service communication
+- Collect **metrics, logs, and traces** for observability
+
+Together, all sidecars form Istio’s **data plane**, while `istiod` (the **control plane**) distributes configuration and certificates.
+
+---
+
+## ⚙️ Step 3: Enable Automatic Sidecar Injection
+
+Label a namespace to enable automatic sidecar injection:
+
+```bash
+kubectl label namespace default istio-injection=enabled
+```
+
+Once labeled, Istio’s **mutating webhook** automatically injects Envoy sidecars into every new pod created in that namespace.
+
+---
+
+## 🧪 Step 4: Deploy a Sample Application
+
+We’ll deploy a simple **two-tier app** (`frontend` and `backend`) to visualize Istio’s sidecar behavior.
+
+### 4.1 Create the backend
+
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: hashicorp/http-echo
+        args: ["-text=Hello from Backend v1"]
+        ports:
+          - containerPort: 5678
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 80
+      targetPort: 5678
+EOF
+```
+
+---
+
+### 4.2 Create the frontend
+
+```bash
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: curlimages/curl
+        command: ["sh", "-c"]
+        args: ["while true; do curl -s http://backend; sleep 5; done"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+EOF
+```
+
+---
+
+### 4.3 Verify Injection
 
 ```bash
 kubectl get pods
 ```
 
-Pick one, for example `backend-xxxxxx`, and describe it:
+✅ Expected output:
 
 ```bash
-kubectl describe pod backend-xxxxxx
+NAME                       READY   STATUS    RESTARTS   AGE
+backend-684d96759f-p8psg   2/2     Running   0          35s
+frontend-b7674d6f8-jjc42   2/2     Running   0          26s
 ```
 
-You should see annotations like:
+Each pod should have **2 containers** : your app + `istio-proxy`.
+
+To confirm, describe a pod:
+
+```bash
+kubectl describe pod $(kubectl get pods |grep backend |head -1 |awk '{print $1}')
+```
+
+Look for annotations:
 
 ```bash
 Annotations:
@@ -63,68 +193,28 @@ Annotations:
   sidecar.istio.io/status: {"initContainers":["istio-init","istio-proxy"], ...}
 ```
 
-✅ That confirms the sidecar injector webhook has modified the pod spec to include Istio containers.
-
-To list all containers (including init containers) for a quick check:
-
-```bash
-kubectl get pods -o jsonpath='{.items[*].spec.initContainers[*].name} {.items[*].spec.containers[*].name}' | tr ' ' '\n' | sort | uniq -c
-```
-
-Expected output:
-
-```bash
-1 backend
-1 frontend
-2 istio-init
-2 istio-proxy
-```
+That confirms Istio successfully **injected** the sidecar.
 
 ---
 
-## 🧠 Step 3: Inspect the Sidecar Containers
+## 🧭 Step 5: Understand Traffic Flow in Sidecar Mode
 
-Run:
-
-```bash
-kubectl get pod backend-xxxxxx -o yaml | grep -A3  "env:"
-```
-
-You’ll find the Envoy container with arguments such as:
+Let’s visualize what happens when `frontend` calls `backend`:
 
 ```bash
-    env:
-    - name: MODE
-      value: sidecar
-    image: docker.io/istio/proxyv2:1.27.3
---
-    env:
-    - name: PILOT_CERT_PROVIDER
-      value: istiod
-    - name: CA_ADDR
-```
-
-The `MODE: sidecar` environment variable confirms this pod is running in classic sidecar mode.
-
----
-
-## 🧭 Step 4: Understand Traffic Flow
-
-Let’s visualize what happens when the frontend calls the backend:
-
-```css
 [frontend app] ⇄ [Envoy sidecar] ⇄ [Envoy sidecar] ⇄ [backend app]
 ```
 
-1. **Outbound traffic** from `frontend` is intercepted by its sidecar (port 15001).
-2. Envoy forwards the request to the backend’s sidecar.
-3. **Inbound traffic** is validated and decrypted (mTLS) by the backend’s sidecar.
-4. Finally, the backend container receives the request.
+1. The **frontend container** sends an HTTP request to `backend`.
+2. Its **Envoy sidecar intercepts** the outbound traffic (port 15001).
+3. The request travels securely (mTLS) to the backend’s sidecar.
+4. The **backend sidecar** validates, decrypts, and forwards it to the backend container.
+5. Responses follow the same path back.
 
-To confirm mTLS is active:
+Check mTLS mode:
 
 ```bash
-kubectl get pod backend-xxxxxx -o jsonpath='{.metadata.labels.security\.istio\.io/tlsMode}'
+kubectl get pod $(kubectl get pods |grep backend |head -1 |awk '{print $1}') -o jsonpath='{.metadata.labels.security\.istio\.io/tlsMode}'
 ```
 
 Expected:
@@ -133,101 +223,60 @@ Expected:
 istio
 ```
 
+That means traffic is encrypted and authenticated via Istio’s certificates.
+
 ---
 
-## 🧰 Step 5: Explore Sidecar Configuration
+## 🧰 Step 6: Explore Envoy Configuration
 
-You can inspect Envoy configuration for any pod using `istioctl`:
+You can use `istioctl` to view the live Envoy config.
 
-```bash
-istioctl proxy-config routes backend-xxxxxx
-```
-
-Shows how requests are routed.
-
-To view listeners:
+List routes:
 
 ```bash
-istioctl proxy-config listeners backend-xxxxxx
+istioctl proxy-config routes $(kubectl get pods |grep backend |head -1 |awk '{print $1}')
 ```
 
-To check all connected proxies:
+View listeners:
+
+```bash
+istioctl proxy-config listeners $(kubectl get pods |grep backend |head -1 |awk '{print $1}')
+```
+
+Check overall proxy sync status:
 
 ```bash
 istioctl proxy-status
 ```
 
-You should see both `frontend` and `backend` pods as `SYNCED`.
+✅ Both `frontend` and `backend` should appear as **SYNCED** , indicating their sidecars are up-to-date with Istiod.
 
 ---
 
-## 🔍 Step 6: Check Envoy Access Logs
+## 🔍 Step 7: Check Envoy Access Logs
 
-Envoy logs every request that passes through it.
-
-Try:
+To see real-time traffic:
 
 ```bash
 kubectl logs deploy/frontend -c istio-proxy --tail=10
 ```
 
-You’ll see lines like:
+You’ll see logs like:
 
 ```bash
-[2025-11-01T16:42:19.275Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 22 1 1 "-" "curl/8.16.0" "c3af7028-29f0-95b8-818b-fbdec80ba206" "backend" "10.244.0.23:5678" outbound|80||backend.default.svc.cluster.local 10.244.0.24:47370 10.96.204.198:80 10.244.0.24:42446 - default
-[2025-11-01T16:42:24.287Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 22 1 1 "-" "curl/8.16.0" "cfb6430a-e804-9a8e-84da-bd9b597242d6" "backend" "10.244.0.23:5678" outbound|80||backend.default.svc.cluster.local 10.244.0.24:47370 10.96.204.198:80 10.244.0.24:42452 - default
+[2025-11-06T12:28:43.548Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 22 1 1 "-" "curl/8.17.0" "abccfcd4-8804-9de0-9cf8-86ac2937e85b" "backend" "10.244.0.12:5678" outbound|80||backend.default.svc.cluster.local 10.244.0.16:59050 10.96.245.140:80 10.244.0.16:33832 - default
+[2025-11-06T12:28:48.563Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 22 1 1 "-" "curl/8.17.0" "fb8782e3-211b-9d94-a6de-f0f179dedcc3" "backend" "10.244.0.12:5678" outbound|80||backend.default.svc.cluster.local 10.244.0.16:59050 10.96.245.140:80 10.244.0.16:33842 - default
+[2025-11-06T12:28:53.578Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 22 2 2 "-" "curl/8.17.0" "967db056-a4b4-9dde-a2b1-f730baf36b6b" "backend" "10.244.0.12:5678" outbound|80||backend.default.svc.cluster.local 10.244.0.16:58050 10.96.245.140:80 10.244.0.16:59848 - default
 ```
 
-That confirms requests are indeed being handled by Istio’s data plane.
-
----
-
-## 🧩 Step 7: (Optional) Enable Access Logs Globally
-
-If you don’t see logs, enable them:
-
-```bash
-istioctl install --set meshConfig.accessLogFile=/dev/stdout -y
-```
-
-Then recheck the logs again.
-
----
-
-## 💬 Step 10: Sidecar vs. Ambient Mode (FYI)
-
-
-| Feature        | Sidecar Mode                           | Ambient Mode               |
-| ---------------- | ---------------------------------------- | ---------------------------- |
-| Architecture   | Envoy proxy in each pod                | Shared node-level ztunnel  |
-| Overhead       | Higher (one proxy per pod)             | Lower (one proxy per node) |
-| L7 Features    | Full routing, retries, fault injection | Only basic L4 by default   |
-| Upgrade Impact | Pod restarts needed                    | Transparent                |
-| Maturity       | Production proven                      | Evolving (1.27+)           |
-
-You’re using **Sidecar Mode** , which provides the richest feature set and full observability.
-
-Ambient Mode is newer, lighter, and we’ll explore it in future posts once it stabilizes.
-
----
-
-## ✅ Summary
-
-In this post, you:
-
-* Verified sidecar injection using annotations and init containers
-* Inspected `istio-proxy` configuration and Envoy behavior
-* Understood how traffic flows through Envoy sidecars
-* Compared sidecar mode with ambient mode
-
-Your mesh is now fully functional — **frontend** and **backend** communicate through secure, observable Envoy proxies.
+Your mesh is now fully operational — both `frontend` and `backend` communicate through **Envoy sidecars** , giving you secure, observable, and policy-driven traffic management.
 
 ---
 
 ### 🧵 Next Up
 
-👉 **Istio Hands-on Part 4 – Traffic Management with VirtualService and DestinationRule**
+[👉 **Istio Hands-on Part 4 – Traffic Management with VirtualService and DestinationRule**](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule)
 
-We’ll start controlling traffic flow using canary releases, fault injection, and weighted routing.
+We’ll start controlling traffic using canary releases, fault injection, and weighted routing.
 
-[Istio Hands-on Part 4 – Traffic Management with VirtualService and DestinationRule](comming_soon)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 4 - Traffic Management with VirtualService and DestinationRule](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule)
