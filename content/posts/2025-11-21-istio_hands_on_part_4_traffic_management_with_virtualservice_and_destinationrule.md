@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 4 - Traffic Management with VirtualService and DestinationRule
-date: '2026-11-01 00:50:00'
+date: '2026-11-05 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -13,7 +13,7 @@ cover:
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
-### 🎯 Objective
+### Objective
 
 In this post, we’ll learn how to use **Istio’s traffic management features** — specifically:
 
@@ -29,7 +29,7 @@ By the end, you’ll:
 
 ---
 
-## 🧩 Step 1: Recap – Your Current Setup
+## Step 1: Recap – Your Current Setup
 
 You should already have:
 
@@ -41,7 +41,7 @@ We’ll extend that setup to include a **second backend version** (`v2`).
 
 ---
 
-## ⚙️ Step 2: Deploy Backend v1 and v2
+## Step 2: Deploy Backend v1 and v2
 
 Let’s modify the existing backend deployment to include two versions.
 
@@ -121,7 +121,7 @@ backend-v2-xxxxx   2/2   Running
 
 ---
 
-## 🧠 Step 3: Add a DestinationRule
+## Step 3: Add a DestinationRule
 
 A **DestinationRule** defines *subsets* — logical groups of service versions (based on labels) that you can route traffic to.
 
@@ -158,7 +158,7 @@ backend   backend   9s
 
 ---
 
-## 🚦 Step 4: Create a VirtualService
+## Step 4: Create a VirtualService
 
 Now, let’s control how requests are routed between `v1` and `v2`.
 
@@ -188,7 +188,7 @@ EOF
 
 ---
 
-## 🧪 Step 5: Test Traffic Routing
+## Step 5: Test Traffic Routing
 
 Run:
 
@@ -206,7 +206,7 @@ Now let’s gradually shift some traffic to v2.
 
 ---
 
-## ⚙️ Step 6: Split Traffic 80/20 Between v1 and v2
+## Step 6: Split Traffic 80/20 Between v1 and v2
 
 Update your VirtualService:
 
@@ -253,7 +253,7 @@ Congratulations 🎉 — you’ve just performed a **canary release** in Istio!
 
 ---
 
-## 💣 Step 7: Fault Injection (Simulating Latency)
+## Step 7: Fault Injection (Simulating Latency)
 
 Let’s simulate a slow backend to see how Istio handles delays.
 
@@ -319,7 +319,7 @@ kubectl delete virtualservice backend
 
 ---
 
-## 🧩 Step 8: Add Retry Logic
+## Step 8: Add Retry Logic
 
 Let’s add a retry policy so the frontend automatically retries failed calls.
 
@@ -348,7 +348,7 @@ This tells Istio to retry up to 3 times if a connection fails.
 
 ---
 
-## 💬 Step 9: Summary
+## Step 9: Summary
 
 You just learned how to **control and manipulate traffic** using Istio’s most powerful features:
 

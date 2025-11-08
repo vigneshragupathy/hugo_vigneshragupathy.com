@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 3 - Understanding Sidecar Injection and Traffic Flow
-date: '2026-11-01 00:50:00'
+date: '2025-11-08 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -9,13 +9,13 @@ author: Vignesh Ragupathy
 comments: true
 ShowToc: false
 cover:
-    image: ../../images/2025/istio_part1_cover.webp
+    image: ../../images/2025/istio_part3_cover.webp
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 4 - Traffic Management with VirtualService and DestinationRule](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule)
 
-### 🎯 Objective
+### Objective
 
 In this part, we dive into the **heart of Istio’s data plane** — the **sidecar proxy** — and understand how traffic actually flows inside the mesh.
 
@@ -29,7 +29,7 @@ By the end of this post, you’ll learn:
 
 ---
 
-## 🚦 Step 1: Istio Deployment Modes — Sidecar vs Ambient
+## Step 1: Istio Deployment Modes — Sidecar vs Ambient
 
 Istio can operate in **two major modes**:
 
@@ -41,18 +41,13 @@ Istio can operate in **two major modes**:
 | **Layer Support** | Full L7 (HTTP, gRPC, routing, retries, fault injection)   | Primarily L4 (TCP/TLS) by default                 |
 | **mTLS**          | Managed by sidecar per pod                                | Managed by ztunnel across nodes                   |
 | **Upgrades**      | Requires pod restarts                                     | No pod restarts needed                            |
-| **Maturity**      | Stable and production-proven                              | New, evolving (Istio 1.27+)                       |
 
-### 🧠 Key Takeaway
-
-- **Sidecar mode** = Feature-rich, deep observability, per-pod isolation.
-- **Ambient mode** = Lightweight, simpler mTLS, less control but easier ops.
 
 In this post, we’ll focus on **Sidecar Mode**, there will be a seperate post on **Ambient Mode** later.
 
 ---
 
-## 🧱 Step 2: What Is a Sidecar?
+## Step 2: What Is a Sidecar?
 
 A **sidecar proxy** is a lightweight **Envoy container** that runs alongside your application container in the same pod.
 It intercepts all inbound and outbound traffic, applying Istio’s policies, telemetry, and security.
@@ -68,7 +63,7 @@ Together, all sidecars form Istio’s **data plane**, while `istiod` (the **cont
 
 ---
 
-## ⚙️ Step 3: Enable Automatic Sidecar Injection
+## Step 3: Enable Automatic Sidecar Injection
 
 Label a namespace to enable automatic sidecar injection:
 
@@ -80,7 +75,7 @@ Once labeled, Istio’s **mutating webhook** automatically injects Envoy sidecar
 
 ---
 
-## 🧪 Step 4: Deploy a Sample Application
+## Step 4: Deploy a Sample Application
 
 We’ll deploy a simple **two-tier app** (`frontend` and `backend`) to visualize Istio’s sidecar behavior.
 
@@ -197,13 +192,16 @@ That confirms Istio successfully **injected** the sidecar.
 
 ---
 
-## 🧭 Step 5: Understand Traffic Flow in Sidecar Mode
+## Step 5: Understand Traffic Flow in Sidecar Mode
 
 Let’s visualize what happens when `frontend` calls `backend`:
 
-```bash
-[frontend app] ⇄ [Envoy sidecar] ⇄ [Envoy sidecar] ⇄ [backend app]
-```
+<iframe src="/diagrams/istio-traffic-flow.html" 
+           width="100%" 
+           height="450px" 
+           frameborder="0" 
+           style="border: none; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+   </iframe>
 
 1. The **frontend container** sends an HTTP request to `backend`.
 2. Its **Envoy sidecar intercepts** the outbound traffic (port 15001).
@@ -227,7 +225,7 @@ That means traffic is encrypted and authenticated via Istio’s certificates.
 
 ---
 
-## 🧰 Step 6: Explore Envoy Configuration
+## Step 6: Explore Envoy Configuration
 
 You can use `istioctl` to view the live Envoy config.
 
@@ -253,7 +251,7 @@ istioctl proxy-status
 
 ---
 
-## 🔍 Step 7: Check Envoy Access Logs
+## Step 7: Check Envoy Access Logs
 
 To see real-time traffic:
 
