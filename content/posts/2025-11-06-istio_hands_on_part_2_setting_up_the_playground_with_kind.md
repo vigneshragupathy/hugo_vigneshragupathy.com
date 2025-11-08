@@ -14,7 +14,7 @@ cover:
     hiddenInSingle: true
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
-### 🎯 Objective
+### Objective
 
 In this post, we’ll set up our **local playground** for the Istio Hands-on series.You’ll learn how to:
 
@@ -25,7 +25,7 @@ This will be our foundation for the rest of the series — simple, reproducible,
 
 ---
 
-## 🧱 Prerequisites
+## Prerequisites
 
 Before starting, make sure you have these installed on your machine:
 
@@ -36,7 +36,7 @@ Before starting, make sure you have these installed on your machine:
 | kubectl  | 1.25+               | [kubectl install](https://kubernetes.io/docs/tasks/tools/)                    |
 | kind     | 0.20+               | [Kind install](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)  |
 
-## 🧩 Step 1: Create a Kind Cluster
+## Step 1: Create a Kind Cluster
 
 Let’s create a simple Kind cluster with an ingress-ready configuration.
 We’ll call it `istio-lab`.
@@ -76,7 +76,7 @@ NAME                      STATUS   ROLES           AGE   VERSION
 istio-lab-control-plane   Ready    control-plane   48s   v1.33.1
 ```
 
-## 🚀 Step 2: Install Istio
+## Step 2: Install Istio
 
 We’ll use the **demo profile** , which includes:
 

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .istio-diagram-container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .istio-diagram-wrapper {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f172a 100%);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(59, 130, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .istio-diagram-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .istio-diagram-wrapper svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            .istio-diagram-wrapper {
+                padding: 1.5rem 1rem;
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .istio-diagram-wrapper {
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="istio-diagram-container">
+        <div class="istio-diagram-wrapper">
+            <svg viewBox="0 0 1800 1200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Enhanced Gradients -->
+                    <linearGradient id="frontendGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#0891b2;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0e7490;stop-opacity:1" />
+                    </linearGradient>
+                    
+                    <linearGradient id="backendGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                    </linearGradient>
+                    
+                    <linearGradient id="envoyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+                    </linearGradient>
+
+                    <linearGradient id="podBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+                    </linearGradient>
+
+                    <linearGradient id="meshBadgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1e40af;stop-opacity:0.4" />
+                        <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:0.6" />
+                    </linearGradient>
+                    
+                    <!-- Enhanced Glow Filters -->
+                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+
+                    <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+
+                    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                        <feOffset in="coloredBlur" dx="0" dy="0"/>
+                        <feFlood flood-color="#10b981" flood-opacity="0.6"/>
+                        <feComposite in2="coloredBlur" operator="in"/>
+                        <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    
+                    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.5"/>
+                    </filter>
+
+                    <filter id="shadowStrong" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity="0.6"/>
+                    </filter>
+
+                    <!-- Arrow Markers -->
+                    <marker id="arrowRequest" markerWidth="16" markerHeight="16" refX="14" refY="8" orient="auto" markerUnits="strokeWidth">
+                        <polygon points="0 0, 16 8, 0 16" fill="#10b981" filter="url(#glowGreen)"/>
+                    </marker>
+
+                    <marker id="arrowResponse" markerWidth="16" markerHeight="16" refX="14" refY="8" orient="auto" markerUnits="strokeWidth">
+                        <polygon points="0 0, 16 8, 0 16" fill="#f59e0b"/>
+                    </marker>
+
+                    <!-- Pattern for subtle texture -->
+                    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <circle cx="20" cy="20" r="0.5" fill="#334155" opacity="0.2"/>
+                    </pattern>
+                </defs>
+                
+                <!-- Background with subtle pattern -->
+                <rect width="1800" height="1200" fill="#0a0e27"/>
+                <rect width="1800" height="1200" fill="url(#gridPattern)"/>
+                
+                <!-- Decorative background circles -->
+                <circle cx="150" cy="150" r="200" fill="#1e293b" opacity="0.15">
+                    <animate attributeName="r" values="200;220;200" dur="8s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.15;0.2;0.15" dur="8s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="1650" cy="1050" r="250" fill="#1e293b" opacity="0.15">
+                    <animate attributeName="r" values="250;270;250" dur="10s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.15;0.2;0.15" dur="10s" repeatCount="indefinite"/>
+                </circle>
+                
+                <!-- Title Section with enhanced styling -->
+                <g>
+                    <rect x="400" y="20" width="1000" height="120" rx="20" fill="#1e293b" opacity="0.3" filter="url(#shadow)"/>
+                    <text x="900" y="75" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#ffffff" text-anchor="middle" filter="url(#glow)">
+                        Istio Service Mesh Traffic Flow
+                    </text>
+                    <text x="900" y="110" font-family="Arial, sans-serif" font-size="22" fill="#94a3b8" text-anchor="middle" letter-spacing="1px">
+                        How Frontend Communicates with Backend Through Envoy Sidecars
+                    </text>
+                </g>
+                
+                <!-- Enhanced Step Labels on Left -->
+                <g transform="translate(40, 220)">
+                    <g>
+                        <rect x="-15" y="75" width="120" height="45" rx="8" fill="#10b981" opacity="0.2" filter="url(#shadow)"/>
+                        <text x="45" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#10b981" text-anchor="middle" filter="url(#glow)">
+                            STEP 1
+                        </text>
+                    </g>
+                    <g transform="translate(0, 180)">
+                        <rect x="-15" y="75" width="120" height="45" rx="8" fill="#3b82f6" opacity="0.2" filter="url(#shadow)"/>
+                        <text x="45" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3b82f6" text-anchor="middle" filter="url(#glow)">
+                            STEP 2
+                        </text>
+                    </g>
+                    <g transform="translate(0, 360)">
+                        <rect x="-15" y="75" width="120" height="45" rx="8" fill="#8b5cf6" opacity="0.2" filter="url(#shadow)"/>
+                        <text x="45" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#8b5cf6" text-anchor="middle" filter="url(#glow)">
+                            STEP 3
+                        </text>
+                    </g>
+                    <g transform="translate(0, 540)">
+                        <rect x="-15" y="75" width="120" height="45" rx="8" fill="#7c3aed" opacity="0.2" filter="url(#shadow)"/>
+                        <text x="45" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#7c3aed" text-anchor="middle" filter="url(#glow)">
+                            STEP 4
+                        </text>
+                    </g>
+                    <g transform="translate(0, 720)">
+                        <rect x="-15" y="75" width="120" height="45" rx="8" fill="#f59e0b" opacity="0.2" filter="url(#shadow)"/>
+                        <text x="45" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f59e0b" text-anchor="middle" filter="url(#glow)">
+                            STEP 5
+                        </text>
+                    </g>
+                </g>
+                
+                <!-- Frontend Pod Container - Enhanced -->
+                <g transform="translate(200, 160)">
+                    <rect width="550" height="780" rx="24" fill="url(#podBgGrad)" stroke="#334155" stroke-width="2" filter="url(#shadowStrong)"/>
+                    <rect x="5" y="5" width="540" height="770" rx="20" fill="none" stroke="#475569" stroke-width="1" opacity="0.5"/>
+                    
+                    <!-- Pod Header -->
+                    <rect x="20" y="20" width="510" height="60" rx="12" fill="#1e293b" opacity="0.6"/>
+                    <text x="275" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#e2e8f0" text-anchor="middle">
+                        Frontend Pod
+                    </text>
+                    <circle cx="470" cy="50" r="6" fill="#10b981">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Frontend App - Enhanced -->
+                    <g transform="translate(75, 100)">
+                        <rect width="400" height="220" rx="20" fill="url(#frontendGrad)" filter="url(#glowStrong)"/>
+                        <rect x="5" y="5" width="390" height="210" rx="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                        
+                        <!-- Icon/Logo area -->
+                        <circle cx="200" cy="50" r="30" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <text x="200" y="62" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle">⚡</text>
+                        
+                        <text x="200" y="105" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#ffffff" text-anchor="middle">
+                            Frontend App
+                        </text>
+                        <text x="200" y="135" font-family="Arial, sans-serif" font-size="18" fill="#e0f2fe" text-anchor="middle">
+                            Container
+                        </text>
+                        <text x="200" y="160" font-family="Monaco, monospace" font-size="16" fill="#cffafe" text-anchor="middle">
+                            localhost:8080
+                        </text>
+                        
+                        <!-- Pulsing indicator -->
+                        <circle cx="200" cy="185" r="10" fill="#10b981" filter="url(#glowGreen)">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
+                            <animate attributeName="r" values="8;12;8" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="200" y="210" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#d1fae5" text-anchor="middle">
+                            HTTP Request
+                        </text>
+                    </g>
+                    
+                    <!-- Arrow 1 - Enhanced -->
+                    <g transform="translate(0, 330)">
+                        <path d="M 275 10 L 275 90" stroke="#10b981" stroke-width="8" fill="none" marker-end="url(#arrowRequest)" filter="url(#glowGreen)">
+                            <animate attributeName="stroke-dasharray" values="0,100;100,0" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="stroke-dashoffset" values="100;0" dur="2s" repeatCount="indefinite"/>
+                        </path>
+                        <!-- Glowing particles -->
+                        <circle cx="275" cy="30" r="4" fill="#10b981" opacity="0.8">
+                            <animate attributeName="cy" values="10;90" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="300" y="55" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981" filter="url(#glow)">
+                            Intercepts
+                        </text>
+                    </g>
+                    
+                    <!-- Frontend Envoy Sidecar - Enhanced -->
+                    <g transform="translate(75, 430)">
+                        <rect width="400" height="300" rx="20" fill="url(#envoyGrad)" filter="url(#glowStrong)"/>
+                        <rect x="5" y="5" width="390" height="290" rx="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                        
+                        <!-- Envoy Logo -->
+                        <circle cx="200" cy="70" r="40" fill="#1e40af" stroke="#60a5fa" stroke-width="4" filter="url(#glow)"/>
+                        <circle cx="200" cy="70" r="32" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <text x="200" y="82" font-family="Arial, sans-serif" font-size="42" fill="#ffffff" text-anchor="middle">⎈</text>
+                        
+                        <text x="200" y="135" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" text-anchor="middle">
+                            Envoy Proxy
+                        </text>
+                        <text x="200" y="165" font-family="Arial, sans-serif" font-size="19" fill="#dbeafe" text-anchor="middle">
+                            Istio Sidecar
+                        </text>
+                        
+                        <!-- Info box -->
+                        <rect x="40" y="190" width="320" height="85" rx="12" fill="rgba(30, 64, 175, 0.4)" stroke="rgba(96, 165, 250, 0.5)" stroke-width="1"/>
+                        <text x="200" y="220" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#bfdbfe" text-anchor="middle">
+                            📤 Outbound: Port 15001
+                        </text>
+                        <text x="200" y="245" font-family="Arial, sans-serif" font-size="14" fill="#dbeafe" text-anchor="middle">
+                            Traffic Management | Load Balancing
+                        </text>
+                        <text x="200" y="265" font-family="Arial, sans-serif" font-size="13" fill="#93c5fd" text-anchor="middle">
+                            mTLS | Retries | Circuit Breaking
+                        </text>
+                    </g>
+                </g>
+                
+                <!-- Backend Pod Container - Enhanced -->
+                <g transform="translate(1050, 160)">
+                    <rect width="550" height="780" rx="24" fill="url(#podBgGrad)" stroke="#334155" stroke-width="2" filter="url(#shadowStrong)"/>
+                    <rect x="5" y="5" width="540" height="770" rx="20" fill="none" stroke="#475569" stroke-width="1" opacity="0.5"/>
+                    
+                    <!-- Pod Header -->
+                    <rect x="20" y="20" width="510" height="60" rx="12" fill="#1e293b" opacity="0.6"/>
+                    <text x="275" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#e2e8f0" text-anchor="middle">
+                        Backend Pod
+                    </text>
+                    <circle cx="470" cy="50" r="6" fill="#8b5cf6">
+                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1s"/>
+                    </circle>
+                    
+                    <!-- Backend Envoy Sidecar - Enhanced -->
+                    <g transform="translate(75, 100)">
+                        <rect width="400" height="300" rx="20" fill="url(#envoyGrad)" filter="url(#glowStrong)"/>
+                        <rect x="5" y="5" width="390" height="290" rx="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                        
+                        <!-- Envoy Logo -->
+                        <circle cx="200" cy="70" r="40" fill="#1e40af" stroke="#60a5fa" stroke-width="4" filter="url(#glow)"/>
+                        <circle cx="200" cy="70" r="32" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <text x="200" y="82" font-family="Arial, sans-serif" font-size="42" fill="#ffffff" text-anchor="middle">⎈</text>
+                        
+                        <text x="200" y="135" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" text-anchor="middle">
+                            Envoy Proxy
+                        </text>
+                        <text x="200" y="165" font-family="Arial, sans-serif" font-size="19" fill="#dbeafe" text-anchor="middle">
+                            Istio Sidecar
+                        </text>
+                        
+                        <!-- Info box -->
+                        <rect x="40" y="190" width="320" height="85" rx="12" fill="rgba(30, 64, 175, 0.4)" stroke="rgba(96, 165, 250, 0.5)" stroke-width="1"/>
+                        <text x="200" y="220" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#bfdbfe" text-anchor="middle">
+                            📥 Inbound: Port 15006
+                        </text>
+                        <text x="200" y="245" font-family="Arial, sans-serif" font-size="14" fill="#dbeafe" text-anchor="middle">
+                            Auth | Validate | Decrypt
+                        </text>
+                        <text x="200" y="265" font-family="Arial, sans-serif" font-size="13" fill="#93c5fd" text-anchor="middle">
+                            Policy Enforcement | Observability
+                        </text>
+                    </g>
+                    
+                    <!-- Arrow 3 - Enhanced -->
+                    <g transform="translate(0, 410)">
+                        <path d="M 275 10 L 275 90" stroke="#8b5cf6" stroke-width="8" fill="none" marker-end="url(#arrowRequest)" filter="url(#glow)">
+                            <animate attributeName="stroke-dasharray" values="0,100;100,0" dur="2s" repeatCount="indefinite" begin="1s"/>
+                            <animate attributeName="stroke-dashoffset" values="100;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+                        </path>
+                        <!-- Glowing particles -->
+                        <circle cx="275" cy="30" r="4" fill="#8b5cf6" opacity="0.8">
+                            <animate attributeName="cy" values="10;90" dur="2s" repeatCount="indefinite" begin="1s"/>
+                            <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+                        </circle>
+                        <text x="300" y="55" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#8b5cf6" filter="url(#glow)">
+                            Forwards
+                        </text>
+                    </g>
+                    
+                    <!-- Backend App - Enhanced -->
+                    <g transform="translate(75, 510)">
+                        <rect width="400" height="220" rx="20" fill="url(#backendGrad)" filter="url(#glowStrong)"/>
+                        <rect x="5" y="5" width="390" height="210" rx="16" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                        
+                        <!-- Icon/Logo area -->
+                        <circle cx="200" cy="50" r="30" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                        <text x="200" y="62" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle">⚙️</text>
+                        
+                        <text x="200" y="105" font-family="Arial, sans-serif" font-size="34" font-weight="bold" fill="#ffffff" text-anchor="middle">
+                            Backend App
+                        </text>
+                        <text x="200" y="135" font-family="Arial, sans-serif" font-size="18" fill="#ede9fe" text-anchor="middle">
+                            Container
+                        </text>
+                        <text x="200" y="160" font-family="Monaco, monospace" font-size="16" fill="#ddd6fe" text-anchor="middle">
+                            localhost:8080
+                        </text>
+                        
+                        <!-- Pulsing indicator -->
+                        <circle cx="200" cy="185" r="10" fill="#10b981" filter="url(#glowGreen)">
+                            <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite" begin="1.5s"/>
+                            <animate attributeName="r" values="8;12;8" dur="1.5s" repeatCount="indefinite" begin="1.5s"/>
+                        </circle>
+                        <text x="200" y="210" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#e9d5ff" text-anchor="middle">
+                            Processes Request
+                        </text>
+                    </g>
+                </g>
+                
+                <!-- Middle Traffic Flow Arrow - Enhanced -->
+                <g>
+                    <!-- Request Arrow (Green) - Enhanced -->
+                    <path d="M 760 570 L 1040 360" stroke="#10b981" stroke-width="10" fill="none" marker-end="url(#arrowRequest)" filter="url(#glowGreen)" opacity="0.9">
+                        <animate attributeName="stroke-dasharray" values="0,900;900,0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+                        <animate attributeName="stroke-dashoffset" values="900;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+                    </path>
+                    <!-- Animated particles along request path -->
+                    <circle r="6" fill="#10b981" filter="url(#glowGreen)" opacity="0.9">
+                        <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.5s">
+                            <path d="M 760 570 L 1040 360"/>
+                        </animateMotion>
+                        <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+                    </circle>
+                    
+                    <!-- Response Arrow (Orange) - Enhanced -->
+                    <path d="M 1050 390 L 770 600" stroke="#f59e0b" stroke-width="10" fill="none" marker-end="url(#arrowResponse)" filter="url(#glow)" opacity="0.9">
+                        <animate attributeName="stroke-dasharray" values="0,900;900,0" dur="2.5s" repeatCount="indefinite" begin="3s"/>
+                        <animate attributeName="stroke-dashoffset" values="900;0" dur="2.5s" repeatCount="indefinite" begin="3s"/>
+                    </path>
+                    <!-- Animated particles along response path -->
+                    <circle r="6" fill="#f59e0b" filter="url(#glow)" opacity="0.9">
+                        <animateMotion dur="2.5s" repeatCount="indefinite" begin="3s">
+                            <path d="M 1050 390 L 770 600"/>
+                        </animateMotion>
+                        <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin="3s"/>
+                    </circle>
+                    
+                    <!-- Enhanced Service Mesh Badge -->
+                    <g transform="translate(730, 440)">
+                        <rect width="340" height="140" rx="20" fill="url(#meshBadgeGrad)" stroke="#3b82f6" stroke-width="3" filter="url(#shadowStrong)"/>
+                        <rect x="5" y="5" width="330" height="130" rx="16" fill="none" stroke="rgba(96, 165, 250, 0.3)" stroke-width="1"/>
+                        
+                        <!-- Lock icon -->
+                        <circle cx="170" cy="35" r="20" fill="rgba(96, 165, 250, 0.3)"/>
+                        <text x="170" y="42" font-family="Arial, sans-serif" font-size="20" fill="#60a5fa" text-anchor="middle">🔐</text>
+                        
+                        <text x="170" y="75" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#60a5fa" text-anchor="middle">
+                            mTLS Encrypted
+                        </text>
+                        <text x="170" y="100" font-family="Arial, sans-serif" font-size="15" fill="#cbd5e1" text-anchor="middle">
+                            Service Mesh Communication
+                        </text>
+                        <text x="170" y="120" font-family="Arial, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">
+                            Secure • Authenticated • Observable
+                        </text>
+                        
+                        <!-- Pulsing status indicator -->
+                        <circle cx="300" cy="35" r="8" fill="#10b981" filter="url(#glowGreen)">
+                            <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </g>
+                
+                <!-- Enhanced Step Descriptions -->
+                <g transform="translate(100, 1000)">
+                    <!-- Step 1 -->
+                    <g>
+                        <rect x="0" y="0" width="300" height="120" rx="16" fill="#1e293b" stroke="#10b981" stroke-width="3" filter="url(#shadow)"/>
+                        <rect x="5" y="5" width="290" height="110" rx="12" fill="rgba(16, 185, 129, 0.05)"/>
+                        <circle cx="25" cy="25" r="12" fill="#10b981" opacity="0.3">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="25" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#10b981" text-anchor="middle">①</text>
+                        <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#10b981" text-anchor="middle">
+                            Request Initiated
+                        </text>
+                        <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            Frontend app sends
+                        </text>
+                        <text x="150" y="85" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            HTTP request to backend
+                        </text>
+                        <text x="150" y="105" font-family="Monaco, monospace" font-size="12" fill="#10b981" text-anchor="middle" opacity="0.8">
+                            GET / HTTP/1.1
+                        </text>
+                    </g>
+                    
+                    <!-- Step 2 -->
+                    <g transform="translate(320, 0)">
+                        <rect x="0" y="0" width="300" height="120" rx="16" fill="#1e293b" stroke="#3b82f6" stroke-width="3" filter="url(#shadow)"/>
+                        <rect x="5" y="5" width="290" height="110" rx="12" fill="rgba(59, 130, 246, 0.05)"/>
+                        <circle cx="25" cy="25" r="12" fill="#3b82f6" opacity="0.3">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="0.4s"/>
+                        </circle>
+                        <text x="25" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3b82f6" text-anchor="middle">②</text>
+                        <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#3b82f6" text-anchor="middle">
+                            Outbound Intercept
+                        </text>
+                        <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            Envoy sidecar intercepts
+                        </text>
+                        <text x="150" y="85" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            at port 15001
+                        </text>
+                        <text x="150" y="105" font-family="Monaco, monospace" font-size="12" fill="#3b82f6" text-anchor="middle" opacity="0.8">
+                            :15001 (outbound)
+                        </text>
+                    </g>
+                    
+                    <!-- Step 3 -->
+                    <g transform="translate(640, 0)">
+                        <rect x="0" y="0" width="300" height="120" rx="16" fill="#1e293b" stroke="#8b5cf6" stroke-width="3" filter="url(#shadow)"/>
+                        <rect x="5" y="5" width="290" height="110" rx="12" fill="rgba(139, 92, 246, 0.05)"/>
+                        <circle cx="25" cy="25" r="12" fill="#8b5cf6" opacity="0.3">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+                        </circle>
+                        <text x="25" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#8b5cf6" text-anchor="middle">③</text>
+                        <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#8b5cf6" text-anchor="middle">
+                            Secure Transit
+                        </text>
+                        <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            mTLS encrypted traffic
+                        </text>
+                        <text x="150" y="85" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            through service mesh
+                        </text>
+                        <text x="150" y="105" font-family="Monaco, monospace" font-size="12" fill="#8b5cf6" text-anchor="middle" opacity="0.8">
+                            TLS 1.3 + mTLS
+                        </text>
+                    </g>
+                    
+                    <!-- Step 4 -->
+                    <g transform="translate(960, 0)">
+                        <rect x="0" y="0" width="300" height="120" rx="16" fill="#1e293b" stroke="#7c3aed" stroke-width="3" filter="url(#shadow)"/>
+                        <rect x="5" y="5" width="290" height="110" rx="12" fill="rgba(124, 58, 237, 0.05)"/>
+                        <circle cx="25" cy="25" r="12" fill="#7c3aed" opacity="0.3">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+                        </circle>
+                        <text x="25" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#7c3aed" text-anchor="middle">④</text>
+                        <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#7c3aed" text-anchor="middle">
+                            Inbound Process
+                        </text>
+                        <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            Validate, decrypt &
+                        </text>
+                        <text x="150" y="85" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            forward to backend
+                        </text>
+                        <text x="150" y="105" font-family="Monaco, monospace" font-size="12" fill="#7c3aed" text-anchor="middle" opacity="0.8">
+                            :15006 (inbound)
+                        </text>
+                    </g>
+                    
+                    <!-- Step 5 -->
+                    <g transform="translate(1280, 0)">
+                        <rect x="0" y="0" width="300" height="120" rx="16" fill="#1e293b" stroke="#f59e0b" stroke-width="3" filter="url(#shadow)"/>
+                        <rect x="5" y="5" width="290" height="110" rx="12" fill="rgba(245, 158, 11, 0.05)"/>
+                        <circle cx="25" cy="25" r="12" fill="#f59e0b" opacity="0.3">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1.6s"/>
+                        </circle>
+                        <text x="25" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f59e0b" text-anchor="middle">⑤</text>
+                        <text x="150" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f59e0b" text-anchor="middle">
+                            Response Returns
+                        </text>
+                        <text x="150" y="65" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            Same secure path
+                        </text>
+                        <text x="150" y="85" font-family="Arial, sans-serif" font-size="14" fill="#cbd5e1" text-anchor="middle">
+                            back to frontend
+                        </text>
+                        <text x="150" y="105" font-family="Monaco, monospace" font-size="12" fill="#f59e0b" text-anchor="middle" opacity="0.8">
+                            HTTP 200 OK
+                        </text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>
