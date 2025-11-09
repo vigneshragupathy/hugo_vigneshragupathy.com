@@ -10,7 +10,7 @@ comments: true
 ShowToc: false
 cover:
     image: ../../images/2025/istio_part2_cover.webp
-    alt: Istio Part1 Cover
+    alt: Istio Part2 Cover
     hiddenInSingle: true
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)

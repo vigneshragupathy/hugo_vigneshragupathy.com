@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 4 - Traffic Management with VirtualService and DestinationRule
-date: '2026-11-05 00:50:00'
+date: '2025-11-09 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -9,10 +9,12 @@ author: Vignesh Ragupathy
 comments: true
 ShowToc: false
 cover:
-    image: ../../images/2025/istio_part1_cover.webp
-    alt: Istio Part1 Cover
+    image: ../../images/2025/istio_part4_cover.webp
+    alt: Istio Part4 Cover
     hiddenInSingle: true
 ---
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 5 - Observability with Prometheus, Grafana, and Kiali](../istio-hands-on-part-5-observability-with-prometheus-grafana-and-kiali)
+
 ### Objective
 
 In this post, we’ll learn how to use **Istio’s traffic management features** — specifically:
@@ -27,6 +29,7 @@ By the end, you’ll:
 - Perform canary-style rollouts
 - Simulate faults and retries
 
+![Istio Part 4](../../images/2025/istio_part4_cover.webp)
 ---
 
 ## Step 1: Recap – Your Current Setup
@@ -368,3 +371,5 @@ You now have fine-grained control over **how** traffic flows between services �
 👉 **Istio Hands-on Part 5 – Observability with Prometheus, Grafana, and Kiali**
 
 We’ll explore metrics, traces, and service graphs to understand what’s happening inside your mesh.
+
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 5 - Observability with Prometheus, Grafana, and Kiali](../istio-hands-on-part-5-observability-with-prometheus-grafana-and-kiali)
