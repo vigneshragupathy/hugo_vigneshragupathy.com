@@ -14,6 +14,8 @@ cover:
 ---
 [⬅ Back to Intro](../my-career-journey-looking-back-at-the-path-so-far) | [Next → Chapter 2 – Infosys Ltd](comming_soon)
 
+> 💭 *This is part of my [career journey series](../my-career-journey-looking-back-at-the-path-so-far) — a personal reflection on the people, experiences, and moments that shaped my path. This isn't a résumé or professional summary; it's simply me looking back and sharing the stories that mattered along the way.*
+
 **📍 Nov 2010 – Nov 2012 | Chennai**
 
 Fresh out of college, I began my career at **Accel Frontline Ltd** in Chennai.
