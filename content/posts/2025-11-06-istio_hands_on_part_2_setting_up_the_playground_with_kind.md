@@ -9,7 +9,7 @@ author: Vignesh Ragupathy
 comments: true
 ShowToc: false
 cover:
-    image: ../../images/2025/istio_part2_cover.webp
+    image: ../../images/2025/istio_part2.1_cover.webp
     alt: Istio Part2 Cover
     hiddenInSingle: true
 ---
@@ -23,6 +23,7 @@ In this post, we’ll set up our **local playground** for the Istio Hands-on ser
 
 This will be our foundation for the rest of the series — simple, reproducible, and lightweight.
 
+![Istio Part 2](../../images/2025/istio_part2.1_cover.webp)
 ---
 
 ## Prerequisites
