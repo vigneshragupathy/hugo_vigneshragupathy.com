@@ -10,7 +10,7 @@ comments: true
 ShowToc: false
 cover:
     image: ../../images/2025/istio_part5_cover.webp
-    alt: Istio Part1 Cover
+    alt: Istio Part5 Cover
     hiddenInSingle: true
 ---
 ### Objective
