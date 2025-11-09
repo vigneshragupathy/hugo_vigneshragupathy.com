@@ -9,8 +9,8 @@ author: Vignesh Ragupathy
 comments: true
 ShowToc: false
 cover:
-    image: ../../images/2025/istio_part3_cover.webp
-    alt: Istio Part1 Cover
+    image: ../../images/2025/istio_part3.1_cover.webp
+    alt: Istio Part3 Cover
     hiddenInSingle: true
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 4 - Traffic Management with VirtualService and DestinationRule](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule)
@@ -26,6 +26,8 @@ By the end of this post, you’ll learn:
 - How to **verify and inspect** sidecars
 - How **traffic flows** between services via Envoy
 - How to troubleshoot and explore Envoy configuration
+
+![Istio Part 3](../../images/2025/istio_part3.1_cover.webp)
 
 ---
 

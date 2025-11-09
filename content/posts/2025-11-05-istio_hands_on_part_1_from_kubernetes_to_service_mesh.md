@@ -82,7 +82,7 @@ Here’s the roadmap of what’s coming:
 | 1 | **From Kubernetes to Service Mesh** | Introduction & Series overview |
 | 2 | **Setting Up the Playground** | [Installing Istio on Kind](../istio-hands-on-part-2-setting-up-the-playground-with-kind) |
 | 3 | **Sidecar Injection Deep Dive** | [Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow) |
-| 4 | **Traffic Management** | Routing, retries, canary deployments |
+| 4 | **Traffic Management** | [Traffic Management with VirtualService, DestinationRule, retries, canary deployments](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule) |
 | 5 | **Observability** | Metrics, tracing, dashboards |
 | 6 | **Security with mTLS** | Enabling secure communication |
 | 7 | **Authorization and JWT Auth** | Policies and authentication |
