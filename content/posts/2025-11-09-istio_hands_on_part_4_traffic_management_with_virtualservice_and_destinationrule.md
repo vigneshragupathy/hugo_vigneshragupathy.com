@@ -368,7 +368,7 @@ You now have fine-grained control over **how** traffic flows between services �
 
 ### 🧵 Next Up
 
-👉 **Istio Hands-on Part 5 – Observability with Prometheus, Grafana, and Kiali**
+[👉 **Istio Hands-on Part 5 – Observability with Prometheus, Grafana, and Kiali**](../istio-hands-on-part-5-observability-with-prometheus-grafana-and-kiali)
 
 We’ll explore metrics, traces, and service graphs to understand what’s happening inside your mesh.
 
