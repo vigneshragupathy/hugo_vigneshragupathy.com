@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 6 - Security with mTLS and AuthorizationPolicies
-date: '2026-11-01 00:50:00'
+date: '2026-11-09 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -13,7 +13,7 @@ cover:
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
-### 🎯 Objective
+### Objective
 
 In this post, we’ll:
 
@@ -25,7 +25,7 @@ By the end, your frontend–backend app will communicate **securely** — every 
 
 ---
 
-## 🧩 Step 1: Confirm the Setup
+## Step 1: Confirm the Setup
 
 You should already have:
 
@@ -41,7 +41,7 @@ kubectl get pods -l app=backend -o jsonpath='{.items[*].spec.initContainers[*].n
 
 ✅ Should include `istio-proxy`.
 
-## 🔐 Step 2: Enable mTLS in the Mesh
+## Step 2: Enable mTLS in the Mesh
 
 Create a **PeerAuthentication** policy to enforce mTLS mesh-wide:
 
@@ -103,7 +103,7 @@ Applied PeerAuthentication:
 ---
 
 
-## ⚙️ Step 3: Understand Identities and Service Accounts
+## Step 3: Understand Identities and Service Accounts
 
 When mTLS is enabled, Istio assigns each workload a **SPIFFE identity** derived from its **Kubernetes ServiceAccount** .
 
@@ -121,7 +121,7 @@ So first, we’ll fix that.
 
 ---
 
-## 🧱 Step 4: Create Dedicated Service Accounts
+## Step 4: Create Dedicated Service Accounts
 
 Create one for each app:
 
@@ -147,7 +147,7 @@ kubectl get pods
 
 ---
 
-## 🔒 Step 5: Apply a “Deny All” Policy
+## Step 5: Apply a “Deny All” Policy
 
 Now we’ll start from a locked-down baseline:
 
@@ -166,7 +166,7 @@ This **blocks all traffic** to all workloads in the namespace — until specific
 
 ---
 
-## 🎯 Step 6: Allow Frontend → Backend Traffic
+## Step 6: Allow Frontend → Backend Traffic
 
 Next, explicitly allow only the `frontend` workload to talk to `backend`.
 
@@ -230,7 +230,7 @@ If you still get `200`, double-check:
 
 ---
 
-## 🧠 Step 8: Understanding Policy Precedence
+## Step 8: Understanding Policy Precedence
 
 A common confusion (you likely faced this) is that your **namespace-level `deny-all`** didn’t seem to block requests.
 
@@ -246,7 +246,7 @@ Here’s why:
 
 ---
 
-## 🔍 Step 9: Visualize in Kiali
+## Step 9: Visualize in Kiali
 
 Forward the Kiali dashboard:
 

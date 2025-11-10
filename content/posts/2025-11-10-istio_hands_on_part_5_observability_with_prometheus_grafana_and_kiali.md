@@ -1,7 +1,7 @@
 ---
 #layout: post
 title: Istio Hands-on Part 5 - Observability with Prometheus, Grafana, and Kiali
-date: '2026-11-01 00:50:00'
+date: '2025-11-10 00:50:00'
 tags:
 - kubernetes
 - observability
@@ -13,6 +13,8 @@ cover:
     alt: Istio Part5 Cover
     hiddenInSingle: true
 ---
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
+
 ### Objective
 
 In this post, you’ll set up and explore Istio’s **observability stack** — powered by:
@@ -259,6 +261,8 @@ Your mesh is now **fully observable** — secure, visible, and ready for real-wo
 
 ### 🧵 Next Up
 
-👉 **Istio Hands-on Part 6 – Security with mTLS and AuthorizationPolicies**
+[👉 **Istio Hands-on Part 6 – Security with mTLS and AuthorizationPolicies**](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
 
 We’ll explore Istio’s zero-trust security model and enforce service-to-service authentication.
+
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
