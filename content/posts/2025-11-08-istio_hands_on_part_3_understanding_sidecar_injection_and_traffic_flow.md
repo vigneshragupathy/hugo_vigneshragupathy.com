@@ -15,6 +15,8 @@ cover:
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 4 - Traffic Management with VirtualService and DestinationRule](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule)
 
+> 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
+
 ### Objective
 
 In this part, we dive into the **heart of Istio’s data plane** — the **sidecar proxy** — and understand how traffic actually flows inside the mesh.

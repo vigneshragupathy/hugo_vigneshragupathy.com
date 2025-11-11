@@ -15,6 +15,8 @@ cover:
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
 
+> 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
+
 ### Objective
 
 In this post, you’ll set up and explore Istio’s **observability stack** — powered by:
@@ -165,35 +167,7 @@ Kiali also lets you:
 
 ---
 
-## Step 5: Distributed Tracing with Jaeger
-
-Port-forward Jaeger:
-
-```bash
-kubectl port-forward svc/tracing -n istio-system 16686:80
-```
-
-Open [http://localhost:16686]()
-
-Select **Service → frontend.default**
-
-Click “Find Traces”.
-
-✅ You’ll see traces of frontend calls to backend, each showing:
-
-* Request duration
-* mTLS status
-* Proxy and cluster latency breakdown
-
-💡 *Tip:* If no traces appear, generate some load:
-
-```bash
-kubectl exec deploy/frontend -- bash -c 'for i in {1..20}; do curl -s http://backend; done'
-```
-
----
-
-## Step 6: Validate Metrics Endpoints (Optional)
+## Step 5: Validate Metrics Endpoints (Optional)
 
 Each Envoy proxy (sidecar) exposes its own Prometheus metrics on port **15020** .
 
@@ -209,7 +183,7 @@ You’ll see all metrics directly from the Envoy sidecar.
 
 ---
 
-## Step 7: Understanding the Observability Flow
+## Step 6: Understanding the Observability Flow
 
 Here’s how the pieces fit together:
 
@@ -255,14 +229,12 @@ In this post, you:
 * Visualized real traffic in Kiali’s service graph
 * Learned how Istio turns telemetry into insight
 
-Your mesh is now **fully observable** — secure, visible, and ready for real-world tuning.
-
 ---
 
 ### 🧵 Next Up
 
-[👉 **Istio Hands-on Part 6 – Security with mTLS and AuthorizationPolicies**](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
+[👉 **Istio Hands-on Part 6 – Distributed Tracing with Jaeger**](../istio-hands-on-part-6-distributed-tracing-with-jaeger/)
 
-We’ll explore Istio’s zero-trust security model and enforce service-to-service authentication.
+We’ll explore Istio’s distributed tracing capabilities and how to visualize request flows.
 
-[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Distributed Tracing with Jaeger](../istio-hands-on-part-6-distributed-tracing-with-jaeger/)

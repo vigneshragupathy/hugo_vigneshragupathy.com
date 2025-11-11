@@ -1,6 +1,6 @@
 ---
 #layout: post
-title: Istio Hands-on Part 7 - End-User Authentication with JWT
+title: Istio Hands-on Part 8 - End-User Authentication with JWT
 date: '2026-11-01 00:50:00'
 tags:
 - kubernetes

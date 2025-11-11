@@ -14,6 +14,9 @@ cover:
     hiddenInSingle: true
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 3 – Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow)
+
+> 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
+
 ### Objective
 
 In this post, we’ll set up our **local playground** for the Istio Hands-on series.You’ll learn how to:
@@ -24,18 +27,18 @@ In this post, we’ll set up our **local playground** for the Istio Hands-on ser
 This will be our foundation for the rest of the series — simple, reproducible, and lightweight.
 
 ![Istio Part 2](../../images/2025/istio_part2.1_cover.webp)
----
+-----------------------------------------------------------
 
 ## Prerequisites
 
 Before starting, make sure you have these installed on your machine:
 
 
-| Tool     | Version (or higher) | Install link                                                                  |
-| ---------- | --------------------- | ------------------------------------------------------------------------------- |
-| Docker   | 20.x                | [Docker Install Guide](https://docs.docker.com/get-docker/)                   |
-| kubectl  | 1.25+               | [kubectl install](https://kubernetes.io/docs/tasks/tools/)                    |
-| kind     | 0.20+               | [Kind install](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)  |
+| Tool    | Version (or higher) | Install link                                                                 |
+| --------- | --------------------- | ------------------------------------------------------------------------------ |
+| Docker  | 20.x                | [Docker Install Guide](https://docs.docker.com/get-docker/)                  |
+| kubectl | 1.25+               | [kubectl install](https://kubernetes.io/docs/tasks/tools/)                   |
+| kind    | 0.20+               | [Kind install](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) |
 
 ## Step 1: Create a Kind Cluster
 

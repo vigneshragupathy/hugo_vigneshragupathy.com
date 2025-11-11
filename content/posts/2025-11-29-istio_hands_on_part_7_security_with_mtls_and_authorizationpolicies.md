@@ -1,6 +1,6 @@
 ---
 #layout: post
-title: Istio Hands-on Part 6 - Security with mTLS and AuthorizationPolicies
+title: Istio Hands-on Part 7 - Security with mTLS and AuthorizationPolicies
 date: '2026-11-09 00:50:00'
 tags:
 - kubernetes

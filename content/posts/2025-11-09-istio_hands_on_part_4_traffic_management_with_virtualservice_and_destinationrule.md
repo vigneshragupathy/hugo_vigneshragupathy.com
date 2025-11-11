@@ -15,6 +15,8 @@ cover:
 ---
 [⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 5 - Observability with Prometheus, Grafana, and Kiali](../istio-hands-on-part-5-observability-with-prometheus-grafana-and-kiali)
 
+> 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
+
 ### Objective
 
 In this post, we’ll learn how to use **Istio’s traffic management features** — specifically:
