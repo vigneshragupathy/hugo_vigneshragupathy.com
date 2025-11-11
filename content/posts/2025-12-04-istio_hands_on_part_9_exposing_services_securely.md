@@ -1,6 +1,6 @@
 ---
 #layout: post
-title: Istio Hands-on Part 8 - Exposing Services Securely with Ingress Gateway
+title: Istio Hands-on Part 9 - Exposing Services Securely with Ingress Gateway
 date: '2026-11-01 00:50:00'
 tags:
 - kubernetes

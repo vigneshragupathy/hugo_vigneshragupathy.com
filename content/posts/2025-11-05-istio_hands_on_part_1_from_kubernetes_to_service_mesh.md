@@ -84,11 +84,12 @@ Here’s the roadmap of what’s coming:
 | 3 | **Sidecar Injection Deep Dive** | [Understanding Sidecar Injection and Traffic Flow](../istio-hands-on-part-3-understanding-sidecar-injection-and-traffic-flow) |
 | 4 | **Traffic Management** | [Traffic Management with VirtualService, DestinationRule, retries, canary deployments](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule) |
 | 5 | **Observability** | [Metrics, tracing, dashboards](../istio-hands-on-part-5-observability-with-prometheus-grafana-and-kiali) |
-| 6 | **Security with mTLS** | Enabling secure communication |
-| 7 | **Authorization and JWT Auth** | Policies and authentication |
-| 8 | **Ingress Gateway** | Exposing services securely |
-| 9 | **Multi-Cluster Setup** | Scaling Istio across clusters |
-| 10 | **Troubleshooting Istio** | Debugging real-world issues |
+| 6 | **Distributed Tracing with Jaeger** | [Setting up distributed tracing](../istio-hands-on-part-6-distributed-tracing-with-jaeger) |
+| 7 | **Security with mTLS** | Enabling secure communication |
+| 8 | **Authorization and JWT Auth** | Policies and authentication |
+| 9 | **Ingress Gateway** | Exposing services securely |
+| 10 | **Multi-Cluster Setup** | Scaling Istio across clusters |
+| 11 | **Troubleshooting Istio** | Debugging real-world issues |
 
 Each post will be written from a *learner’s point of view* — simple, practical, and full of real examples.
 
