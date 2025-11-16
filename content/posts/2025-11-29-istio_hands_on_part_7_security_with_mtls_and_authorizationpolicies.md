@@ -1,18 +1,22 @@
 ---
 #layout: post
 title: Istio Hands-on Part 7 - Security with mTLS and AuthorizationPolicies
-date: '2026-11-09 00:50:00'
+date: '2025-11-16 00:50:00'
 tags:
 - kubernetes
 - observability
 author: Vignesh Ragupathy
 comments: true
 ShowToc: false
-cover:
-    image: ../../images/2025/istio_part1_cover.webp
-    alt: Istio Part1 Cover
-    hiddenInSingle: true
+# cover:
+#     image: ../../images/2025/istio_part1_cover.webp
+#     alt: Istio Part1 Cover
+#     hiddenInSingle: true
 ---
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 8 - JWT and End-User Authentication](../istio-hands-on-part-8-jwt-and-end-user-authentication/)
+
+> 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
+
 ### Objective
 
 In this post, we’ll:
@@ -21,11 +25,11 @@ In this post, we’ll:
 - Apply **AuthorizationPolicies** to control access
 - Test what happens when policies block or allow traffic
 
-By the end, your frontend–backend app will communicate **securely** — every request encrypted and identity-verified.
+By the end, your frontend–backend app will communicate **securely** - every request encrypted and identity-verified.
 
 ---
 
-## Step 1: Confirm the Setup
+### Step 1: Confirm the Setup
 
 You should already have:
 
@@ -41,7 +45,7 @@ kubectl get pods -l app=backend -o jsonpath='{.items[*].spec.initContainers[*].n
 
 ✅ Should include `istio-proxy`.
 
-## Step 2: Enable mTLS in the Mesh
+### Step 2: Enable mTLS in the Mesh
 
 Create a **PeerAuthentication** policy to enforce mTLS mesh-wide:
 
@@ -103,7 +107,7 @@ Applied PeerAuthentication:
 ---
 
 
-## Step 3: Understand Identities and Service Accounts
+### Step 3: Understand Identities and Service Accounts
 
 When mTLS is enabled, Istio assigns each workload a **SPIFFE identity** derived from its **Kubernetes ServiceAccount** .
 
@@ -121,7 +125,7 @@ So first, we’ll fix that.
 
 ---
 
-## Step 4: Create Dedicated Service Accounts
+### Step 4: Create Dedicated Service Accounts
 
 Create one for each app:
 
@@ -147,7 +151,7 @@ kubectl get pods
 
 ---
 
-## Step 5: Apply a “Deny All” Policy
+### Step 5: Apply a “Deny All” Policy
 
 Now we’ll start from a locked-down baseline:
 
@@ -166,7 +170,7 @@ This **blocks all traffic** to all workloads in the namespace — until specific
 
 ---
 
-## Step 6: Allow Frontend → Backend Traffic
+### Step 6: Allow Frontend → Backend Traffic
 
 Next, explicitly allow only the `frontend` workload to talk to `backend`.
 
@@ -196,9 +200,9 @@ This says:
 
 ---
 
-## 🧪 Step 7: Test the Policy
+### Step 7: Test the Policy
 
-### ✅ From frontend (allowed):
+#### ✅ From frontend (allowed):
 
 ```bash
 kubectl exec deploy/frontend -- curl -s -o /dev/null -w "%{http_code}\n" http://backend
@@ -210,7 +214,7 @@ Expected:
 200
 ```
 
-### ❌ From an intruder (denied):
+#### ❌ From an intruder (denied):
 
 ```bash
 kubectl run test --image=curlimages/curl -it --rm -- /bin/sh
@@ -230,7 +234,7 @@ If you still get `200`, double-check:
 
 ---
 
-## Step 8: Understanding Policy Precedence
+### Step 8: Understanding Policy Precedence
 
 A common confusion (you likely faced this) is that your **namespace-level `deny-all`** didn’t seem to block requests.
 
@@ -246,7 +250,7 @@ Here’s why:
 
 ---
 
-## Step 9: Visualize in Kiali
+### Step 9: Visualize in Kiali
 
 Forward the Kiali dashboard:
 
@@ -266,7 +270,7 @@ Go to **[http://localhost:20001]()** → Graph → select `default` namespace.
 
 ---
 
-## ✅ Step 10: Summary
+### Step 10: Summary
 
 In this post, you:
 
@@ -289,3 +293,4 @@ Your mesh now follows **zero-trust principles** :
 
 We’ll extend security beyond workloads and enforce identity-based access for end-users using JWT tokens.
 
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 8 - JWT and End-User Authentication](../istio-hands-on-part-8-jwt-and-end-user-authentication/)

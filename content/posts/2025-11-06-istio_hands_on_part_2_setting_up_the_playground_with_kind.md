@@ -29,7 +29,7 @@ This will be our foundation for the rest of the series — simple, reproducible,
 ![Istio Part 2](../../images/2025/istio_part2.1_cover.webp)
 -----------------------------------------------------------
 
-## Prerequisites
+### Prerequisites
 
 Before starting, make sure you have these installed on your machine:
 
@@ -40,7 +40,7 @@ Before starting, make sure you have these installed on your machine:
 | kubectl | 1.25+               | [kubectl install](https://kubernetes.io/docs/tasks/tools/)                   |
 | kind    | 0.20+               | [Kind install](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) |
 
-## Step 1: Create a Kind Cluster
+### Step 1: Create a Kind Cluster
 
 Let’s create a simple Kind cluster with an ingress-ready configuration.
 We’ll call it `istio-lab`.
@@ -80,7 +80,7 @@ NAME                      STATUS   ROLES           AGE   VERSION
 istio-lab-control-plane   Ready    control-plane   48s   v1.33.1
 ```
 
-## Step 2: Install Istio
+### Step 2: Install Istio
 
 We’ll use the **demo profile** , which includes:
 
@@ -88,7 +88,7 @@ We’ll use the **demo profile** , which includes:
 * Ingress Gateway
 * Default telemetry (Prometheus, Kiali, Grafana, Jaeger)
 
-### 2.1 Download and add Istio CLI to PATH
+#### 2.1 Download and add Istio CLI to PATH
 
 ```bash
 curl -L https://istio.io/downloadIstio | sh -
@@ -109,7 +109,7 @@ Istio is not present in the cluster: no running Istio pods in namespace "istio-s
 client version: 1.27.3
 ```
 
-### 2.2 Install Istio using the demo profile
+#### 2.2 Install Istio using the demo profile
 
 ```bash
 istioctl install --set profile=demo -y

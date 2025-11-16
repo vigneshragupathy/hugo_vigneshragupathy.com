@@ -30,7 +30,7 @@ By the end, you’ll have a live **dashboard** showing how your frontend and bac
 
 ---
 
-## Step 1: Install Istio Addons
+### Step 1: Install Istio Addons
 
 Istio provides sample manifests for its observability tools.
 Install them all with one command:
@@ -63,7 +63,7 @@ prometheus-7bf56b6bc-k6gxw              2/2     Running   0             103s
 
 ---
 
-## Step 2: Verify Metrics Collection (Prometheus)
+### Step 2: Verify Metrics Collection (Prometheus)
 
 Port-forward the Prometheus service:
 
@@ -93,7 +93,7 @@ istio_requests_total{destination_service="backend.default.svc.cluster.local"}
 
 ---
 
-## Step 3: Visualize Metrics in Grafana
+### Step 3: Visualize Metrics in Grafana
 
 Port-forward Grafana:
 
@@ -125,7 +125,7 @@ Explore the following:
 
 ---
 
-## Step 4: Explore Service Graph with Kiali
+### Step 4: Explore Service Graph with Kiali
 
 Port-forward the Kiali service:
 
@@ -167,7 +167,7 @@ Kiali also lets you:
 
 ---
 
-## Step 5: Validate Metrics Endpoints (Optional)
+### Step 5: Validate Metrics Endpoints (Optional)
 
 Each Envoy proxy (sidecar) exposes its own Prometheus metrics on port **15020** .
 
@@ -183,7 +183,7 @@ You’ll see all metrics directly from the Envoy sidecar.
 
 ---
 
-## Step 6: Understanding the Observability Flow
+### Step 6: Understanding the Observability Flow
 
 Here’s how the pieces fit together:
 
@@ -208,7 +208,7 @@ Here’s how the pieces fit together:
 
 ---
 
-## Step 8: Clean Up (Optional)
+### Step 8: Clean Up (Optional)
 
 To remove the observability components:
 
@@ -220,7 +220,7 @@ This won’t affect your mesh — only removes dashboards.
 
 ---
 
-## Summary
+### Summary
 
 In this post, you:
 
