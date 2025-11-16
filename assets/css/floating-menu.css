@@ -55,6 +55,11 @@
     pointer-events: auto; /* Ensure button is clickable */
 }
 
+.floating-menu-toggle.menu-open {
+    transform: scale(0.92);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
 .floating-menu-toggle:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
@@ -117,6 +122,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        top: auto;
+        bottom: 24px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
     
     /* Hide logo switches on mobile when floating */

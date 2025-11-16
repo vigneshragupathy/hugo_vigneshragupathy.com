@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     
     if (!floatingMenuToggle || !floatingHeader) return;
+    floatingMenuToggle.setAttribute('aria-expanded', 'false');
     
     let isMenuOpen = false;
     
@@ -24,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
         
+        if (floatingMenuToggle) {
+            floatingMenuToggle.setAttribute('aria-expanded', String(isMenuOpen));
+            floatingMenuToggle.classList.toggle('menu-open', isMenuOpen);
+        }
+
         if (isMenuOpen) {
             floatingHeader.classList.add('mobile-visible');
             floatingMenuBackdrop.classList.add('active');
