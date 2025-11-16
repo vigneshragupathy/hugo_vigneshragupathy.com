@@ -8,12 +8,12 @@ tags:
 author: Vignesh Ragupathy
 comments: true
 ShowToc: false
-cover:
-    image: ../../images/2025/istio_part6_cover.webp
-    alt: Istio Part5 Cover
-    hiddenInSingle: true
+# cover:
+#     image: ../../images/2025/istio_part6_cover.webp
+#     alt: Istio Part6 Cover
+#     hiddenInSingle: true
 ---
-[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 7 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-7-security-with-mtls-and-authorizationpolicies/)
 
 > 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
 
@@ -228,7 +228,7 @@ When `frontend` calls `backend`:
 5. Jaeger stitches them together to form a full distributed trace.
 
 
-### 🧠 Key Takeaways
+### Key Takeaways
 
 
 | Concept              | Description                                    |
@@ -258,4 +258,4 @@ This forms the final pillar of **Istio observability** — bringing full visibil
 
 We’ll explore Istio’s zero-trust security model and enforce service-to-service authentication.
 
-[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 6 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-6-security-with-mtls-and-authorizationpolicies/)
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) | [Next → Part 7 - Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-7-security-with-mtls-and-authorizationpolicies/)

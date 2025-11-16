@@ -33,7 +33,7 @@ By the end of this post, you’ll learn:
 
 ---
 
-## Step 1: Istio Deployment Modes — Sidecar vs Ambient
+### Step 1: Istio Deployment Modes — Sidecar vs Ambient
 
 Istio can operate in **two major modes**:
 
@@ -51,12 +51,12 @@ In this post, we’ll focus on **Sidecar Mode**, there will be a seperate post o
 
 ---
 
-## Step 2: What Is a Sidecar?
+### Step 2: What Is a Sidecar?
 
 A **sidecar proxy** is a lightweight **Envoy container** that runs alongside your application container in the same pod.
 It intercepts all inbound and outbound traffic, applying Istio’s policies, telemetry, and security.
 
-### Responsibilities of a Sidecar:
+#### Responsibilities of a Sidecar:
 
 - Intercept and manage all **inbound/outbound traffic**
 - Apply **routing, retries, fault injection**
@@ -67,7 +67,7 @@ Together, all sidecars form Istio’s **data plane**, while `istiod` (the **cont
 
 ---
 
-## Step 3: Enable Automatic Sidecar Injection
+### Step 3: Enable Automatic Sidecar Injection
 
 Label a namespace to enable automatic sidecar injection:
 
@@ -79,11 +79,11 @@ Once labeled, Istio’s **mutating webhook** automatically injects Envoy sidecar
 
 ---
 
-## Step 4: Deploy a Sample Application
+### Step 4: Deploy a Sample Application
 
 We’ll deploy a simple **two-tier app** (`frontend` and `backend`) to visualize Istio’s sidecar behavior.
 
-### 4.1 Create the backend
+#### 4.1 Create the backend
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -123,7 +123,7 @@ EOF
 
 ---
 
-### 4.2 Create the frontend
+#### 4.2 Create the frontend
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -162,7 +162,7 @@ EOF
 
 ---
 
-### 4.3 Verify Injection
+#### 4.3 Verify Injection
 
 ```bash
 kubectl get pods
@@ -196,7 +196,7 @@ That confirms Istio successfully **injected** the sidecar.
 
 ---
 
-## Step 5: Understand Traffic Flow in Sidecar Mode
+### Step 5: Understand Traffic Flow in Sidecar Mode
 
 Let’s visualize what happens when `frontend` calls `backend`:
 
@@ -229,7 +229,7 @@ That means traffic is encrypted and authenticated via Istio’s certificates.
 
 ---
 
-## Step 6: Explore Envoy Configuration
+### Step 6: Explore Envoy Configuration
 
 You can use `istioctl` to view the live Envoy config.
 
@@ -255,7 +255,7 @@ istioctl proxy-status
 
 ---
 
-## Step 7: Check Envoy Access Logs
+### Step 7: Check Envoy Access Logs
 
 To see real-time traffic:
 

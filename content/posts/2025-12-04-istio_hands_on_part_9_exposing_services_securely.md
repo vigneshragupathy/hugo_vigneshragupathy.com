@@ -13,6 +13,9 @@ cover:
     alt: Istio Part1 Cover
     hiddenInSingle: true
 ---
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh)
+
+> 💡 *This post is part of my [Istio Hands-on Series](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) — a practical journey into Kubernetes Service Mesh. Each post builds on the previous one with hands-on labs, real command outputs, and clear explanations aimed at learning Istio by doing, not just reading.*
 
 In the previous parts, we’ve explored traffic management, observability, and authentication.
 
@@ -22,7 +25,7 @@ This is where Istio truly shines — giving you **fine-grained control** , **TLS
 
 ---
 
-## 🎯 What You’ll Learn
+### What You’ll Learn
 
 In this post, we’ll:
 
@@ -40,7 +43,7 @@ In this post, we’ll:
 
 ---
 
-## 🧩 Step 1: Confirm the Ingress Gateway Is Running
+### Step 1: Confirm the Ingress Gateway Is Running
 
 Check if the Ingress Gateway is up and running in your `istio-system` namespace:
 
@@ -72,7 +75,7 @@ istio-ingressgateway   LoadBalancer   10.96.163.224   <pending>     15021:31608/
 We’ll use those NodePorts in our testing.
 
 
-## ⚙️ Step 2 – Deploy a Real Frontend Service
+### Step 2 – Deploy a Real Frontend Service
 
 Previously, the `frontend` pod just ran a `curl` loop calling the backend —
 
@@ -127,7 +130,7 @@ Expect `2/2 Running` (frontend + sidecar).
 
 ---
 
-## 🔐 Step 3 – Create a Self-Signed Certificate
+### Step 3 – Create a Self-Signed Certificate
 
 ```bash
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -141,7 +144,7 @@ kubectl create -n istio-system secret tls frontend-credential \
 
 ---
 
-## 🌉 Step 4 – Create Gateway and VirtualService
+### Step 4 – Create Gateway and VirtualService
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -193,7 +196,7 @@ EOF
 
 ---
 
-## 🌐 Step 5 – Access via Kind Gateway
+### Step 5 – Access via Kind Gateway
 
 Fetch NodePort + IP:
 
@@ -205,7 +208,7 @@ echo "$INGRESS_HOST frontend.local" | sudo tee -a /etc/hosts
 
 ---
 
-## ✅ Step 6 – Test Secure Access
+### Step 6 – Test Secure Access
 
 ```bash
 curl -k https://frontend.local:$INGRESS_PORT
@@ -222,7 +225,7 @@ If you see a `301`, that’s the HTTP → HTTPS redirect working.
 
 ---
 
-## 🔒 Step 7 – (Optional) Enable Mutual TLS
+### Step 7 – (Optional) Enable Mutual TLS
 
 Switch to mutual TLS:
 
@@ -241,7 +244,7 @@ curl --cert frontend.crt --key frontend.key -k https://frontend.local:$INGRESS_P
 
 ---
 
-## 🧠 Key Takeaways
+### Key Takeaways
 
 
 | Concept                  | Purpose                             |
@@ -255,7 +258,7 @@ curl --cert frontend.crt --key frontend.key -k https://frontend.local:$INGRESS_P
 
 ---
 
-## 🚀 Wrapping Up
+### Wrapping Up
 
 You’ve now:
 
@@ -268,8 +271,10 @@ This lays the groundwork for production-grade ingress — where gateways handle 
 
 ---
 
-### 🧵 Next Up
+### Next Up
 
 👉 **Istio Hands-on Part 9 – Ingress Gateway and External Traffic**
 
 We’ll explore **rate limiting, retries, and circuit breaking** , making the mesh not only secure but also resilient.
+
+[⬅ Back to Intro](../istio-hands-on-part-1-from-kubernetes-to-service-mesh) 

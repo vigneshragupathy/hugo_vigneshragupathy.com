@@ -85,9 +85,9 @@ Here’s the roadmap of what’s coming:
 | 4 | **Traffic Management** | [Traffic Management with VirtualService, DestinationRule, retries, canary deployments](../istio-hands-on-part-4-traffic-management-with-virtualservice-and-destinationrule) |
 | 5 | **Observability** | [Metrics, tracing, dashboards](../istio-hands-on-part-5-observability-with-prometheus-grafana-and-kiali) |
 | 6 | **Distributed Tracing with Jaeger** | [Setting up distributed tracing](../istio-hands-on-part-6-distributed-tracing-with-jaeger) |
-| 7 | **Security with mTLS** | Enabling secure communication |
-| 8 | **Authorization and JWT Auth** | Policies and authentication |
-| 9 | **Ingress Gateway** | Exposing services securely |
+| 7 | **Security with mTLS** | [Security with mTLS and AuthorizationPolicies](../istio-hands-on-part-7-security-with-mtls-and-authorizationpolicies) |
+| 8 | **Authorization and JWT Auth** | [Policies and authentication](../istio-hands-on-part-8-end-user-authentication-with-jwt) |
+| 9 | **Ingress Gateway** | [Exposing services securely](../istio-hands-on-part-9-exposing-services-securely-with-ingress-gateway) |
 | 10 | **Multi-Cluster Setup** | Scaling Istio across clusters |
 | 11 | **Troubleshooting Istio** | Debugging real-world issues |
 
@@ -123,7 +123,7 @@ If you’ve ever looked at an Istio diagram and thought “Wait, how does this a
 
 ### 🧵 Next Up
 
-👉 **Istio Hands-on Part 2 - Setting Up the Playground (Installing Istio on Kind)**  
+[👉 **Istio Hands-on Part 2 - Setting Up the Playground (Installing Istio on Kind)**](../istio-hands-on-part-2-setting-up-the-playground-with-kind/)
 We’ll spin up a local cluster, install Istio, and get our first mesh up and running.
 
 ---
