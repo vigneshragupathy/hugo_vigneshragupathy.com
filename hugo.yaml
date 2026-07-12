@@ -40,6 +40,9 @@ languages:
         - name: Blog
           url: blog
           weight: 3
+        - name: Books
+          url: books/
+          weight: 5
         # - name: Archive
         #   url: archives
         #   weight: 5
