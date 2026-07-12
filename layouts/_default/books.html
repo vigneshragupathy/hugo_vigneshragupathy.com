@@ -1,0 +1,43 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description }}
+  </div>
+  {{- end }}
+</header>
+
+<div class="books-grid">
+  {{- range .Params.books }}
+  <a class="book-card"
+    {{- if .link }} href="{{ .link }}" target="_blank" rel="noopener"{{ end }} title="{{ .title }} — {{ .author }}">
+    <div class="book-cover">
+      {{- /* CSS-generated cover, shown when no image is available */}}
+      <div class="book-cover-fallback">
+        <span class="book-cover-title">{{ .title }}</span>
+        <span class="book-cover-author">{{ .author }}</span>
+      </div>
+      {{- if .cover }}
+      <img class="book-cover-img" src="{{ .cover }}" alt="Cover of {{ .title }}" loading="lazy"
+        onerror="this.remove()">
+      {{- else if .isbn }}
+      <img class="book-cover-img" src="https://covers.openlibrary.org/b/isbn/{{ .isbn }}-L.jpg?default=false"
+        alt="Cover of {{ .title }}" loading="lazy" onerror="this.remove()">
+      {{- end }}
+    </div>
+    <div class="book-info">
+      <div class="book-title">{{ .title }}</div>
+      <div class="book-author">{{ .author }}</div>
+      {{- with .note }}
+      <div class="book-note">{{ . }}</div>
+      {{- end }}
+    </div>
+  </a>
+  {{- end }}
+</div>
+
+{{ .Content }}
+
+{{- end }}{{/* end main */}}
