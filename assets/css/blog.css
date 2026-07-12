@@ -438,3 +438,26 @@
         min-height: 32px;
     }
 }
+
+/* ============================================================
+   Softer text colors — replace pure black / flat gray
+   Light: deep slate with a cool tint, easier on the eyes
+   Dark: soft blue-gray, less washed out than the default
+   ============================================================ */
+:root {
+    --theme: rgb(246, 247, 249);     /* page background: soft cool paper */
+    --entry: rgb(252, 252, 253);     /* cards / entries: a touch lighter */
+    --border: rgb(228, 231, 236);
+    --primary: rgb(41, 48, 60);      /* headings, strong text */
+    --content: rgb(59, 67, 81);      /* body text */
+    --secondary: rgb(107, 116, 131); /* meta, captions */
+}
+
+.dark {
+    --theme: rgb(22, 24, 29);        /* page background: deep blue-slate */
+    --entry: rgb(33, 36, 43);        /* cards / entries: one step lighter */
+    --border: rgb(52, 56, 65);
+    --primary: rgb(215, 220, 228);
+    --content: rgb(186, 193, 204);
+    --secondary: rgb(148, 156, 168);
+}
