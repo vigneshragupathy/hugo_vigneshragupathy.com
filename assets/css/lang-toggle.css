@@ -1,0 +1,47 @@
+.lang-toggle {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0.4rem 0 1.2rem;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 0;
+  padding: 0.35rem 0.95rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--secondary);
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-btn + .lang-btn {
+  border-left: 1px solid var(--border);
+}
+
+.lang-btn.is-active {
+  background: var(--tertiary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.lang-btn:not(.is-active):hover {
+  color: var(--primary);
+}
+
+/* Default: English shown, Tamil hidden */
+.lang-block[data-lang="ta"] {
+  display: none;
+}
+
+.post-single.show-ta .lang-block[data-lang="en"] {
+  display: none;
+}
+
+.post-single.show-ta .lang-block[data-lang="ta"] {
+  display: block;
+}

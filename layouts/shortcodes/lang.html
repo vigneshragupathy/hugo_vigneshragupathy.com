@@ -1,0 +1,9 @@
+{{- $lang := .Get 0 -}}
+{{- $enabled := and (ne site.Params.enableTamil false) (.Page.Param "langToggle") -}}
+{{- if $enabled -}}
+<div class="lang-block" data-lang="{{ $lang }}">
+{{ .Inner }}
+</div>
+{{- else if ne $lang "ta" -}}
+{{ .Inner }}
+{{- end -}}

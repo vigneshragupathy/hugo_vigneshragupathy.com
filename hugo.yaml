@@ -129,6 +129,11 @@ params:
   # author: ["Me", "You"] # multiple authors
 
   defaultTheme: auto
+  # Master switch for Tamil language toggle on posts.
+  # Set to false to disable Tamil site-wide (Tamil content is dropped at
+  # build time and the English/Tamil toggle is hidden, even on posts with
+  # langToggle: true in front matter).
+  enableTamil: true
   # disableThemeToggle: true
   # Enable floating menu bar (set to false to use default theme menu)
   enableFloatingMenu: true

@@ -1,0 +1,6 @@
+{{- if and (ne site.Params.enableTamil false) (.Param "langToggle") }}
+<div class="lang-toggle" role="group" aria-label="Choose language">
+  <button type="button" class="lang-btn is-active" data-set-lang="en" aria-pressed="true">English</button>
+  <button type="button" class="lang-btn" data-set-lang="ta" aria-pressed="false">தமிழ்</button>
+</div>
+{{- end }}

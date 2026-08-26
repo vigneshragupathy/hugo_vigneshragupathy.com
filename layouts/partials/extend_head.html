@@ -28,6 +28,14 @@
 {{- $blogCSS := resources.Get "css/blog.css" | resources.Minify }}
 <link rel="stylesheet" href="{{ $blogCSS.Permalink }}" />
 
+{{- /* Per-post language toggle assets (only when langToggle is set and Tamil enabled site-wide) */ -}}
+{{- if and (ne site.Params.enableTamil false) (.Param "langToggle") }}
+{{- $langCSS := resources.Get "css/lang-toggle.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $langCSS.Permalink }}" />
+{{- $langJS := resources.Get "js/lang-toggle.js" | resources.Minify }}
+<script src="{{ $langJS.Permalink }}" defer></script>
+{{- end }}
+
 {{- /* Disqus Comment Count Script */ -}}
 <script id="dsq-count-scr" src="//vikkiblog.disqus.com/count.js" async></script>
 

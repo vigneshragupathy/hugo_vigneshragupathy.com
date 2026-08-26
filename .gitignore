@@ -2,3 +2,6 @@
 # Generated files by hugo
 /public/
 /temp/
+# Hugo dev server script runtime files
+.hugo-server.pid
+.hugo-server.log
