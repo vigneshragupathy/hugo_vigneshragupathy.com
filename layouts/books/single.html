@@ -1,0 +1,48 @@
+{{- define "main" }}
+
+<article class="book-single">
+  <a class="book-back" href="{{ .Parent.RelPermalink }}">← All books</a>
+
+  <header class="book-hero">
+    {{ partial "book_cover.html" . }}
+    <div>
+      <div class="book-eyebrow">Read · <time datetime="{{ .Date.Format "2006-01" }}">{{ .Date.Format "January 2006" }}</time></div>
+      <h1 class="book-title">{{ .Title }}</h1>
+      {{- with .Params.author }}
+      <div class="book-author">{{ . }}</div>
+      {{- end }}
+      {{- with .Params.subtitle }}
+      <p class="book-subtitle">{{ . }}</p>
+      {{- end }}
+      {{- with .Params.link }}
+      <a class="book-amazon" href="{{ . }}" target="_blank" rel="noopener">View on Amazon <span aria-hidden="true">↗</span></a>
+      {{- end }}
+    </div>
+  </header>
+
+  {{- if .Content }}
+  <section class="book-notes">
+    <h2>My notes</h2>
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+  </section>
+  {{- end }}
+
+  {{- /* In a newest-first collection, .Next moves toward newer pages and .Prev toward older ones */}}
+  {{- $books := .CurrentSection.RegularPages.ByDate.Reverse }}
+  {{- $newer := $books.Next . }}
+  {{- $older := $books.Prev . }}
+  {{- if or $newer $older }}
+  <nav class="book-pager">
+    {{- with $newer }}
+    <a class="book-pager-newer" href="{{ .RelPermalink }}"><small>« Newer</small><span>{{ .Title }}</span></a>
+    {{- end }}
+    {{- with $older }}
+    <a class="book-pager-older" href="{{ .RelPermalink }}"><small>Older »</small><span>{{ .Title }}</span></a>
+    {{- end }}
+  </nav>
+  {{- end }}
+</article>
+
+{{- end }}{{/* end main */}}

@@ -1,0 +1,12 @@
+{{- /* Book cover with a CSS-generated fallback. Context: the book page. */ -}}
+<div class="book-cover">
+  <div class="book-cover-fallback">
+    <span class="book-cover-title">{{ .Title }}</span>
+    <span class="book-cover-author">{{ .Params.author }}</span>
+  </div>
+  {{- $src := "" }}
+  {{- with .Params.coverImage }}{{ $src = . }}{{ else }}{{ with .Params.isbn }}{{ $src = printf "https://covers.openlibrary.org/b/isbn/%s-L.jpg?default=false" . }}{{ end }}{{ end }}
+  {{- with $src }}
+  <img class="book-cover-img" src="{{ . }}" alt="Cover of {{ $.Title }}" onerror="this.remove()">
+  {{- end }}
+</div>

@@ -1,0 +1,35 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description }}
+  </div>
+  {{- end }}
+</header>
+
+{{- range .RegularPages.GroupByDate "2006" }}
+<section class="books-year">
+  <div class="books-year-head">
+    <h2>{{ .Key }}</h2>
+    <span>{{ len .Pages }} book{{ if gt (len .Pages) 1 }}s{{ end }}</span>
+  </div>
+  <ol class="books-rail">
+    {{- range .Pages }}
+    <li>
+      <a class="books-item" href="{{ .RelPermalink }}">
+        <time datetime="{{ .Date.Format "2006-01" }}">{{ .Date.Format "Jan" }}</time>
+        <span><span class="books-item-title">{{ .Title }}</span>
+          {{- with .Params.author }} <span class="books-item-author">· {{ . }}</span>{{ end }}</span>
+        <span class="books-item-go" aria-hidden="true">→</span>
+      </a>
+    </li>
+    {{- end }}
+  </ol>
+</section>
+{{- end }}
+
+{{ .Content }}
+
+{{- end }}{{/* end main */}}
